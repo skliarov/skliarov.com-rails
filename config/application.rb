@@ -12,9 +12,5 @@ Bundler.require(:default, Rails.env)
 module Consigliere
   class Application < Rails::Application
 
-    config.generators do |g|
-        g.test_framework  nil, :fixture => false
-    end
-
   end
 end
