@@ -15,5 +15,7 @@ module Consigliere
 	    g.test_framework  nil, :fixture => false
     end
 
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+
   end
 end
