@@ -1,5 +1,7 @@
-== Source code for part 1
+== Source code for part 2
 
 * Ruby version 2.0
 
 * Rails verion 4.0
+
+* CKEditor version 4.2
