@@ -1,31 +1,24 @@
-<h1>Listing articles</h1>
+<% if can? :create, @article %>
+  <%= link_to 'New Article', new_article_path %><br />
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Published</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @articles.each do |article| %>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body.html_safe %></td>
-        <td><%= article.published %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= link_to 'Read', article %>
 
-<br>
+  <% if can? :update, @article %>
+    <%= link_to 'Edit', edit_article_path(article) %>
+  <% end %>
 
-<%= link_to 'New Article', new_article_path %>
+  <% if can? :destroy, @article %>
+    <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+  <div class="page-header">
+    <%= article.title %>
+  </div>
+
+  <div class="container">
+    <%= article.preview.html_safe %>
+  </div>
+<% end %>
