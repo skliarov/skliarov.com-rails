@@ -30,6 +30,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.preview = HTML_Truncator.truncate(@article.body, 300)
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
