@@ -1,24 +1,29 @@
-<% if can? :create, @article %>
-  <%= link_to 'New Article', new_article_path %><br />
-<% end %>
-
-<% @articles.each do |article| %>
-
-  <%= link_to 'Read', article %>
-
-  <% if can? :update, @article %>
-    <%= link_to 'Edit', edit_article_path(article) %>
+<div class="container">
+  <% if can? :create, @article %>
+    <%= link_to 'New Article', new_article_path, :class => 'btn btn-primary', :role => "button" %><br />
   <% end %>
+</div>
 
-  <% if can? :destroy, @article %>
-    <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+<div class="container">
+  <% @articles.each do |article| %>
 
-  <div class="page-header">
-    <%= article.title %>
-  </div>
+    <div class="page-header">
+      <h1><%= link_to article.title, article %></h1>
+    </div>
 
-  <div class="container">
+    <p>
+      <%= link_to 'Read', article, :class => "btn btn-primary" %>
+
+      <% if can? :update, @article %>
+        <%= link_to 'Edit', edit_article_path(article), :class => "btn btn-default" %>
+      <% end %>
+
+      <% if can? :destroy, @article %>
+        <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <% end %>
+    </p>
+
     <%= article.preview.html_safe %>
-  </div>
-<% end %>
+
+  <% end %>
+</div>
