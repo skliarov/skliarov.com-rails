@@ -1,29 +1,38 @@
 <div class="container">
-  <% if can? :create, @article %>
-    <%= link_to 'New Article', new_article_path, :class => 'btn btn-primary', :role => "button" %><br />
-  <% end %>
+	<% if can? :create, @article %>
+		<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary' %><br />
+	<% end %>
 </div>
 
 <div class="container">
-  <% @articles.each do |article| %>
+	<% @articles.each do |article| %>
 
-    <div class="page-header">
-      <h1><%= link_to article.title, article %></h1>
-    </div>
+	<div class="page-header">
+		<h1><%= link_to article.title, article %></h1>
+	</div>
 
-    <p>
-      <%= link_to 'Read', article, :class => "btn btn-primary" %>
+	<p>
+		<em>
+			Posted by <%= article.user.username %> on <%= article.created_at.strftime("%B %d, %Y") %><br />
+			last update <%= article.updated_at.strftime("%B %d, %Y") %><br />
+		</em>
+	</p>
 
-      <% if can? :update, @article %>
-        <%= link_to 'Edit', edit_article_path(article), :class => "btn btn-default" %>
-      <% end %>
+	<div class="content">
+		<%= article.preview.html_safe %>
+	</div>
 
-      <% if can? :destroy, @article %>
-        <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-      <% end %>
-    </p>
+	<div class="buttons">
+		<%= link_to 'Read', article, :class => "btn btn-primary" %>
 
-    <%= article.preview.html_safe %>
+		<% if can? :update, article %>
+			<%= link_to 'Edit', edit_article_path(article), :class => "btn btn-default" %>
+		<% end %>
 
-  <% end %>
+		<% if can? :destroy, article %>
+			<%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+		<% end %>
+	</div>
+
+	<% end %><!-- @articles.each do |article| -->
 </div>
