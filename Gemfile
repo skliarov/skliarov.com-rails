@@ -12,6 +12,6 @@ gem 'paperclip', '~> 3.5.2'
 gem 'cancan'
 gem 'devise'
 gem 'html_truncator', '~> 0.3.1'
-group :development do
+group :production do
 	gem 'therubyracer'
 end
