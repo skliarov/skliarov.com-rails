@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 		if user_signed_in?
 			if current_user.role.name == "Padrone"
 				@articles = Article.all.order('created_at DESC')
+			else
+				@articles = Article.all.where(:published =>  true).order('created_at DESC')
 			end
 		else
 			@articles = Article.all.where(:published =>  true).order('created_at DESC')
