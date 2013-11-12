@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/galetahub/ckeditor.git
+  revision: 6ac7f1eb21cbf439fabeccc63ea804fd8589d68a
+  specs:
+    ckeditor (4.0.6)
+      mime-types
+      orm_adapter
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,9 +38,6 @@ GEM
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
     cancan (1.6.10)
-    ckeditor (4.0.6)
-      mime-types
-      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -133,7 +138,7 @@ PLATFORMS
 
 DEPENDENCIES
   cancan
-  ckeditor (~> 4.0.6)
+  ckeditor!
   coffee-rails (~> 4.0.0)
   devise
   html_truncator (~> 0.3.1)

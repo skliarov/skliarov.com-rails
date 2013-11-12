@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require ckeditor/override
 //= require ckeditor/init
 //= require bootstrap/bootstrap
 //= require syntaxhighliter/shCore.js
