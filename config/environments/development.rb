@@ -1,5 +1,4 @@
 Consigliere::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
 
   config.cache_classes = false
   config.eager_load = false
@@ -10,4 +9,5 @@ Consigliere::Application.configure do
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
   config.assets.debug = true
+
 end
