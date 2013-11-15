@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
 	# PATCH/PUT /articles/1
 	# PATCH/PUT /articles/1.json
 	def update
-		@article.preview = HTML_Truncator.truncate(@article.body, 300)
+		@article.preview = HTML_Truncator.truncate(article_params[:body], 300)
 
 		respond_to do |format|
 			if @article.update(article_params)
