@@ -1,38 +1,40 @@
-<div class="container">
-	<% if can? :create, @article %>
-		<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary' %><br />
-	<% end %>
-</div>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
 
-<div class="container">
-	<% @articles.each do |article| %>
+			<% if can? :create, @article %>
+				<%= link_to 'New Article', new_article_path, :class => 'btn btn-primary' %><br />
+			<% end %>
 
-	<div class="page-header">
-		<h1><%= link_to article.title, article %></h1>
+			<% @articles.each do |article| %>
+
+			<div class="page-header">
+				<h1><%= link_to article.title, article %></h1>
+			</div>
+
+			<p>
+				<em>
+					Posted by <%= article.user.username %> on <%= article.created_at.strftime("%B %d, %Y") %><br />
+					last update <%= article.updated_at.strftime("%B %d, %Y") %><br />
+				</em>
+			</p>
+
+			<div class="content">
+				<%= article.preview.html_safe %>
+			</div>
+
+			<div class="buttons">
+				<%= link_to 'Read', article, :class => "btn btn-primary" %>
+
+				<% if can? :update, article %>
+					<%= link_to 'Edit', edit_article_path(article), :class => "btn btn-default" %>
+				<% end %>
+
+				<% if can? :destroy, article %>
+					<%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+				<% end %>
+			</div>
+
+			<% end %><!-- @articles.each do |article| -->
+			
 	</div>
-
-	<p>
-		<em>
-			Posted by <%= article.user.username %> on <%= article.created_at.strftime("%B %d, %Y") %><br />
-			last update <%= article.updated_at.strftime("%B %d, %Y") %><br />
-		</em>
-	</p>
-
-	<div class="content">
-		<%= article.preview.html_safe %>
-	</div>
-
-	<div class="buttons">
-		<%= link_to 'Read', article, :class => "btn btn-primary" %>
-
-		<% if can? :update, article %>
-			<%= link_to 'Edit', edit_article_path(article), :class => "btn btn-default" %>
-		<% end %>
-
-		<% if can? :destroy, article %>
-			<%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-		<% end %>
-	</div>
-
-	<% end %><!-- @articles.each do |article| -->
 </div>
