@@ -3,11 +3,8 @@
 <head>
 	<title>Consigliere</title>
 	<%= stylesheet_link_tag    "application", media: "all" %>
-	<%= javascript_include_tag "application" %>
-	<%= javascript_include_tag "/assets/ckeditor/ckeditor" %>
-	<%= javascript_include_tag "/assets/ckeditor/init" %>
-	<%= javascript_include_tag "/assets/bootstrap/bootstrap" %>
-    <%= javascript_include_tag "/assets/syntaxhighliter/shCore" %>
+	<%= javascript_include_tag "/assets/bootstrap/bootstrap.js" %>
+	<%= javascript_include_tag "/assets/syntaxhighliter/shCore" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushBash" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushCpp" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushCss" %>
@@ -16,6 +13,8 @@
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushRuby" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushSql" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushXml" %>
+
+	<%= yield :head %>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--[if lt IE 9]>
