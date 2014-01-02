@@ -9,7 +9,7 @@ Consigliere::Application.routes.draw do
   get '/about', :controller => 'static_pages', :action => 'show', :id => 2
   get '/contacts', :controller => 'static_pages', :action => 'show', :id => 3
   resources :static_pages, :only => [:show, :edit, :update]
-
   resources :articles
+  resources :projects
 
 end
