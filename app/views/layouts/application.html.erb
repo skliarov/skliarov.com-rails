@@ -15,6 +15,7 @@
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushXml" %>
 
 	<%= yield :head %>
+	<link href="favicon.ico" rel="shortcut icon"/>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!--[if lt IE 9]>
@@ -41,12 +42,21 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><%= link_to('Home', root_path) %></li>
-					<li><%= link_to('Blog', articles_path) %></li>
-					<li><a href="#">Tutorials</a></li>
-					<li><a href="#">Portfolio</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
+					<li class="<%= 'active' if params[:controller] == 'articles' %>">
+						<%= link_to('Blog', root_path) %>
+					</li>
+					<li class="<%= 'active' if (params[:controller] == 'static_pages') & (params[:id] == 1) %>">
+						<a href="/tutorials">Tutorials</a>
+					</li>
+					<li class="<%= 'active' if params[:controller] == 'projects' %>">
+						<a href="/projects">Portfolio</a>
+					</li>
+					<li class="<%= 'active' if (params[:controller] == 'static_pages') & (params[:id] == 2) %>">
+						<a href="/about">About</a>
+					</li>
+					<li class="<%= 'active' if (params[:controller] == 'static_pages') & (params[:id] == 3) %>">
+						<a href="/contacts">Contacts</a>
+					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<% if user_signed_in? %>

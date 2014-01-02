@@ -2,7 +2,7 @@
 //= require_tree .
 //= require bootstrap/bootstrap
 //= require syntaxhighliter/shCore.css
-//= require syntaxhighliter/shThemeMidnight.css
+//= require syntaxhighliter/shThemeDefault.css
 body {
 	padding-top: 70px;
 	padding-bottom: 30px;
