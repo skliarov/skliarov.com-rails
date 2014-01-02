@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% content_for :head do %>
+	<title>Consigliere - <%= @static_page.title %></title>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @static_page.title %>
-</p>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<%= @static_page.body.html_safe %>
+		<div class="buttons">
+			<% if can? :update, @static_page %>
+				<%= link_to 'Edit', edit_static_page_path(@static_page), :class => "btn btn-primary" %>
+			<% end %>
+			<%= link_to 'Back', :root, :class => "btn btn-default" %>
+		</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @static_page.body %>
-</p>
-
-<%= link_to 'Edit', edit_static_page_path(@static_page) %> |
-<%= link_to 'Back', static_pages_path %>
+	</div>
+</div>

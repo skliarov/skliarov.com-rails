@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :set_static_page, only: [:show, :edit]
+  before_action :set_static_page, only: [:show, :edit, :update]
 
   # GET /static_pages/1
   # GET /static_pages/1.json

@@ -1,14 +1,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require ckeditor/init
-//= require bootstrap/bootstrap
-//= require syntaxhighliter/shCore.js
-//= require syntaxhighliter/shBrushBash.js
-//= require syntaxhighliter/shBrushCpp.js
-//= require syntaxhighliter/shBrushCss.js
-//= require syntaxhighliter/shBrushJScript.js
-//= require syntaxhighliter/shBrushPlain.js
-//= require syntaxhighliter/shBrushRuby.js
-//= require syntaxhighliter/shBrushSql.js
-//= require syntaxhighliter/shBrushXml.js

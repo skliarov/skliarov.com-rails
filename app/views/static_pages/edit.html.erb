@@ -1,6 +1,10 @@
-<h1>Editing static_page</h1>
+<% content_for :head do %>
+	<title>Consigliere - Editing <%= @static_page.title %></title>
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @static_page %> |
-<%= link_to 'Back', static_pages_path %>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<h1>Editing <%= @static_page.title %></h1>
+		<%= render 'form' %>
+	</div>
+</div>

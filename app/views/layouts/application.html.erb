@@ -2,7 +2,8 @@
 <html>
 <head>
 	<%= stylesheet_link_tag    "application", media: "all" %>
-	<%= javascript_include_tag "/assets/bootstrap/bootstrap.js" %>
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "/assets/bootstrap/bootstrap" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shCore" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushBash" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushCpp" %>
@@ -60,9 +61,13 @@
 	<!-- Navigation bar end -->
 
 	<% if notice %>
-		<div class="container alert alert-warning alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-			<p id="notice"><%= notice %></p>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="alert alert-warning alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<p id="notice"><%= notice %></p>
+				</div>
+			</div>
 		</div>
 	<% end %>
 
