@@ -31,9 +31,9 @@ GEM
     bcrypt (3.1.7)
     builder (3.2.2)
     cancan (1.6.10)
-    ckeditor (4.0.11)
+    ckeditor (4.0.6)
       mime-types
-      orm_adapter (~> 0.5.0)
+      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -139,7 +139,7 @@ PLATFORMS
 
 DEPENDENCIES
   cancan
-  ckeditor (~> 4.0.6)
+  ckeditor (= 4.0.6)
   coffee-rails (~> 4.0.0)
   devise
   html_truncator (~> 0.3.1)
