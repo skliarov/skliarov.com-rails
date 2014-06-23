@@ -16,7 +16,7 @@ gem 'devise'
 
 gem 'ckeditor', '~> 4.0.11'
 gem 'paperclip', '~> 4.1'
-gem 'activesupport-json_encoder', github: 'rails/activesupport-json_encoder'
+gem 'activesupport-json_encoder', '~> 1.1.0'
 
 group :production do
 	gem 'therubyracer'
