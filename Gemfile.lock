@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rails/activesupport-json_encoder.git
+  revision: f02fb52c02609b3157e9288e1502dc6a4fe3b1fd
+  specs:
+    activesupport-json_encoder (1.1.0)
+      activesupport (>= 4.1.0, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,9 +38,9 @@ GEM
     bcrypt (3.1.7)
     builder (3.2.2)
     cancan (1.6.10)
-    ckeditor (4.0.6)
+    ckeditor (4.0.11)
       mime-types
-      orm_adapter
+      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -52,7 +59,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
-    execjs (2.0.2)
+    execjs (2.2.0)
     hike (1.2.3)
     html_truncator (0.3.1)
       nokogiri (~> 1.5)
@@ -60,7 +67,7 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    jquery-rails (3.1.0)
+    jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
@@ -70,18 +77,18 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     mini_portile (0.6.0)
-    minitest (5.3.4)
-    multi_json (1.10.0)
+    minitest (5.3.5)
+    multi_json (1.10.1)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
-    paperclip (3.5.4)
+    paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
-    polyglot (0.3.4)
+    polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -121,14 +128,14 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
-    thread_safe (0.3.3)
+    thread_safe (0.3.4)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (1.1.0)
+    tzinfo (1.2.1)
       thread_safe (~> 0.1)
-    uglifier (2.5.0)
+    uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -138,14 +145,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport-json_encoder!
   cancan
-  ckeditor (= 4.0.6)
+  ckeditor (~> 4.0.11)
   coffee-rails (~> 4.0.0)
   devise
   html_truncator (~> 0.3.1)
   jbuilder (~> 1.2)
   jquery-rails
-  paperclip (~> 3.5.2)
+  paperclip (~> 4.1)
   pg
   rails (= 4.1.1)
   sass-rails (~> 4.0.0)
