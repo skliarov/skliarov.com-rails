@@ -3,7 +3,6 @@
 <head>
 	<%= stylesheet_link_tag    "application", media: "all" %>
 	<%= javascript_include_tag "application" %>
-	<%= javascript_include_tag "/assets/bootstrap/bootstrap" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shCore" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushBash" %>
 	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushCpp" %>
@@ -83,6 +82,8 @@
 	<% end %>
 
 <%= yield %>
+
+<div style="clear:both"></div>
 
 <script type="text/javascript">
 	var _gaq = _gaq || [];
