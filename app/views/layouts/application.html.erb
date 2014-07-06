@@ -3,17 +3,8 @@
 <head>
 	<%= stylesheet_link_tag    "application", media: "all" %>
 	<%= javascript_include_tag "application" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shCore" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushBash" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushCpp" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushCss" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushJScript" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushPlain" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushRuby" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushSql" %>
-	<%= javascript_include_tag "/assets/syntaxhighliter/shBrushXml" %>
 
-	<%= yield :head %>
+  <%= yield :head %>
 	<link href="/favicon.ico" rel="shortcut icon"/>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +13,6 @@
     	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
 	<%= csrf_meta_tags %>
-	<script type="text/javascript">
-		SyntaxHighlighter.all();
-	</script>
 </head>
 
 <body>

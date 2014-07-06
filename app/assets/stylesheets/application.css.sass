@@ -1,7 +1,6 @@
 //= require_self
 //= require_tree .
-//= require syntaxhighliter/shCore.css
-//= require syntaxhighliter/shThemeDefault.css
+//= require highlight/docco
 
 @import 'bootstrap-sprockets'
 @import 'bootstrap'
@@ -19,15 +18,18 @@ img
   max-width: 100%
 
 h1
-  margin: 10px
+  margin: 10px 0px 10px 0px
+
+pre
+  background-color: white
+  border: none
+  padding: 0px
 
 .page-header
   margin: 0px
   padding: 0px
 
 .article
-  border: 1px solid $selected-background-color
-  border-radius: 10px
   padding: 10px
   margin-top: 10px
   margin-bottom: 10px

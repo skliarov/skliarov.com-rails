@@ -1,5 +1,5 @@
 CKEDITOR.editorConfig = function( config ) {
-  config.extraPlugins = 'syntaxhighlight';
+  config.extraPlugins = 'highlight_js';
 
   config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
   config.filebrowserFlashBrowseUrl = "/ckeditor/attachment_files";
