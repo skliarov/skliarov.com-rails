@@ -3,6 +3,10 @@
 <head>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "/assets/highlight.pack.js" %>
+  <script>
+      hljs.initHighlightingOnLoad();
+  </script>
 
   <%= yield :head %>
   <link href="/favicon.ico" rel="shortcut icon"/>
