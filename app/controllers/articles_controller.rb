@@ -1,9 +1,8 @@
-require "html_truncator"
-
 class ArticlesController < ApplicationController
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
 	before_filter :authenticate_user!, :except => [:index, :show]
-	load_and_authorize_resource
+  before_filter :disable_xss_protection
+  load_and_authorize_resource
 
 	# GET /articles
 	# GET /articles.json
@@ -37,7 +36,6 @@ class ArticlesController < ApplicationController
 	# POST /articles.json
 	def create
 		@article = Article.new(article_params)
-		@article.preview = HTML_Truncator.truncate(@article.body, 300)
 		@article.user = current_user
 
 		respond_to do |format|
@@ -54,8 +52,6 @@ class ArticlesController < ApplicationController
 	# PATCH/PUT /articles/1
 	# PATCH/PUT /articles/1.json
 	def update
-		@article.preview = HTML_Truncator.truncate(article_params[:body], 300)
-
 		respond_to do |format|
 			if @article.update(article_params)
 				format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -85,6 +81,10 @@ class ArticlesController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def article_params
-			params.require(:article).permit(:title, :body, :published)
-		end
+			params.require(:article).permit(:title, :body, :preview, :published)
+    end
+
+    def disable_xss_protection
+      response.headers['X-XSS-Protection'] = "0"
+    end
 end
