@@ -18,6 +18,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'cancan'
 gem 'devise'
 
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 gem 'ckeditor', '~> 4.0.11'
 gem 'paperclip', '~> 4.1'
 gem 'activesupport-json_encoder', '~> 1.1.0'

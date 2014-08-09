@@ -33,6 +33,9 @@ GEM
     autoprefixer-rails (2.0.1.20140626)
       execjs
     bcrypt (3.1.7)
+    bootstrap-kaminari-views (0.0.3)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -68,6 +71,9 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -141,6 +147,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport-json_encoder (~> 1.1.0)
   autoprefixer-rails
+  bootstrap-kaminari-views
   bootstrap-sass (~> 3.2.0.0)
   cancan
   ckeditor (~> 4.0.11)
@@ -148,6 +155,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   paperclip (~> 4.1)
   pg
   rails (= 4.1.2)
