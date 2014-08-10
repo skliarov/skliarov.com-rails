@@ -6,12 +6,16 @@ gem 'rails', '4.1.2'
 gem 'pg'
 
 gem 'bootstrap-sass', '~> 3.2.0.0'
+gem 'font-awesome-rails'
 gem 'autoprefixer-rails'
 gem 'sass-rails', '~> 4.0.0'
+gem 'owlcarousel-rails'
 
-gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'uglifier'
+
+gem 'slim-rails'
+gem 'slim'
 
 gem 'jbuilder', '~> 1.2'
 
