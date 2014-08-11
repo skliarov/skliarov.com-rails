@@ -6,6 +6,12 @@
   <%= javascript_include_tag "/assets/highlight.pack.js" %>
   <script>
       hljs.initHighlightingOnLoad();
+
+      $(document).ready(function() {
+          $(".owl-carousel").owlCarousel({
+              items: 3,
+          });
+      });
   </script>
 
   <%= yield :head %>

@@ -2,4 +2,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require owl.carousel
-// = require_tree .
+//= require articles
+//= require pages
