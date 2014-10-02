@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= auto_discovery_link_tag(:rss, "http://0.0.0.0:3000/feed") %>
+
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "/assets/highlight.pack.js" %>
@@ -59,6 +61,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to('', feed_path, { class: "fa fa-rss" }) %></li>
         <% if user_signed_in? %>
             <li><%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %></li>
         <% else %>

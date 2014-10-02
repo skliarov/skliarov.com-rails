@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
-	before_filter :authenticate_user!, :except => [:index, :show]
+	before_filter :authenticate_user!, :except => [:index, :show, :feed]
   before_filter :disable_xss_protection
   load_and_authorize_resource
 
@@ -17,6 +17,11 @@ class ArticlesController < ApplicationController
 			@articles = Article.all.where(:published =>  true).order('created_at DESC').page(params[:page]).per(5)
 		end
 	end
+
+  def feed
+    @articles = Article.where(:published =>  true).order('created_at DESC').limit(10)
+    render "articles/feed", layout: false
+  end
 
 	# GET /articles/1
 	# GET /articles/1.json
