@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '4.1.2'
+gem 'rails', '4.1.6'
 gem 'pg'
 
 gem 'bootstrap-sass', '~> 3.2.0.0'
@@ -28,6 +28,8 @@ gem 'bootstrap-kaminari-views'
 gem 'ckeditor', '~> 4.0.11'
 gem 'paperclip', '~> 4.1'
 gem 'activesupport-json_encoder', '~> 1.1.0'
+
+gem 'friendly_id', '~> 5.0.0'
 
 group :production do
 	gem 'therubyracer'
