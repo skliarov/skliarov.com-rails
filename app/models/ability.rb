@@ -7,6 +7,7 @@ class Ability
         can :manage, :all
     else
     	can :read, Article
+      can :feed, Article
     end
   end
 end
