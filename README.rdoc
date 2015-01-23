@@ -1,13 +1,4 @@
-== Source code for part 6
+== My blog http://www.skliarov.com
 
-* Ruby version 2.0
-
-* Rails verion 4.0
-
-* CKEditor version 4.2.2
-
-* Devise for authentication
-
-* CanCan for Authorization
-
-* Pure Twitter Bootstrap 3.0.1 without gems
+* Ruby version 2.2.0
+* Rails verion 4.2.0
