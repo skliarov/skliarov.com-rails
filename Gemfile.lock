@@ -90,6 +90,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
@@ -191,12 +193,12 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
+  meta-tags
   owlcarousel-rails
   paperclip (~> 4.1)
   pg
   rails (= 4.2.0)
   sass-rails (~> 4.0.0)
-  slim
   slim-rails
   therubyracer
   uglifier

@@ -8,5 +8,7 @@ Consigliere::Application.routes.draw do
   resources :articles
   get "/feed", to: "articles#feed", defaults: { format: 'rss' }
 
-  get "/:action", to: "pages#:action"
+  get "/about", to: "pages#about"
+  get "/portfolio", to: "pages#portfolio"
+  get "/contacts", to: "pages#contacts"
 end

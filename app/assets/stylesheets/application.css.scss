@@ -92,6 +92,11 @@ pre {
   margin-top: 10px;
   margin-bottom: 50px;
 }
+.buttons, .actions {
+  .btn {
+    margin-right: 5px;
+  }
+}
 
 .navbar-inverse .navbar-toggle .icon-bar {
   background-color: #000000;

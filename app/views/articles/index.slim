@@ -1,0 +1,38 @@
+- set_meta_tags title: "All Articles",
+                description: "List of all articles on this blog",
+                keywords: "iOS, Ruby, Rails, Swift, Objective C, developer, development, Apple, iPhone, iPad, iPod touch, freelance, freelancer, oDesk, elance"
+
+.myrow
+  .column.column-900
+
+    - if can? :create, @article
+      = link_to 'New Article', new_article_path, :class => 'btn btn-primary'
+      br
+
+    = paginate @articles, theme: 'twitter-bootstrap-3'
+
+    - @articles.each do |article|
+      .article
+        .page-header
+          h1 = link_to article.title, article
+
+        p
+          em
+            | Posted by #{article.user.username} on #{article.created_at.strftime("%B %d, %Y")}
+            br
+            | last update #{article.updated_at.strftime("%B %d, %Y")}
+            br
+
+        .content
+          = article.preview.html_safe
+
+        .buttons
+          = link_to 'Read', article, :class => "btn btn-primary"
+
+          - if can? :update, article
+            = link_to 'Edit', edit_article_path(article), :class => "btn btn-default"
+
+          - if can? :destroy, article
+            = link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"
+
+    = paginate @articles, theme: 'twitter-bootstrap-3'
