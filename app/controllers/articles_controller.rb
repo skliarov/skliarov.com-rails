@@ -45,6 +45,10 @@ class ArticlesController < ApplicationController
 
 		respond_to do |format|
 			if @article.save
+				# Create URL slug for article on creation
+				@article.slug = nil
+				@article.save
+
 				format.html { redirect_to @article, notice: 'Article was successfully created.' }
 			else
 				format.html { render action: 'new' }
