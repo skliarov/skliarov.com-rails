@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-# Ruby, Rails and database
-ruby '2.2.0'
+# Rails and database
 gem 'rails', '4.2.0'
 gem 'pg'
 
