@@ -28,7 +28,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 # Rich text editor
-gem 'ckeditor', '~> 4.0.11'
+gem 'ckeditor'
 gem 'paperclip', '~> 4.1'
 gem 'activesupport-json_encoder', '~> 1.1.0'
 

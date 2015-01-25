@@ -1,15 +1,19 @@
 CKEDITOR.editorConfig = function( config ) {
+    config.extraPlugins = 'highlight_js';
+
     config.toolbar = [
-        ["Save", "Source", "PasteText", "Highlight"],
-        ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript", "-", "NumberedList", "BulletedList", "-", "Outdent", "Indent"],
-        ["JustifyLeft", "JustifyCenter", "JustifyRight"],
+        ["Save", "-", "Source", "-", "PasteText"],
+        ["Highlight"],
         ["Undo", "Redo"],
+        ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript", "-", "NumberedList", "BulletedList", "-", "Outdent", "Indent"],
         ["Link", "Unlink"],
         ["Image", "Table"],
-        ["Maximize"]
+        ["Maximize"],
+        "/",
+        ["Styles", "Format", "Font", "FontSize", "-"],
+        ["JustifyLeft", "JustifyCenter", "JustifyRight"],
+        ["TextColor", "BGColor"]
     ];
-
-    config.extraPlugins = 'highlight_js';
 
     config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
     config.filebrowserFlashBrowseUrl = "/ckeditor/attachment_files";
@@ -77,6 +81,4 @@ CKEDITOR.editorConfig = function( config ) {
             }
         }
     });
-
-
 };
