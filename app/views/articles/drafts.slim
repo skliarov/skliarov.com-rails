@@ -6,22 +6,25 @@
   .column.column-900
 
     - if can? :create, @article
-      = link_to 'New Article', new_article_path, :class => 'btn btn-primary'
+      = link_to 'New Article', new_article_path, class: "btn btn-primary"
       br
 
     - @articles.each do |article|
       .article
-        .page-header
+        div
           h1 = link_to article.title, article
 
         .content
           = article.preview.html_safe
 
         .buttons
-          = link_to 'Read', article, :class => "btn btn-primary"
+          - if can? :publish, article
+            = link_to "Publish", "/articles/#{article.id}/publish", method: :post, class: "btn btn-success"
+
+          = link_to "Read", article, class: "btn btn-primary"
 
           - if can? :update, article
-            = link_to 'Edit', edit_article_path(article), :class => "btn btn-default"
+            = link_to "Edit", edit_article_path(article), class: "btn btn-default"
 
           - if can? :destroy, article
-            = link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"
+            = link_to "Delete", article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"

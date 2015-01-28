@@ -4,19 +4,38 @@
 
 .myrow
   .col-md-8.col-md-offset-2
-    .page-header
+    div
 	  h1 = @article.title
 
     .content
 	  = @article.body.html_safe
 
+    hr
+
+    - if @article.published_at
+      p
+        em
+          | Posted by #{@article.user.username} on #{@article.published_at.strftime("%B %d, %Y")}
+          br
+          | last update #{@article.updated_at.strftime("%B %d, %Y")}
+          br
+      hr
+
     .buttons
+      - if can? :publish, @article
+        - if @article.published_at.nil?
+          = link_to "Publish", "/articles/#{@article.id}/publish", method: :post, class: "btn btn-success"
+
 	  - if can? :update, @article
-	    = link_to 'Edit', edit_article_path(@article), :class => "btn btn-primary"
+	    = link_to 'Edit', edit_article_path(@article), class: "btn btn-primary"
 
       - if can? :destroy, @article
-        = link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"
-	    = link_to 'Back', articles_path, :class => "btn btn-default"
+        = link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+      - if @article.published_at
+	    = link_to 'Back', articles_path, class: "btn btn-default"
+	  - else
+        = link_to 'Back', drafts_path, class: "btn btn-default"
 
 - if Rails.env.production?
   .myrow
