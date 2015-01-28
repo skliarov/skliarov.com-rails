@@ -6,6 +6,7 @@ Consigliere::Application.routes.draw do
   root to: "articles#index"
 
   resources :articles
+  get "/drafts", to: "articles#drafts"
   get "/feed", to: "articles#feed", defaults: { format: 'rss' }
 
   get "/about", to: "pages#about"

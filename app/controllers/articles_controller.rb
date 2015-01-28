@@ -7,19 +7,19 @@ class ArticlesController < ApplicationController
 	# GET /articles
 	# GET /articles.json
 	def index
-		if user_signed_in?
-			if current_user.role.name == "Padrone"
-				@articles = Article.all.order('created_at DESC').page(params[:page]).per(5)
-			else
-				@articles = Article.all.where(:published =>  true).order('created_at DESC').page(params[:page]).per(5)
-			end
+		@articles = Article.all.where.not(published_at: nil).order('published_at DESC').page(params[:page]).per(5)
+	end
+
+	def drafts
+		if user_signed_in? && current_user.role.name == "Padrone"
+			@articles = Article.all.where(published_at: nil).order('published_at DESC')
 		else
-			@articles = Article.all.where(:published =>  true).order('created_at DESC').page(params[:page]).per(5)
+			redirect_to root_path
 		end
 	end
 
   def feed
-    @articles = Article.where(:published =>  true).order('created_at DESC').limit(10)
+    @articles = Article.all.where.not(published_at: nil).order('published_at DESC').limit(10)
     render "articles/feed", layout: false
   end
 
@@ -88,7 +88,7 @@ class ArticlesController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def article_params
-			params.require(:article).permit(:title, :body, :preview, :published, :description, :keywords)
+			params.require(:article).permit(:title, :body, :preview, :description, :keywords)
     end
 
     def disable_xss_protection

@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123232735) do
+ActiveRecord::Schema.define(version: 20150128003639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",       limit: 255
+    t.string   "title",        limit: 255
     t.text     "body"
-    t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "preview"
     t.integer  "user_id"
-    t.string   "slug",        limit: 255
+    t.string   "slug",         limit: 255
     t.string   "keywords"
     t.string   "description"
+    t.datetime "published_at"
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
