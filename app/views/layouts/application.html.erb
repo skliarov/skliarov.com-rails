@@ -80,9 +80,11 @@
         <li class="<%= 'active' if params[:controller] == 'pages' && params[:action] == 'contacts' %>">
           <a href="/contacts">Contacts</a>
         </li>
-        <li class="<%= 'active' if params[:controller] == 'articles' && params[:action] == 'drafts' %>">
-          <a href="/drafts">Drafts</a>
-        </li>
+        <% if user_signed_in? && current_user.role.name == "Padrone" %>
+            <li class="<%= 'active' if params[:controller] == 'articles' && params[:action] == 'drafts' %>">
+              <a href="/drafts">Drafts</a>
+            </li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to('', feed_path, { class: "fa fa-rss" }) %></li>
