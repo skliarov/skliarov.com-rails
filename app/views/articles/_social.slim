@@ -6,6 +6,6 @@ ul.soc.center
   li
     a.soc-google href="https://plus.google.com/share?url=#{CGI.escape(request.original_url)}" target="_blank"
   li
-    a.soc-linkedin href="https://www.linkedin.com/shareArticle?url=#{CGI.escape(request.original_url)}&title=#{URI.encode(article.title) unless article.nil?}&summary=#{URI.encode(article.description) unless article.nil?}" target="_blank"
+    a.soc-linkedin href="https://www.linkedin.com/shareArticle?url=#{CGI.escape(request.original_url)}&title=#{URI.encode(article.title) unless article.title.nil?}&summary=#{URI.encode(article.description) unless article.description.nil?}" target="_blank"
   li
     a.soc-vkontakte href="https://vk.com/share.php?url=#{CGI.escape(request.original_url)}" target="_blank"

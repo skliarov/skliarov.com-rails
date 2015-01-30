@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-	validates_presence_of :title, :body
+	validates_presence_of :title, :preview, :body, :keywords, :description
 	belongs_to :user
 
   extend FriendlyId
