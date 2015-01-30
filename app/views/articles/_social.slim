@@ -1,0 +1,11 @@
+ul.soc.center
+  li
+    a.soc-twitter href="https://twitter.com/intent/tweet?url=#{CGI.escape(request.original_url)}" target="_blank"
+  li
+    a.soc-facebook href="https://www.facebook.com/sharer.php?u=#{CGI.escape(request.original_url)}" target="_blank"
+  li
+    a.soc-google href="https://plus.google.com/share?url=#{CGI.escape(request.original_url)}" target="_blank"
+  li
+    a.soc-linkedin href="https://www.linkedin.com/shareArticle?url=#{CGI.escape(request.original_url)}&title=#{URI.encode(@article.title)}&summary=#{URI.encode(@article.description)}" target="_blank"
+  li
+    a.soc-vkontakte href="https://vk.com/share.php?url=#{CGI.escape(request.original_url)}" target="_blank"

@@ -5,7 +5,7 @@
 .myrow
   .column.column-800
     div
-	  h1 = @article.title
+	  h1.center = @article.title
 
     .content
 	  = @article.body.html_safe
@@ -13,7 +13,7 @@
     hr
 
     - if @article.published_at
-      p
+      p.center
         em
           | Posted by #{@article.user.username} on #{@article.published_at.strftime("%B %d, %Y")}
           br
@@ -21,7 +21,10 @@
           br
       hr
 
-    .buttons
+    = render "articles/social"
+    hr
+
+    .buttons.center
       - if can? :publish, @article
         - if @article.published_at.nil?
           = link_to "Publish", "/articles/#{@article.id}/publish", method: :post, class: "btn btn-success"
