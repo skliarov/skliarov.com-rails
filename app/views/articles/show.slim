@@ -3,7 +3,7 @@
                 keywords: "#{@article.keywords}"
 
 .myrow
-  .col-md-8.col-md-offset-2
+  .column.column-800
     div
 	  h1 = @article.title
 
@@ -39,7 +39,7 @@
 
 - if Rails.env.production?
   .myrow
-    .col-md-8.col-md-offset-2
+    .column.column-800
       #disqus_thread
 
       javascript:
