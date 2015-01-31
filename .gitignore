@@ -1,27 +1,30 @@
 # My stuff
 .DS_Store
+.idea/
 /config/database.yml
 /public/ckeditor_assets
 /public/assets
-.idea/
 
 # Standard .gitignore file for Rails from github.com
 *.rbc
-*.sassc
-.sass-cache
 capybara-*.html
 .rspec
-.rvmrc
-/.bundle
-/vendor/bundle
-/log/*
-/tmp/*
+/log
+/tmp
 /db/*.sqlite3
-/public/system/*
+/db/*.sqlite3-journal
+/public/system
 /coverage/
-/spec/tmp/*
+/spec/tmp
 **.orig
 rerun.txt
 pickle-email-*.html
-.project
 config/initializers/secret_token.rb
+config/secrets.yml
+/.bundle
+/vendor/bundle
+.rvmrc
+/vendor/assets/bower_components
+*.bowerrc
+bower.json
+.powenv
