@@ -5,23 +5,32 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 # CSS
-gem 'bootstrap-sass', '~> 3.2.0.0'
+# Work with SASS and SCSS
+gem 'sass-rails'
+# Twitter Bootstrap
+gem 'bootstrap-sass'
+# Font Awesome
 gem 'font-awesome-rails'
+# Auto prefixer for old browsers
 gem 'autoprefixer-rails'
-gem 'sass-rails', '~> 4.0.0'
 
 # JS
+# jQuery
 gem 'jquery-rails'
+# Compiler of JS assets
 gem 'uglifier'
+# Carousel
 gem 'owlcarousel-rails'
 
 # Template engines
+# For HTML
 gem 'slim-rails'
-gem 'jbuilder', '~> 1.2'
+# For JSON
+gem 'jbuilder'
 
 # Authentication and authorization
-gem 'cancan'
 gem 'devise'
+gem 'cancan'
 
 # Pagination
 gem 'kaminari'
@@ -29,11 +38,11 @@ gem 'bootstrap-kaminari-views'
 
 # Rich text editor
 gem 'ckeditor'
-gem 'paperclip', '~> 4.1'
-gem 'activesupport-json_encoder', '~> 1.1.0'
+gem 'paperclip'
+gem 'activesupport-json_encoder'
 
 # SEO Optimisation
-gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id'
 gem 'meta-tags'
 
 group :production do

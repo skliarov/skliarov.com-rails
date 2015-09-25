@@ -1,0 +1,123 @@
+// highlight.js theme (in vendor/highlight folder)
+@import 'highlight/monokai_sublime';
+// Twitter Bootstrap (installed via RubyGems)
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+// Font Awesome https://fortawesome.github.io/Font-Awesome/ (installed via RubyGems)
+@import 'font-awesome';
+// Carousel http://owlgraphic.com/owlcarousel/ (installed via RubyGems)
+@import 'owl.carousel';
+@import 'owl.theme';
+// Navigation bar styling
+@import 'navigation';
+// Social network fonts and styles
+@import 'social';
+
+body {
+  padding-top: 60px;
+  padding-bottom: 20px;
+  margin: 10px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+body, p {
+  font-size: 18px;
+}
+
+pre {
+  font-size: 14px;
+  background-color: white;
+  border: none;
+  padding: 0px;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  margin: 10px 0px 10px 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+.column.column-300 {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column.column-400 {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column.column-500 {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column.column-600 {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column.column-700 {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column.column-800 {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column.column-900 {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header {
+  margin: 0px;
+  padding: 0px;
+}
+
+.buttons {
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.buttons, .actions {
+  .btn {
+    margin-right: 5px;
+  }
+}
+
+.owl-item {
+  padding: 2px;
+}
+
+a.contacts {
+  margin: 5px;
+}
+
+img.border {
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.image-text-wrap {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  width: 50%;
+  float: left;
+}

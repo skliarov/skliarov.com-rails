@@ -1,9 +1,7 @@
 # My stuff
 .DS_Store
-.idea/
 /config/database.yml
-/public/ckeditor_assets
-/public/assets
+/public
 
 # Standard .gitignore file for Rails from github.com
 *.rbc

@@ -1,102 +1,9 @@
-@import 'highlight/docco';
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
-@import 'font-awesome';
-@import 'owl.carousel';
-@import 'owl.theme';
-@import 'social';
-
+// Variables for navigation bar
 $selected-background-color: #55acee;
 $selected-text-color: #FFFFFF;
 $normal-text-color: #000000;
 
-body {
-  padding-top: 60px;
-  padding-bottom: 20px;
-  margin: 10px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
-}
-
-body, p, pre {
-  font-size: 18px;
-}
-
-img {
-  max-width: 100%;
-}
-
-h1 {
-  margin: 10px 0px 10px 0px;
-}
-
-.center {
-  text-align: center;
-}
-
-pre {
-  background-color: white;
-  border: none;
-  padding: 0px;
-}
-
-.column.column-300 {
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-400 {
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-500 {
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-600 {
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-700 {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-800 {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-900 {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.page-header {
-  margin: 0px;
-  padding: 0px;
-}
-
-.buttons {
-  margin-top: 10px;
-  margin-bottom: 50px;
-}
-.buttons, .actions {
-  .btn {
-    margin-right: 5px;
-  }
-}
-
+// Navigation bar's styling
 .navbar-inverse .navbar-toggle .icon-bar {
   background-color: #000000;
 }
@@ -143,42 +50,4 @@ pre {
 }
 .dropdown-menu>li>a, .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
   color: $selected-text-color;
-}
-
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 25px;
-  height: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.owl-item {
-  padding: 2px;
-}
-
-a.contacts {
-  margin: 5px;
-}
-
-img.border {
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-}
-
-.image-text-wrap {
-  margin-bottom: 10px;
-  margin-right: 10px;
-  width: 50%;
-  float: left;
 }

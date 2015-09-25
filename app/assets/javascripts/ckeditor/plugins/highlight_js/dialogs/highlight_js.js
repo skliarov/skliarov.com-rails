@@ -13,64 +13,22 @@ CKEDITOR.dialog.add( 'highlight_js', function( editor ) {
                         id: 'code_lan',
                         label: editor.lang.highlight_js.highlight.selectLabel,
                         items: [
+                                [ 'No Highlight', 'no-highlight' ],
                                 [ 'Auto', 'auto' ],
-                                [ 'no-highlight', 'no-highlight' ],
-                                ['--------------popular----------------', 'popular'],
-                                [ 'ActionScript', 'actionscript' ],
-                                [ 'Bash', 'bash' ],
-                                [ 'Brainfuck', 'brainfuck' ],
-                                [ 'C#', 'cs' ],
-                                [ 'C++', 'cpp' ],
-                                [ 'CSS', 'css' ],
-                                [ 'CoffeeScript', 'coffeescript' ],
-                                [ 'D', 'd' ],
-                                [ 'Delphi', 'delphi' ],
-                                [ 'Django', 'django' ],
-                                [ 'DOS .bat', 'dos'],
-                                [ 'Erlang', 'erlang' ],
-                                [ 'Go', 'go' ],
-                                [ 'HTML', 'xml' ],
-                                [ 'HTTP', 'http' ],
-                                [ 'Haskell', 'haskell' ],
-                                [ 'ini', 'ini' ],
-                                [ 'JAVA', 'java' ],
-                                [ 'JSON', 'json' ],
-                                [ 'JavaScript', 'javascript' ],
-                                [ 'Lisp', 'lisp' ],
-                                [ 'Lua', 'lua' ],
-                                [ 'Markdown', 'markdown' ],
+                                [ 'Swift', 'swift' ],
                                 [ 'Objective C', 'objectivec' ],
-                                [ 'PHP', 'php' ],
-                                [ 'Perl', 'perl' ],
-                                [ 'Python', 'python' ],
-                                [ 'Python profile', 'profile' ],
-                                [ 'R', 'r' ],
                                 [ 'Ruby', 'ruby' ],
-                                [ 'SQL', 'sql' ],
-                                [ 'Scala', 'scala' ],
-                                [ 'Smalltalk', 'smalltalk' ],
-                                [ 'TeX', 'tex' ],
+                                [ 'HTML', 'xml' ],
+                                [ 'CSS', 'css' ],
+                                [ 'JavaScript', 'javascript' ],
+                                [ 'CoffeeScript', 'coffeescript' ],
+                                [ 'JSON', 'json' ],
                                 [ 'XML', 'xml' ],
-                                ['--------------other------------------', 'other'],
-                                [ '1C ', '1c' ],
-                                [ 'AVR Assembler', 'avrasm"' ],
-                                [ 'Apache', 'apache' ],
-                                [ 'AppleScript', 'applescript' ],
-                                [ 'Axapta', 'axapta' ],
-                                [ 'CMake', 'cmake' ],
-                                [ 'Clojure', 'clojure' ],
-                                [ 'Diff', 'diff' ],
-                                [ 'MEL', 'mel' ],
-                                [ 'Matlab', 'matlab' ],
-                                [ 'Nginx', 'ngix' ],
-                                [ 'OpenGL Shading Language', 'glsl' ],
-                                [ 'Parser3', 'parser3' ],
-                                [ 'RenderMan RIB', 'rib' ],
-                                [ 'RenderMan RSL', 'rsl' ],
-                                [ 'Rust', 'rust' ],
-                                [ 'VBScript', 'vbscript' ],
-                                [ 'VHDL', 'vhdl' ],
-                                [ 'Vala', 'vala' ]
+                                [ 'Markdown', 'markdown' ],
+                                [ 'Bash', 'bash' ],
+                                [ 'HTTP', 'http' ],
+                                [ 'SQL', 'sql' ],
+                                [ 'Nginx', 'ngix' ]
                               ],
                         'default': 'auto',
                         onChange: function(api) {
@@ -134,13 +92,13 @@ CKEDITOR.dialog.add( 'highlight_js', function( editor ) {
         onOk: function() {
             var dialog = this;
             var code = this.element;
-
+			
             this.commitContent(code);
-
+			
             if (this.insertMode){
                 var pre = editor.document.createElement('pre');
                 pre.append(code);
-
+				
                 editor.insertElement(pre);
             }
         }

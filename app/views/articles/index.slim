@@ -6,15 +6,15 @@
   .column.column-800
     .center
       = paginate @articles, theme: "twitter-bootstrap-3"
-
+	  
     - @articles.each do |article|
       .article
         div
           h1.center = link_to article.title, article
-
+		  
         .content
           = article.preview.html_safe
-
+		  
         .buttons.center
           = link_to "Read", article, class: "btn btn-primary"
 
@@ -23,6 +23,6 @@
 
           - if can? :destroy, article
             = link_to "Delete", article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
-
+			
     .center
       = paginate @articles, theme: "twitter-bootstrap-3"
