@@ -20,12 +20,9 @@ module Consigliere
     end
     
     # Configure assets pipeline to properly handle CKEditor assets
-    config.autoload_paths    << %W(#{config.root}/app/models/ckeditor)
-    config.assets.precompile << Ckeditor.assets
-    config.assets.precompile << %w(ckeditor/*)
-    
-    # Configure assets pipeline to properly handle fonts
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+    config.autoload_paths    += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w(ckeditor/*)
     
     # Very strange stuff, used this line to mute DEPRECATION WARNING 
     config.active_record.raise_in_transactional_callbacks = true
