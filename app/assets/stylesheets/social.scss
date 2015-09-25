@@ -1,128 +1,128 @@
 // Social networks icons, packed in font
 @font-face {
-	font-family: 'si';
-	src:  url('/fonts/socicon.eot');
-	src:  url('/fonts/socicon.eot?#iefix') format('embedded-opentype'),
-	      url('/fonts/socicon.woff') format('woff'),
-	      url('/fonts/socicon.ttf') format('truetype'),
-	      url('/fonts/socicon.svg#icomoonregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'si';
+  src:  font-url('/fonts/socicon.eot');
+  src:  font-url('/fonts/socicon.eot?#iefix') format('embedded-opentype'),
+        font-url('/fonts/socicon.woff') format('woff'),
+        font-url('/fonts/socicon.ttf') format('truetype'),
+        font-url('/fonts/socicon.svg#icomoonregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-	@font-face {
-		font-family:si;
-		src: url(/fonts/socicon.svg) format(svg);
-	}
+  @font-face {
+    font-family: si;
+    src: font-url('/fonts/socicon.svg') format(svg);
+  }
 }
 
 .soc {
-	overflow:hidden;
-	margin:0; padding:0;
-	list-style:none;
+  overflow:hidden;
+  margin:0; padding:0;
+  list-style:none;
 }
 .soc li {
-	display:inline-block;
-	*display:inline;
-	zoom:1;
+  display:inline-block;
+  *display:inline;
+  zoom:1;
 }
 .soc li a {
-	font-family:si!important;
-	font-style:normal;
-	font-weight:400;
-	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing:grayscale;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	-ms-box-sizing:border-box;
-	-o-box-sizing:border-box;
-	box-sizing:border-box;
+  font-family:si!important;
+  font-style:normal;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  box-sizing:border-box;
 	
-	-o-transition:.1s;
-	-ms-transition:.1s;
-	-moz-transition:.1s;
-	-webkit-transition:.1s;
-	transition:.1s;
-	-webkit-transition-property: transform;
-	transition-property: transform;
-	-webkit-transform: translateZ(0);
-	transform: translateZ(0);
+  -o-transition:.1s;
+  -ms-transition:.1s;
+  -moz-transition:.1s;
+  -webkit-transition:.1s;
+  transition:.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 	
-	overflow:hidden;
-	text-decoration:none;
-	text-align:center;
-	display:block;
-	position: relative;
-	z-index: 1;
-	width: 50px;
-	height: 50px;
-	line-height: 50px;
-	font-size: 27px;
-	-webkit-border-radius: 25px;
-	-moz-border-radius: 25px;
-	border-radius: 25px;
-	margin-right: 5px;
-	color: #ffffff;
-	background-color: none;
+  overflow:hidden;
+  text-decoration:none;
+  text-align:center;
+  display:block;
+  position: relative;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 27px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  margin-right: 5px;
+  color: #ffffff;
+  background-color: none;
 }
 .soc a:hover {
-	z-index: 2;
+  z-index: 2;
 }
 .soc-icon-last{
-	margin:0 !important;
+  margin:0 !important;
 }
 .soc-facebook {
-	background-color: #3e5b98;
+  background-color: #3e5b98;
 }
 .soc-facebook:before {
-	content:'b';
+  content:'b';
 }
 .soc-twitter {
-	background-color: #4da7de;
+  background-color: #4da7de;
 }
 .soc-twitter:before {
-	content:'a';
+  content:'a';
 }
 .soc-vkontakte {
-	background-color: #5a7fa6;
+  background-color: #5a7fa6;
 }
 .soc-vkontakte:before {
-	content:';';
+  content:';';
 }
 .soc-google {
-	background-color: #d93e2d;
+  background-color: #d93e2d;
 }
 .soc-google:before {
-	content:'c';
+  content:'c';
 }
 .soc-linkedin {
-	background-color: #3371b7;
+  background-color: #3371b7;
 }
 .soc-linkedin:before {
-	content:'j';
+  content:'j';
 }
 .soc-pinterest {
-	background-color: #c92619;
+  background-color: #c92619;
 }
 .soc-pinterest:before {
-	content:'d';
+  content:'d';
 }
 .soc-facebook:hover {
-	background-color: #526fac;
+  background-color: #526fac;
 }
 .soc-twitter:hover {
-	background-color: #61bbf2;
+  background-color: #61bbf2;
 }
 .soc-vkontakte:hover {
-	background-color: #6e93ba;
+  background-color: #6e93ba;
 }
 .soc-google:hover {
-	background-color: #ed5241;
+  background-color: #ed5241;
 }
 .soc-linkedin:hover {
-	background-color: #4785cb;
+  background-color: #4785cb;
 }
 .soc-pinterest:hover {
-	background-color: #dd3a2d;
+  background-color: #dd3a2d;
 }
