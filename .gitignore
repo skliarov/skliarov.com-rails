@@ -1,7 +1,7 @@
 # My stuff
 .DS_Store
 /config/database.yml
-/public
+/public/uploads
 
 # Standard .gitignore file for Rails from github.com
 *.rbc
