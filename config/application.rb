@@ -11,17 +11,23 @@ Bundler.require(:default, Rails.env)
 module Consigliere
   class Application < Rails::Application
     
+    # Disable automatic generation for TestUnit, JS, CSS files and helpers
     config.generators do |g|
       g.test_framework  nil, fixture: false
-      g.stylesheets false
-      g.javascripts false
-      g.helper      false
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
     end
     
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    config.assets.precompile += Ckeditor.assets
-    config.assets.precompile += %w(ckeditor/*)
+    # Configure assets pipeline to properly handle CKEditor assets
+    config.autoload_paths    << %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile << Ckeditor.assets
+    config.assets.precompile << %w(ckeditor/*)
     
+    # Configure assets pipeline to properly handle fonts
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+    
+    # Very strange stuff, used this line to mute DEPRECATION WARNING 
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

@@ -2,6 +2,7 @@
 .DS_Store
 /config/database.yml
 /public/uploads
+/public/assets
 
 # Standard .gitignore file for Rails from github.com
 *.rbc
