@@ -1,7 +1,7 @@
 CKEDITOR.plugins.add('highlight_js',
 {
 	requires : [ 'dialog' ],
-	lang : [ 'en', 'ru' ],
+	lang : [ 'en' ],
 	init : function(editor)
 	{
 		var pluginName = 'highlight_js';
@@ -18,4 +18,3 @@ CKEDITOR.plugins.add('highlight_js',
 		CKEDITOR.dialog.add(pluginName, this.path + 'dialogs/highlight_js.js' );
 	}
 });
-
