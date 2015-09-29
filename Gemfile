@@ -34,7 +34,6 @@ gem 'cancan'
 
 # Pagination
 gem 'kaminari'
-gem 'bootstrap-kaminari-views'
 
 # Rich text editor
 gem 'ckeditor'

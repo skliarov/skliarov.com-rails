@@ -1,0 +1,23 @@
+// Customize Twitter bootstrap pagination to look like I want
+.pagination > li > a,
+.pagination > li > span {
+  border: none;
+  padding: 6px;
+}
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  background-color: white;
+  border-color: white;
+  color: rgb(35, 82, 124);
+}
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > span:hover,
+.pagination > li > span:focus {
+  background-color: white;
+  border-color: white;
+}
