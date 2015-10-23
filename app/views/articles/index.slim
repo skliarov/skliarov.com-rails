@@ -9,18 +9,9 @@
       .article
         div
           h1.center = link_to article.title, article
-
         .content
           = article.preview.html_safe
-
-        .buttons.center
-          = link_to "Read", article, class: "btn btn-primary"
-
-          - if can? :update, article
-            = link_to "Edit", edit_article_path(article), class: "btn btn-default"
-
-          - if can? :destroy, article
-            = link_to "Delete", article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+      hr
 
     .center
       = paginate @articles
