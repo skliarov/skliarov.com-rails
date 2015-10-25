@@ -2,16 +2,14 @@
                 description: "List of all articles on this blog",
                 keywords: "iOS, Ruby, Rails, Swift, Objective C, developer, development, Apple, iPhone, iPad, iPod touch, freelance, freelancer, oDesk, elance, upwork"
 
-.myrow
-  .column.column-800
-  
-    - @articles.each do |article|
-      .article
-        div
-          h1.center = link_to article.title, article
-        .content
-          = article.preview.html_safe
-      hr
-
-    .center
-      = paginate @articles
+.column.column-800
+  - @articles.each do |article|
+    .article
+      .title
+        h1.center = link_to article.title, article
+      .content
+        = article.preview.html_safe
+    hr
+    
+  .center
+    = paginate @articles

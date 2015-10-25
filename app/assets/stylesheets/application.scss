@@ -1,6 +1,6 @@
 // highlight.js theme (in vendor/highlight folder)
 @import 'highlight/monokai_sublime';
-// Twitter Bootstrap (installed via RubyGems)
+//// Twitter Bootstrap (installed via RubyGems)
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 // Font Awesome https://fortawesome.github.io/Font-Awesome/ (installed via RubyGems)
@@ -8,14 +8,17 @@
 // Carousel http://owlgraphic.com/owlcarousel/ (installed via RubyGems)
 @import 'owl.carousel';
 @import 'owl.theme';
+
+// Styling for articles
+@import 'articles';
+// Layout styling (grid, columns, etc.)
+@import 'layout';
 // Navigation bar styling
 @import 'navigation';
-// Social network fonts and styles
-@import 'social';
 // Custom pagination
 @import 'pagination';
-// Responsive video wrapper
-@import 'video-wrapper';
+// Social network fonts and styles
+@import 'social';
 
 body {
   padding-top: 70px;
@@ -29,65 +32,20 @@ body, p {
   font-size: 18px;
 }
 
-pre {
-  font-size: 14px;
-  background-color: white;
-  border: none;
-  padding: 0px;
+p {
+  margin: 0 0 10px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0;
 }
 
 img {
   max-width: 100%;
 }
 
-h1 {
-  margin: 10px 0px 10px 0px;
-}
-
 .center {
   text-align: center;
-}
-
-.column.column-300 {
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-400 {
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-500 {
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-600 {
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-700 {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-800 {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.column.column-900 {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .page-header {

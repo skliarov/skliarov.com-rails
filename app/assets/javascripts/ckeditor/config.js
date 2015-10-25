@@ -1,8 +1,12 @@
 CKEDITOR.editorConfig = function( config ) {
+  
+  // Insert from clipboard should be cleared from formating
+  config.forcePasteAsPlainText = true;
+  
   config.extraPlugins = 'highlight_js,youtube';
-		
+  
   config.toolbar = [
-    ["Save", "-", "Source", "-", "PasteText"],
+    ["Save", "-", "Source"],
     ["Highlight"],
     ["Undo", "Redo"],
     ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript", "-", "NumberedList", "BulletedList", "-", "Outdent", "Indent"],

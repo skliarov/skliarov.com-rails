@@ -2,29 +2,24 @@
                 description: "List of all articles on this blog",
                 keywords: "iOS, Ruby, Rails, Swift, Objective C, developer, development, Apple, iPhone, iPad, iPod touch, freelance, freelancer, oDesk, elance"
 
-.myrow
-  .column.column-800
+.column.column-800
+  - if can? :create, @article
+    = link_to 'New Article', new_article_path, class: "btn btn-primary"
+    br
 
-    - if can? :create, @article
-      = link_to 'New Article', new_article_path, class: "btn btn-primary"
-      br
+  - @articles.each do |article|
+    .article
+      .title
+        h1 = link_to article.title, article
 
-    - @articles.each do |article|
-      .article
-        div
-          h1 = link_to article.title, article
+      .content
+        = article.preview.html_safe
 
-        .content
-          = article.preview.html_safe
-
-        .buttons
-          - if can? :publish, article
-            = link_to "Publish", "/articles/#{article.id}/publish", method: :post, class: "btn btn-success"
-
-          = link_to "Read", article, class: "btn btn-primary"
-
-          - if can? :update, article
-            = link_to "Edit", edit_article_path(article), class: "btn btn-default"
-
-          - if can? :destroy, article
-            = link_to "Delete", article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+      .buttons
+        - if can? :publish, article
+          = link_to "Publish", "/articles/#{article.id}/publish", method: :post, class: "btn btn-success"
+        = link_to "Read", article, class: "btn btn-primary"
+        - if can? :update, article
+          = link_to "Edit", edit_article_path(article), class: "btn btn-default"
+        - if can? :destroy, article
+          = link_to "Delete", article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
