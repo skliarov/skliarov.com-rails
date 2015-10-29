@@ -7,8 +7,6 @@ gem 'pg'
 # CSS
 # Work with SASS and SCSS
 gem 'sass-rails'
-# Twitter Bootstrap
-gem 'bootstrap-sass'
 # Font Awesome
 gem 'font-awesome-rails'
 # Auto prefixer for old browsers
@@ -25,8 +23,6 @@ gem 'owlcarousel-rails'
 # Template engines
 # For HTML
 gem 'slim-rails'
-# For JSON
-gem 'jbuilder'
 
 # Authentication and authorization
 gem 'devise'

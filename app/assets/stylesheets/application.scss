@@ -1,8 +1,5 @@
 // highlight.js theme (in vendor/highlight folder)
 @import 'highlight/monokai_sublime';
-//// Twitter Bootstrap (installed via RubyGems)
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
 // Font Awesome https://fortawesome.github.io/Font-Awesome/ (installed via RubyGems)
 @import 'font-awesome';
 // Carousel http://owlgraphic.com/owlcarousel/ (installed via RubyGems)
@@ -19,6 +16,8 @@
 @import 'pagination';
 // Social network fonts and styles
 @import 'social';
+// Responsive video iframe
+@import 'video-wrapper';
 
 body {
   padding-top: 70px;
