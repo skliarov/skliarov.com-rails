@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    = auto_discovery_link_tag :rss, "http://www.iosonrails.com/feed"
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    
+    = yield :head
+    
+    = display_meta_tags
+    = csrf_meta_tags
+    
+    link href="/favicon.ico" rel="shortcut icon"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    
+  body
+    /! Navigation bar
+    nav
+      ul.left
+        li class=("active" if params[:controller] == 'articles' && params[:action] == 'index')
+          = link_to 'Blog', articles_path
+        - if user_signed_in? && current_user.role.name == 'Padrone'
+          li class=("active" if params[:controller] == 'articles' && params[:action] == 'drafts')
+            = link_to 'Drafts', drafts_path
+        li class=("active" if params[:controller] == 'pages' && params[:action] == 'about')
+          a href="/about" About
+        li class=("active" if params[:controller] == 'pages' && params[:action] == 'portfolio')
+          a href="/portfolio" Portfolio
+        li class=("active" if params[:controller] == 'pages' && params[:action] == 'contacts')
+          a href="/contacts" Contacts
+      ul.right
+        li
+          = link_to '', feed_path, { class: 'fa fa-rss' }
+        - if user_signed_in?
+          li
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        - else
+          li class=("active" if params[:controller] == 'devise/sessions' && params[:action] == 'new')
+            = link_to 'Sign In', new_user_session_path
+          li class=("active" if params[:controller] == 'devise/registrations' && params[:action] == 'new')
+            = link_to 'Register', new_user_registration_path
+    
+    /! Notification on latest action
+    - if notice
+      .column.column-800
+        .alert.alert-warning.alert-dismissable
+          button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
+          p#notice
+            = notice
+    
+    /! Page content
+    = yield
+    
+    /! Google Analytics
+    - if Rails.env.production?
+      javascript:
+        var _gaq = [['_setAccount','UA-46802250-1'], ['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
