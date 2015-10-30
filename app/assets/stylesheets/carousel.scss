@@ -1,0 +1,14 @@
+.owl-item {
+  > div {
+    margin: 0 2px;
+  }
+  
+  img {
+    width: 100%;
+  }
+  img.border {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+  }
+}

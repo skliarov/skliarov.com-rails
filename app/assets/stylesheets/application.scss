@@ -8,6 +8,8 @@
 
 // Styling for articles
 @import 'articles';
+// Owl carousel elements styling
+@import 'carousel';
 // Layout styling (grid, columns, etc.)
 @import 'layout';
 // Navigation bar styling
@@ -19,66 +21,6 @@
 // Responsive video iframe
 @import 'video-wrapper';
 
-body {
-  padding-top: 70px;
-  padding-bottom: 20px;
-  margin: 0 10px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
-}
-
-body, p {
-  font-size: 18px;
-}
-
-p {
-  margin: 0 0 10px 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 10px 0;
-}
-
-img {
-  max-width: 100%;
-}
-
 .center {
   text-align: center;
-}
-
-.page-header {
-  margin: 0px;
-  padding: 0px;
-}
-
-.buttons {
-  margin-top: 10px;
-  margin-bottom: 50px;
-}
-.buttons, .actions {
-  .btn {
-    margin-right: 5px;
-  }
-}
-
-.owl-item {
-  padding: 2px;
-}
-
-a.contacts {
-  margin: 5px;
-}
-
-img.border {
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-}
-
-.image-text-wrap {
-  margin-bottom: 10px;
-  margin-right: 10px;
-  width: 50%;
-  float: left;
 }
