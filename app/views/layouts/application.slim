@@ -15,30 +15,33 @@ html
     
   body
     /! Navigation bar
-    nav
-      ul.left
-        li class=("active" if params[:controller] == 'articles' && params[:action] == 'index')
-          = link_to 'Blog', articles_path
-        - if user_signed_in? && current_user.role.name == 'Padrone'
-          li class=("active" if params[:controller] == 'articles' && params[:action] == 'drafts')
-            = link_to 'Drafts', drafts_path
-        li class=("active" if params[:controller] == 'pages' && params[:action] == 'about')
-          a href="/about" About
-        li class=("active" if params[:controller] == 'pages' && params[:action] == 'portfolio')
-          a href="/portfolio" Portfolio
-        li class=("active" if params[:controller] == 'pages' && params[:action] == 'contacts')
-          a href="/contacts" Contacts
-      ul.right
-        li
-          = link_to '', feed_path, { class: 'fa fa-rss' }
-        - if user_signed_in?
+    nav.fixed
+      .column.column-1000
+        ul.left
+          li class=("active" if params[:controller] == 'articles' && params[:action] == 'index')
+            = link_to 'Blog', articles_path
+          - if user_signed_in? && current_user.role.name == 'Padrone'
+            li class=("active" if params[:controller] == 'articles' && params[:action] == 'drafts')
+              = link_to 'Drafts', drafts_path
           li
-            = link_to 'Sign Out', destroy_user_session_path, method: :delete
-        - else
-          li class=("active" if params[:controller] == 'devise/sessions' && params[:action] == 'new')
-            = link_to 'Sign In', new_user_session_path
-          li class=("active" if params[:controller] == 'devise/registrations' && params[:action] == 'new')
-            = link_to 'Register', new_user_registration_path
+            = link_to 'Tutorials', '/tutorials'
+          li class=("active" if params[:controller] == 'pages' && params[:action] == 'about')
+            = link_to 'About', '/about'
+          li class=("active" if params[:controller] == 'pages' && params[:action] == 'portfolio')
+            = link_to 'Portfolio', '/portfolio'
+          li class=("active" if params[:controller] == 'pages' && params[:action] == 'contacts')
+            = link_to 'Contacts', '/contacts'
+        ul.right
+          li
+            = link_to '', feed_path, { class: 'fa fa-rss' }
+          - if user_signed_in?
+            li
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          - else
+            li class=("active" if params[:controller] == 'devise/sessions' && params[:action] == 'new')
+              = link_to 'Sign In', new_user_session_path
+            li class=("active" if params[:controller] == 'devise/registrations' && params[:action] == 'new')
+              = link_to 'Register', new_user_registration_path
     
     /! Notification on latest action
     - if notice

@@ -1,15 +1,13 @@
-// highlight.js theme (in vendor/highlight folder)
-@import 'highlight/monokai_sublime';
-// Font Awesome https://fortawesome.github.io/Font-Awesome/ (installed via RubyGems)
-@import 'font-awesome';
-// Carousel http://owlgraphic.com/owlcarousel/ (installed via RubyGems)
-@import 'owl.carousel';
-@import 'owl.theme';
-
+// Reset default styling (cross-browser)
+@import 'reset';
+// Varibales for colors, fonts...
+@import 'variables';
 // Styling for articles
 @import 'articles';
 // Owl carousel elements styling
 @import 'carousel';
+// Fonts for all pages
+@import 'fonts';
 // Layout styling (grid, columns, etc.)
 @import 'layout';
 // Navigation bar styling
@@ -21,6 +19,19 @@
 // Responsive video iframe
 @import 'video-wrapper';
 
+// highlight.js theme (in vendor/highlight folder)
+@import 'highlight/monokai_sublime';
+// Font Awesome https://fortawesome.github.io/Font-Awesome/ (installed via RubyGems)
+@import 'font-awesome';
+// Carousel http://owlgraphic.com/owlcarousel/ (installed via RubyGems)
+@import 'owl.carousel';
+@import 'owl.theme';
+
 .center {
   text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: $main-color;
 }

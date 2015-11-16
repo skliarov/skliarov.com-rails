@@ -1,0 +1,43 @@
+@font-face{ 
+  font-family: 'pt-sans';
+  src: url('/fonts/pt-sans/regular/PTS55F.eot');
+  src: url('/fonts/pt-sans/regular/PTS55F.eot?iefix') format('eot'),
+       url('/fonts/pt-sans/regular/PTS55F.woff') format('woff'),
+       url('/fonts/pt-sans/regular/PTS55F.ttf') format('truetype'),
+       url('/fonts/pt-sans/regular/PTS55F.svg#webfont') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face{ 
+  font-family: 'pt-sans';
+  src: url('/fonts/pt-sans/regular-italic/PTS56F.eot');
+  src: url('/fonts/pt-sans/regular-italic/PTS56F.eot?iefix') format('eot'),
+       url('/fonts/pt-sans/regular-italic/PTS56F.woff') format('woff'),
+       url('/fonts/pt-sans/regular-italic/PTS56F.ttf') format('truetype'),
+       url('/fonts/pt-sans/regular-italic/PTS56F.svg#webfont') format('svg');
+  font-style: italic;
+  font-weight: normal;
+}
+@font-face{ 
+  font-family: 'pt-sans';
+  src: url('/fonts/pt-sans/bold/PTS75F.eot');
+  src: url('/fonts/pt-sans/bold/PTS75F.eot?iefix') format('eot'),
+       url('/fonts/pt-sans/bold/PTS75F.woff') format('woff'),
+       url('/fonts/pt-sans/bold/PTS75F.ttf') format('truetype'),
+       url('/fonts/pt-sans/bold/PTS75F.svg#webfont') format('svg');
+  font-style: normal;
+  font-weight: bold;
+}
+@font-face{ 
+  font-family: 'pt-sans';
+  src: url('/fonts/pt-sans/bold-italic/PTS76F.eot');
+  src: url('/fonts/pt-sans/bold-italic/PTS76F.eot?iefix') format('eot'),
+       url('/fonts/pt-sans/bold-italic/PTS76F.woff') format('woff'),
+       url('/fonts/pt-sans/bold-italic/PTS76F.ttf') format('truetype'),
+       url('/fonts/pt-sans/bold-italic/PTS76F.svg#webfont') format('svg');
+  font-style: italic;
+  font-weight: bold;
+}
+body {
+  font-family: 'pt-sans';
+}
