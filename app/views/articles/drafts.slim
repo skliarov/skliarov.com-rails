@@ -4,7 +4,7 @@
 
 .column.column-800
   - if can? :create, @article
-    = link_to 'New Article', new_article_path, class: "btn btn-primary"
+    = link_to 'New Article', new_article_path
     br
 
   - @articles.each do |article|
@@ -14,12 +14,11 @@
       .content
         = article.preview.html_safe
       hr
-
-      .buttons
+      div
         - if can? :publish, article
-          = link_to "Publish", "/articles/#{article.id}/publish", method: :post, class: "btn btn-success"
-        = link_to "Read", article, class: "btn btn-primary"
+          = link_to "Publish", "/articles/#{article.id}/publish", method: :post
+        = link_to "Read", article
         - if can? :update, article
-          = link_to "Edit", edit_article_path(article), class: "btn btn-default"
+          = link_to "Edit", edit_article_path(article)
         - if can? :destroy, article
-          = link_to "Delete", article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+          = link_to "Delete", article, method: :delete, data: { confirm: "Are you sure?" }

@@ -6,10 +6,8 @@
   .article
     .title
       h1.center = @article.title
-
     .content
       = @article.body.html_safe
-
     hr
 
     - if @article.published_at
@@ -27,35 +25,12 @@
     .buttons.center
       - if can? :publish, @article
         - if @article.published_at.nil?
-          = link_to "Publish", "/articles/#{@article.id}/publish", method: :post, class: "btn btn-success"
+          = link_to "Publish", "/articles/#{@article.id}/publish", method: :post
       - if can? :update, @article
-        = link_to 'Edit', edit_article_path(@article), class: "btn btn-primary"
+        = link_to 'Edit', edit_article_path(@article)
       - if can? :destroy, @article
-        = link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+        = link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }
       - if @article.published_at
-        = link_to 'Back', articles_path, class: "btn btn-default"
+        = link_to 'Back', articles_path
       - else
-          = link_to 'Back', drafts_path, class: "btn btn-default"
-
-- if Rails.env.production?
-  .column.column-800
-    #disqus_thread
-
-    javascript:
-      var disqus_shortname = "myrailsblog",
-          disqus_identifier = "#{@article.id}",
-          disqus_title = "#{@article.title}",
-          disqus_url = "#{request.original_url}",
-
-      dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-
-    noscript
-      ' Please enable JavaScript to view the
-      a href="http://disqus.com/?ref_noscript" comments powered by Disqus.
-    a.dsq-brlink href="http://disqus.com"
-      ' comments powered by
-      span.logo-disqus Disqus
+          = link_to 'Back', drafts_path

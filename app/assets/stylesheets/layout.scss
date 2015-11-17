@@ -24,3 +24,45 @@
 .column-1000 {
   max-width: 1000px;
 }
+@media screen and (max-width: 420px) {
+  .column-400 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .column-500 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .column-600 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .column-700 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 820px) {
+  .column-800 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 920px) {
+  .column-900 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 1020px) {
+  .column-100 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

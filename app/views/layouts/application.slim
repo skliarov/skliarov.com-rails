@@ -52,11 +52,9 @@ html
     /! Notification on latest action
     - if notice
       .column.column-800
-        .alert.alert-warning.alert-dismissable
-          button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
-          p#notice
-            = notice
-            
+        p
+          = notice
+          
     /! Page content
     = yield
     
