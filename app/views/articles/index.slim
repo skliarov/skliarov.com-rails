@@ -9,7 +9,7 @@
         h1.center = link_to article.title, article
       .content
         = article.preview.html_safe
-      hr
+    hr
 
   .center
     = paginate @articles

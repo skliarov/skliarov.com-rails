@@ -1,0 +1,11 @@
+ul.pagination {
+  list-style-type: none;
+  li {
+    display: inline;
+    line-height: 20px;
+    padding: 5px;
+    a {
+      font-size: 18px;
+    }
+  }
+}

@@ -32,10 +32,27 @@ body {
   min-width: 240px;
   padding-bottom: 10px;
 }
+hr {
+  border: 0 none;
+  height: 1px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: $main-color;
+}
 .center {
   text-align: center;
 }
 a {
   text-decoration: none;
   color: $main-color;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 10px;
+}
+// About page avatar image styling
+img.about-avatar {
+  float: left;
+  width: 40%;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
