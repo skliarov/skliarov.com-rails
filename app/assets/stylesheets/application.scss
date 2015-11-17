@@ -5,6 +5,8 @@
 
 // Styling for articles
 @import 'articles';
+// All buttons in the app
+@import 'buttons';
 // Owl carousel elements styling
 @import 'carousel';
 // Fonts for all pages
@@ -36,11 +38,17 @@ hr {
   border: 0 none;
   height: 1px;
   width: 100%;
-  margin: 10px 0;
+  margin: 10px auto;
   background-color: $main-color;
 }
 .center {
   text-align: center;
+}
+.italic {
+  font-style: italic;
+}
+.strong {
+  font-weight: bold;
 }
 a {
   text-decoration: none;
