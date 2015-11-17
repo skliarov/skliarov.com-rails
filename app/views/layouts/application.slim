@@ -15,7 +15,7 @@ html
     
   body
     /! Navigation bar
-    nav.fixed
+    nav.desktop
       .column.column-1000
         ul.left
           li class=("active" if params[:controller] == 'articles' && params[:action] == 'index')
@@ -42,7 +42,13 @@ html
               = link_to 'Sign In', new_user_session_path
             li class=("active" if params[:controller] == 'devise/registrations' && params[:action] == 'new')
               = link_to 'Register', new_user_registration_path
-    
+            
+    nav.mobile
+      .logo
+        = link_to 'iOSonRails', articles_path
+      .breadcrumb
+        = link_to '', '#', { class: 'fa fa-bars' }
+      
     /! Notification on latest action
     - if notice
       .column.column-800
@@ -50,7 +56,7 @@ html
           button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
           p#notice
             = notice
-    
+            
     /! Page content
     = yield
     

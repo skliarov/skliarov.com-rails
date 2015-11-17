@@ -1,13 +1,20 @@
-nav {
+$navigation-bar-height: 50px;
+$mobile-navigation-item-height: 40px;
+
+body {
+  padding-top: 60px;
+}
+
+nav.desktop {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 2px solid $main-color;
   ul {
     margin-right: -0.25em;
     display: inline-block;
-    
-    li {
-      display: inline;
-      margin: 0 8px;
-      font-size: 20px;
-    }
   }
   ul.left {
     width: 70%;
@@ -17,12 +24,80 @@ nav {
     width: 30%;
     text-align: right;
   }
+  li {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 20px;
+    line-height: $navigation-bar-height;
+  }
+  li:hover {
+    background-color: $main-color;
+    a {
+      color: #ffffff;
+    }
+  }
 }
-nav.fixed {
+
+nav.mobile {
+  z-index: 10;
   position: fixed;
-  top:0;
+  top: 0;
   width: 100%;
+  height: $navigation-bar-height;
+  background-color: #ffffff;
+  border-bottom: 2px solid $main-color;
+  display: none;
+  .logo {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 150px;
+    height: $navigation-bar-height;
+    a {
+      font-size: 20px;
+      color: $main-color;
+      line-height: $navigation-bar-height;
+      padding-left: 10px;
+    }
+  }
+  .breadcrumb {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: $navigation-bar-height;
+    height: $navigation-bar-height;
+    a {
+      font-size: 30px;
+      color: $main-color;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: $navigation-bar-height;
+    }
+  }
 }
-body {
-  padding-top: 60px;
+
+@media screen and (max-width: 740px) {
+  nav.desktop {
+    border-bottom-width: 0;
+    top: -8*$mobile-navigation-item-height;
+    ul {
+      width: 100% !important;
+    }
+    li {
+      width: 100%;
+      text-align: center !important;
+      line-height: $mobile-navigation-item-height;
+      border-bottom: 1px solid $main-color;
+    }
+  }
+  
+  nav.desktop.open {
+    top: $navigation-bar-height;
+    transition: all 0.3s;
+  }
+  
+  nav.mobile {
+    display: block;
+  }
 }
