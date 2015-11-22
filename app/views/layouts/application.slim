@@ -20,11 +20,8 @@ html
         ul.left
           li class=("active" if params[:controller] == 'articles' && params[:action] == 'index')
             = link_to 'Blog', articles_path
-          - if user_signed_in? && current_user.role.name == 'Padrone'
-            li class=("active" if params[:controller] == 'articles' && params[:action] == 'drafts')
-              = link_to 'Drafts', drafts_path
-          li
-            = link_to 'Tutorials', '/tutorials'
+          li class=("active" if params[:controller] == 'screencasts' || params[:controller] == 'lessons')
+            = link_to 'Screecasts', screencasts_path
           li class=("active" if params[:controller] == 'pages' && params[:action] == 'about')
             = link_to 'About', '/about'
           li class=("active" if params[:controller] == 'pages' && params[:action] == 'portfolio')
@@ -42,19 +39,19 @@ html
               = link_to 'Sign In', new_user_session_path
             li class=("active" if params[:controller] == 'devise/registrations' && params[:action] == 'new')
               = link_to 'Register', new_user_registration_path
-            
+    
     nav.mobile
       .logo
         = link_to 'iOSonRails', articles_path
       .breadcrumb
         = link_to '', '#', { class: 'fa fa-bars' }
-      
+    
     /! Notification on latest action
     - if notice
       .column.column-800
         p
           = notice
-          
+    
     /! Page content
     = yield
     
