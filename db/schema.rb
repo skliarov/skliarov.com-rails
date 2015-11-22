@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128003639) do
+ActiveRecord::Schema.define(version: 20151122060617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20150128003639) do
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
+  create_table "chapters", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "position"
+    t.integer  "user_id"
+    t.boolean  "published",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "chapters", ["position"], name: "index_chapters_on_position", using: :btree
+  add_index "chapters", ["user_id"], name: "index_chapters_on_user_id", using: :btree
+
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -48,11 +60,41 @@ ActiveRecord::Schema.define(version: 20150128003639) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "lessons", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "position"
+    t.integer  "screencast_id"
+    t.integer  "user_id"
+    t.boolean  "published",     default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "lessons", ["position"], name: "index_lessons_on_position", using: :btree
+  add_index "lessons", ["screencast_id"], name: "index_lessons_on_screencast_id", using: :btree
+  add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "screencasts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "position"
+    t.integer  "chapter_id"
+    t.integer  "user_id"
+    t.boolean  "published",   default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "screencasts", ["chapter_id"], name: "index_screencasts_on_chapter_id", using: :btree
+  add_index "screencasts", ["position"], name: "index_screencasts_on_position", using: :btree
+  add_index "screencasts", ["user_id"], name: "index_screencasts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
