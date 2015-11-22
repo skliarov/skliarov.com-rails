@@ -30,7 +30,7 @@ nav.desktop {
     font-size: 20px;
     line-height: $navigation-bar-height;
   }
-  li:hover {
+  li:hover, li.active {
     background-color: $main-color;
     transition: all 0.25s;
     a {
