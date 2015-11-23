@@ -33,7 +33,8 @@ gem 'kaminari'
 
 # Rich text editor
 gem 'ckeditor'
-gem 'paperclip'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'activesupport-json_encoder'
 
 # SEO Optimisation

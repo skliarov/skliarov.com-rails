@@ -4,16 +4,16 @@ Consigliere::Application.routes.draw do
   
   # Authentication router
   devise_for :users, path_names: {
-    sign_up: "register",
-    sign_in: "signin",
-    sign_out: "signout"
+    sign_up: 'register',
+    sign_in: 'signin',
+    sign_out: 'signout'
   }
   
   # Root path
-  root to: "articles#index"
+  root to: 'articles#index'
   
   # Articles
-  resources :articles, only: [:index, :show]
+  resources :articles, only: [:index, :show, :edit, :update]
   
   # Screencasts and Lessons
   resources :screencasts, only: [:index, :show] do
@@ -29,10 +29,10 @@ Consigliere::Application.routes.draw do
   end
   
   # RSS feed
-  get "/feed", to: "articles#feed", defaults: { format: 'rss' }
+  get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
   
   # Static pages
-  get "/about", to: "pages#about"
-  get "/portfolio", to: "pages#portfolio"
-  get "/contacts", to: "pages#contacts"
+  get '/about', to: 'pages#about'
+  get '/portfolio', to: 'pages#portfolio'
+  get '/contacts', to: 'pages#contacts'
 end
