@@ -4,7 +4,6 @@ CKEDITOR.stylesSet.add( 'styling', [
 ]);
 
 CKEDITOR.editorConfig = function( config ) {
-  
   // Insert from clipboard should be cleared from formating
   config.forcePasteAsPlainText = true;
   
@@ -44,16 +43,15 @@ CKEDITOR.editorConfig = function( config ) {
     
     for ( var i = 0 ; i < metas.length ; i++ ){
       meta = metas[i];
-      
       switch(meta.name) {
-      case "csrf-token":
-        csrf_token = meta.content;
-        break;
-      case "csrf-param":
-        csrf_param = meta.content;
-        break;
-      default:
-        continue;
+        case "csrf-token":
+          csrf_token = meta.content;
+          break;
+        case "csrf-param":
+          csrf_param = meta.content;
+          break;
+        default:
+          continue;
       }
     }
     

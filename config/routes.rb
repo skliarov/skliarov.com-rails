@@ -5,15 +5,15 @@ Consigliere::Application.routes.draw do
   # Authentication router
   devise_for :users, path_names: {
     sign_up: 'register',
-    sign_in: 'signin',
-    sign_out: 'signout'
+    sign_in: 'sign-in',
+    sign_out: 'sign-out'
   }
   
   # Root path
   root to: 'articles#index'
   
   # Articles
-  resources :articles, only: [:index, :show, :edit, :update]
+  resources :articles, only: [:index, :show]
   
   # Screencasts and Lessons
   resources :screencasts, only: [:index, :show] do
@@ -22,6 +22,7 @@ Consigliere::Application.routes.draw do
   
   # Admin panel
   namespace :admin do
+    resource :articles
     resources :chapters
     resources :screencasts do
       resources :lessons

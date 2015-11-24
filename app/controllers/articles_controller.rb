@@ -1,8 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :publish]
-  before_filter :authenticate_user!, :except => [:index, :show, :feed]
-  before_filter :disable_xss_protection
-  load_and_authorize_resource
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
   
   # GET /articles
   def index
@@ -105,15 +103,11 @@ class ArticlesController < ApplicationController
   end
   
   private
-  def set_article
-    @article = Article.friendly.find(params[:id])
-  end
-  
-  def article_params
-    params.require(:article).permit(:title, :body, :preview, :description, :keywords)
-  end
-  
-  def disable_xss_protection
-    response.headers['X-XSS-Protection'] = "0"
-  end
+    def set_article
+      @article = Article.friendly.find(params[:id])
+    end
+    
+    def article_params
+      params.require(:article).permit(:title, :preview, :body, :description, :keywords)
+    end
 end

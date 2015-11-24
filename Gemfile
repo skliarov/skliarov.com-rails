@@ -26,7 +26,6 @@ gem 'slim-rails'
 
 # Authentication and authorization
 gem 'devise'
-gem 'cancan'
 
 # Pagination
 gem 'kaminari'

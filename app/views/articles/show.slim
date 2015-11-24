@@ -13,20 +13,14 @@
         | last update #{@article.updated_at.strftime("%B %d, %Y")}
     .content
       = @article.body.html_safe
-      
+    
     hr
     = render "articles/social", article: @article
     
     hr
     .buttons.center
-      - if can? :publish, @article
-        - if @article.published_at.nil?
-          = link_to "Publish", "/articles/#{@article.id}/publish", method: :post, class: 'button'
-      - if can? :update, @article
-        = link_to 'Edit', edit_article_path(@article), class: 'button'
-      - if can? :destroy, @article
-        = link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button'
-      - if @article.published_at
-        = link_to 'Back', articles_path, class: 'button'
-      - else
-          = link_to 'Back', drafts_path, class: 'button'
+      - if @article.published_at.nil?
+        = link_to "Publish", "/articles/#{@article.id}/publish", method: :post, class: 'button'
+      = link_to 'Edit', edit_admin_articles_path(@article), class: 'button'
+      = link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button'
+      = link_to 'Back', articles_path, class: 'button'
