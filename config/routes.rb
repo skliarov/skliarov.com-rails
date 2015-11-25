@@ -28,6 +28,7 @@ Consigliere::Application.routes.draw do
       resources :lessons
     end
   end
+  get '/admin', to: redirect('/admin/articles')
   
   # RSS feed
   get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
