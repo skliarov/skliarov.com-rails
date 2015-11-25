@@ -5,8 +5,6 @@ html
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     
-    = yield :head
-    
     = display_meta_tags
     = csrf_meta_tags
     
@@ -21,7 +19,7 @@ html
           li class=("active" if params[:controller] == 'articles' && params[:action] == 'index')
             = link_to 'Blog', articles_path
           li class=("active" if params[:controller] == 'screencasts' || params[:controller] == 'lessons')
-            = link_to 'Screecasts', screencasts_path
+            = link_to 'Screencasts', screencasts_path
           li class=("active" if params[:controller] == 'pages' && params[:action] == 'about')
             = link_to 'About', '/about'
           li class=("active" if params[:controller] == 'pages' && params[:action] == 'portfolio')

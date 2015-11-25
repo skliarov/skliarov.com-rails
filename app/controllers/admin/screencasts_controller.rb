@@ -1,4 +1,4 @@
-class Admin::ScreencastsController < ApplicationController
+class Admin::ScreencastsController < Admin::AdminController
   def index
   end
   

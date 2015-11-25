@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    
+    = yield :head
+    
+    = display_meta_tags
+    = csrf_meta_tags
+    
+    link href="/favicon.ico" rel="shortcut icon"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+  
+  body
+    /! Navigation bar
+    nav.desktop
+      .column.column-1000
+        ul.left
+          li class=('active' if params[:controller] == 'admin/articles')
+            = link_to 'Articles', admin_articles_path
+          li class=('active' if params[:controller] == 'admin/chapters')
+            = link_to 'Chapters', admin_chapters_path
+          li class=('active' if params[:controller] == 'admin/screencasts')
+            = link_to 'Screencasts', admin_screencasts_path
+        ul.right
+          - if user_signed_in?
+            li
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+          - else
+            li
+              = link_to 'Sign In', new_user_session_path
+            li
+              = link_to 'Register', new_user_registration_path
+    
+    nav.mobile
+      .logo
+        = link_to 'iOSonRails', articles_path
+      .breadcrumb
+        = link_to '', '#', { class: 'fa fa-bars' }
+    
+    /! Page content
+    = yield
