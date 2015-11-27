@@ -22,7 +22,9 @@ Consigliere::Application.routes.draw do
   
   # Admin panel
   namespace :admin do
-    resource :articles
+    resources :articles do
+      post :publish, on: :member
+    end
     resources :chapters
     resources :screencasts do
       resources :lessons

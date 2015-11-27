@@ -46,6 +46,12 @@ hr {
 .center {
   text-align: center;
 }
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
 .italic {
   font-style: italic;
 }
@@ -58,6 +64,9 @@ a {
 }
 p, h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 10px;
 }
 // About page avatar image styling
 img.about-avatar {

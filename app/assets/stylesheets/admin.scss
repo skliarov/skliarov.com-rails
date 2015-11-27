@@ -1,0 +1,31 @@
+// Import variables
+@import 'variables';
+
+$right-block-width: 180px;
+
+ul.admin-articles {
+  list-style-type: none;
+  border-top: 1px solid $main-color;
+  padding-bottom: 40px;
+  li {
+    display: inline-block;
+    line-height: 40px;
+    width: 100%;
+    border-bottom: 1px solid $main-color;
+    .left {
+      display: inline-block;
+      text-align: left;
+      width: calc(100% - 180px);
+      margin-right: -0.25em;
+    }
+    .right {
+      display: inline-block;
+      text-align: right;
+      width: $right-block-width;
+      margin-right: -0.25em;
+    }
+    a {
+      margin: 0 8px;
+    }
+  }
+}

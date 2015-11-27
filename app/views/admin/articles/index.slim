@@ -1,0 +1,28 @@
+- set_meta_tags title: "iOSonRails | Admin/Articles"
+
+.column.column-800
+  h2 Drafts
+  ul.admin-articles
+    li
+      .left
+      .right
+        = link_to 'New', new_admin_article_path
+    - @draft_articles.each do |article|
+      li
+        .left
+          = link_to article.title, admin_article_path(article)
+        .right
+          - publish_message = 'Are you sure you want to publish "' + article.title + '"?'
+          = link_to 'Publish', publish_admin_article_path(article), method: :post, data: { confirm: publish_message }
+          = link_to 'Edit', edit_admin_article_path(article)
+          = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }
+  
+  h2 Articles
+  ul.admin-articles
+    - @articles.each do |article|
+      li
+        .left
+          = link_to article.title, admin_article_path(article)
+        .right
+          = link_to 'Edit', edit_admin_article_path(article)
+          = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }
