@@ -6,21 +6,37 @@
   .article
     .title
       h1.center = @article.title
-    - if @article.published_at
-      p.published-at
-        | Posted by #{@article.user.username} on #{@article.published_at.strftime("%B %d, %Y")}
+    hr
+    .publishing-information
+      p
+        | Posted by #{} on #{@article.published_at.strftime("%B %d, %Y")}
         br
         | last update #{@article.updated_at.strftime("%B %d, %Y")}
+    hr
     .content
       = @article.body.html_safe
-    
     hr
+    h3 Like it? Please share :)
     = render "articles/social", article: @article
-    
     hr
-    .buttons.center
-      - if @article.published_at.nil?
-        = link_to "Publish", "/articles/#{@article.id}/publish", method: :post, class: 'button'
-      = link_to 'Edit', edit_admin_articles_path(@article), class: 'button'
-      = link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button'
-      = link_to 'Back', articles_path, class: 'button'
+
+  - if Rails.env.production?
+    #disqus_thread
+    
+    javascript:
+      var disqus_shortname = "myrailsblog",
+          disqus_identifier = "#{@article.id}",
+          disqus_title = "#{@article.title}",
+          disqus_url = "#{request.original_url}",
+      dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    
+    noscript
+      ' Please enable JavaScript to view the
+      a href="http://disqus.com/?ref_noscript" comments powered by Disqus.
+    a.dsq-brlink href="http://disqus.com"
+      ' comments powered by
+      span.logo-disqus Disqus

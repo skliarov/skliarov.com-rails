@@ -2,8 +2,11 @@
   .title {
     
   }
-  p.published-at {
-    font-style: italic;
+  .publishing-information {
+    p {
+      font-style: italic;
+      margin-bottom: 0;
+    }
   }
   .content {
     pre {
