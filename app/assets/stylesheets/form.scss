@@ -1,0 +1,44 @@
+$group-bottom-margin: 15px;
+
+.form-group {
+  margin-bottom: $group-bottom-margin;
+  label {
+    font-size: 20px;
+    font-style: bold;
+    margin: 10px 0;
+  }
+  .text-field {
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid $main-color;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 30px;
+    font-size: 14px;
+    transition: all 0.30s ease-in-out;
+    padding: 0 10px;
+  }
+  .text-field:focus {
+    box-shadow: 0 0 5px $main-color;
+  }
+  .field_with_errors {
+    .text-field {
+      border-color: red;
+    }
+    .text-field:focus {
+      box-shadow: 0 0 5px red;
+    }
+  }
+}
+#errors-explanation {
+  padding: 10px;
+  border: 2px solid red;
+  border-radius: 5px;
+  margin-bottom: $group-bottom-margin;
+  h3.errors-title {
+    margin-top: 0;
+  }
+  ul.errors-list {
+    list-style-position: inside;
+  }
+}

@@ -2,39 +2,41 @@
   = javascript_include_tag "/assets/ckeditor/ckeditor"
   = javascript_include_tag "/assets/ckeditor/init"
 
-= form_for(@article) do |f|
+= form_for [:admin, @article] do |f|
   - if @article.errors.any?
-    #error_explanation
-      h2 #{pluralize(@article.errors.count, "error")} prohibited this article from being saved:
-      ul
+    #errors-explanation
+      h3.errors-title #{pluralize(@article.errors.count, "error")} prohibited this article from being saved:
+      ul.errors-list
         - @article.errors.full_messages.each do |msg|
           li = msg
-
-  div
-    = f.label :title
+  
+  .form-group
+    label Title
     br
-    = f.text_field :title, autocomplete: :off
-
-  div
-    = f.label :preview
+    = f.text_field :title, autocomplete: :off, autofocus: :on, class: 'text-field'
+  
+  .form-group
+    label Preview
     br
-    = f.text_area :preview, class: "ckeditor"
-
-  div
-    = f.label :article
+    = f.text_area :preview, class: 'ckeditor'
+  
+  .form-group
+    label Article
     br
-    = f.text_area :body, class: "ckeditor"
-
-  div
-    = f.label :description
+    = f.text_area :body, class: 'ckeditor'
+  
+  .form-group
+    label Description
     br
-    = f.text_field :description
-
-  div
-    = f.label :keywords
+    = f.text_field :description, autocomplete: :off, class: 'text-field'
+  .form-group
+    label Keywords
     br
-    = f.text_field :keywords
-
-  .actions
-    = f.submit
-    = link_to 'Back', articles_path
+    = f.text_field :keywords, autocomplete: :off, class: 'text-field'
+  
+  .actions.form-group
+    label Actions
+    br
+    - submit_title = (params[:action] == 'new')? 'Create' : 'Update'
+    = f.submit submit_title, class: 'button'
+    = link_to 'Back to Articles', admin_articles_path, class: 'button'

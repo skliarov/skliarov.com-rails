@@ -26,16 +26,14 @@ class Admin::ArticlesController < Admin::AdminController
     @article = Article.new(article_params)
     @article.user = current_user
     
-    respond_to do |format|
-      if @article.save
-        # Create URL slug for article on creation
-        @article.slug = nil
-        @article.save
-        
-        format.html { redirect_to drafts_path, notice: 'Article was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @article.save
+      # Create URL slug for article on creation
+      @article.slug = nil
+      @article.save
+      
+      redirect_to admin_articles_path
+    else
+      render action: 'new'
     end
   end
   
@@ -62,12 +60,10 @@ class Admin::ArticlesController < Admin::AdminController
     # Force update slug
     @article.slug = nil
     
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @article.update(article_params)
+      redirect_to admin_article_path(@article)
+    else
+      render action: 'edit'
     end
   end
   
