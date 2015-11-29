@@ -13,8 +13,11 @@
 }
 input[type=submit].button {
   cursor: pointer;
-  padding-top: 4px;
-  padding-bottom: 4px;
+}
+// Fix for Firefoxe's wrong line-height on submit
+input::-moz-focus-inner { 
+  border: 0; 
+  padding: 0; 
 }
 .buttons,
 .actions {

@@ -21,7 +21,6 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   # POST /articles
-  # POST /articles.json
   def create
     @article = Article.new(article_params)
     @article.user = current_user
@@ -31,7 +30,7 @@ class Admin::ArticlesController < Admin::AdminController
       @article.slug = nil
       @article.save
       
-      redirect_to admin_articles_path
+      redirect_to admin_article_path(@article)
     else
       render action: 'new'
     end
@@ -40,22 +39,16 @@ class Admin::ArticlesController < Admin::AdminController
   # POST "/articles/1/publish"
   def publish
     if @article.published_at
-      redirect_to root_path
+      redirect_to admin_articles_path
       return
     end
     
     @article.published_at = DateTime.current
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to root_path, notice: 'Article was successfully published.' }
-      else
-        format.html { render action: 'edit' }
-      end
-    end
+    @article.save
+    redirect_to admin_articles_path
   end
   
   # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
   def update
     # Force update slug
     @article.slug = nil
@@ -68,21 +61,9 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
-    if @article.published_at
-      # Deleted published article
-      @article.destroy
-      respond_to do |format|
-        format.html { redirect_to articles_url }
-      end
-    else
-      # Deleted article from drafts
-      @article.destroy
-      respond_to do |format|
-        format.html { redirect_to drafts_path }
-      end
-    end
+    @article.destroy
+    redirect_to admin_articles_path
   end
   
   private

@@ -1,2 +1,17 @@
-h1 Admin::Articles#show
-p Find me in app/views/admin/articles/show.html.slim
+- set_meta_tags title: 'Admin | Articles | #{@article.title}',
+                noindex: true
+
+.column.column-800
+  .article
+    .title
+      h1.center = @article.title
+    .preview
+      hr
+      h2 Preview
+      hr
+      = @article.preview.html_safe
+    .content
+      hr
+      h2 Article
+      hr
+      = @article.body.html_safe
