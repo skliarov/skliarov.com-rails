@@ -34,9 +34,9 @@
     br
     = f.text_field :keywords, autocomplete: :off, class: 'text-field'
   
-  .actions.form-group
+  .actions.left.form-group
     label Actions
     br
     - submit_title = (params[:action] == 'new')? 'Create' : 'Update'
-    = f.submit submit_title, class: 'button'
+    = f.submit submit_title, class: 'button green'
     = link_to 'Back to Articles', admin_articles_path, class: 'button'

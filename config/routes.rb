@@ -25,7 +25,7 @@ Consigliere::Application.routes.draw do
     resources :articles do
       post :publish, on: :member
     end
-    resources :chapters, only: [:index, :new, :create, :edit, :update]
+    resources :chapters, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :screencasts do
       resources :lessons
     end

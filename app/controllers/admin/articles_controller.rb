@@ -1,26 +1,26 @@
 class Admin::ArticlesController < Admin::AdminController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :publish]
   
-  # GET /articles
+  # GET /admin/articles
   def index
-    @draft_articles = Article.all.where(published_at: nil).order('created_at DESC')
-    @articles = Article.all.where.not(published_at: nil).order('published_at DESC')
+    @draft_articles = Article.where(published_at: nil).order('created_at DESC')
+    @articles = Article.where.not(published_at: nil).order('published_at DESC')
   end
   
-  # GET /articles/1
+  # GET /admin/articles/1
   def show
   end
   
-  # GET /articles/new
+  # GET /admin/articles/new
   def new
     @article = Article.new
   end
   
-  # GET /articles/1/edit
+  # GET /admin/articles/1/edit
   def edit
   end
   
-  # POST /articles
+  # POST /admin/articles
   def create
     @article = Article.new(article_params)
     @article.user = current_user
@@ -36,7 +36,7 @@ class Admin::ArticlesController < Admin::AdminController
     end
   end
   
-  # POST "/articles/1/publish"
+  # POST /admin/articles/1/publish
   def publish
     if @article.published_at
       redirect_to admin_articles_path
@@ -48,7 +48,7 @@ class Admin::ArticlesController < Admin::AdminController
     redirect_to admin_articles_path
   end
   
-  # PATCH/PUT /articles/1
+  # PATCH/PUT /admin/articles/1
   def update
     # Force update slug
     @article.slug = nil
@@ -60,7 +60,7 @@ class Admin::ArticlesController < Admin::AdminController
     end
   end
   
-  # DELETE /articles/1
+  # DELETE /admin/articles/1
   def destroy
     @article.destroy
     redirect_to admin_articles_path

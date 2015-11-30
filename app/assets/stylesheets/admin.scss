@@ -1,9 +1,9 @@
 // Import variables
 @import 'variables';
 
-$right-block-width: 300px;
+$right-block-width: 250px;
 
-ul.admin-articles {
+ul.admin-list {
   list-style-type: none;
   border-top: 1px solid $main-color;
   padding-bottom: 40px;
@@ -15,7 +15,7 @@ ul.admin-articles {
     .left {
       display: inline-block;
       text-align: left;
-      width: calc(100% - 300px);
+      width: calc(100% - #{$right-block-width});
       margin-right: -0.25em;
     }
     .right {

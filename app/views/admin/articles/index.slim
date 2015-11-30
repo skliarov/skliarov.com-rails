@@ -3,7 +3,7 @@
 
 .column.column-800
   h2 Drafts
-  ul.admin-articles
+  ul.admin-list
     li
       .left
       .right
@@ -19,7 +19,7 @@
           = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
   
   h2 Articles
-  ul.admin-articles
+  ul.admin-list
     - @articles.each do |article|
       li
         .left

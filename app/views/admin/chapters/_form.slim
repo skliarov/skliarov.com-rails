@@ -1,0 +1,19 @@
+= form_for [:admin, @chapter] do |f|
+  - if @chapter.errors.any?
+    #errors-explanation
+      h3.errors-title #{pluralize(@chapter.errors.count, "error")} prohibited this chapter from being saved:
+      ul.errors-list
+        - @chapter.errors.full_messages.each do |msg|
+          li = msg
+  
+  .form-group
+    label Title
+    br
+    = f.text_field :title, autocomplete: :off, autofocus: :on, class: 'text-field'
+  
+  .actions.left.form-group
+    label Actions
+    br
+    - submit_title = (params[:action] == 'new')? 'Create' : 'Update'
+    = f.submit submit_title, class: 'button'
+    = link_to 'Back to Articles', admin_articles_path, class: 'button'
