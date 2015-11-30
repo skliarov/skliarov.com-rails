@@ -7,16 +7,16 @@
     li
       .left
       .right
-        = link_to 'New', new_admin_article_path
+        = link_to 'New', new_admin_article_path, class: 'button small'
     - @draft_articles.each do |article|
       li
         .left
           = link_to article.title, admin_article_path(article)
         .right
           - publish_message = 'Are you sure you want to publish "' + article.title + '"?'
-          = link_to 'Publish', publish_admin_article_path(article), method: :post, data: { confirm: publish_message }
-          = link_to 'Edit', edit_admin_article_path(article)
-          = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Publish', publish_admin_article_path(article), method: :post, data: { confirm: publish_message }, class: 'button small green'
+          = link_to 'Edit', edit_admin_article_path(article), class: 'button small'
+          = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
   
   h2 Articles
   ul.admin-articles
@@ -25,5 +25,5 @@
         .left
           = link_to article.title, admin_article_path(article)
         .right
-          = link_to 'Edit', edit_admin_article_path(article)
-          = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Edit', edit_admin_article_path(article), class: 'button small'
+          = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

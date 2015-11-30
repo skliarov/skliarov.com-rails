@@ -1,15 +1,57 @@
 .button {
-  border: 1px solid $main-color;
   border-radius: 5px;
   display: inline-block;
+  
+  // Sizing
   padding: 5px 10px;
   font-size: 16px;
+  line-height: 22px;
+  
+  // Coloring
+  border: 1px solid $main-color;
   color: $main-color;
 }
 .button:hover {
+  // Coloring
   background-color: $main-color;
   color: #ffffff;
   transition: all 0.25s;
+}
+.button.small {
+  // Sizing
+  font-size: 14px;
+  line-height: 18px;
+  padding: 4px 8px;
+}
+.button.red {
+  // Coloring
+  border: 1px solid $red-color;
+  color: $red-color;
+}
+.button.red:hover {
+  // Coloring
+  background-color: $red-color;
+  color: #ffffff;
+}
+.button.orange {
+  // Coloring
+  border: 1px solid $orange-color;
+  color: $orange-color;
+}
+.button.orange:hover {
+  // Coloring
+  background-color: $orange-color;
+  color: #ffffff;
+}
+.button.green {
+  // Coloring
+  border: 1px solid $green-color;
+  color: $green-color;
+}
+.button.green:hover {
+  // Coloring
+  background-color: $green-color;
+  color: #ffffff;
 }
 input[type=submit].button {
   cursor: pointer;
