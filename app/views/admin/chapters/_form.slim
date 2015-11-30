@@ -11,9 +11,14 @@
     br
     = f.text_field :title, autocomplete: :off, autofocus: :on, class: 'text-field'
   
+  .form-group
+    label Slug (for user-friendly URL)
+    br
+    = f.text_field :slug, autocomplete: :off, class: 'text-field'
+  
   .actions.left.form-group
     label Actions
     br
     - submit_title = (params[:action] == 'new')? 'Create' : 'Update'
     = f.submit submit_title, class: 'button'
-    = link_to 'Back to Articles', admin_articles_path, class: 'button'
+    = link_to 'Back to Chapters', admin_chapters_path, class: 'button'

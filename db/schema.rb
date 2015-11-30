@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124034322) do
+ActiveRecord::Schema.define(version: 20151130145651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,15 +33,17 @@ ActiveRecord::Schema.define(version: 20151124034322) do
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "chapters", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                      null: false
     t.integer  "position"
     t.integer  "user_id"
     t.boolean  "published",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "slug",                       null: false
   end
 
   add_index "chapters", ["position"], name: "index_chapters_on_position", using: :btree
+  add_index "chapters", ["slug"], name: "index_chapters_on_slug", unique: true, using: :btree
   add_index "chapters", ["user_id"], name: "index_chapters_on_user_id", using: :btree
 
   create_table "ckeditor_assets", force: :cascade do |t|

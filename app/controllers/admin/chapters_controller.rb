@@ -44,10 +44,10 @@ class Admin::ChaptersController < Admin::AdminController
   
   private
     def set_chapter
-      @chapter = Chapter.find(params[:id])
+      @chapter = Chapter.friendly.find(params[:id])
     end
     
     def chapter_params
-      params.require(:chapter).permit(:title)
+      params.require(:chapter).permit(:title, :slug)
     end
 end
