@@ -1,0 +1,28 @@
+- content_for :head do
+  = javascript_include_tag '/assets/ckeditor/ckeditor'
+  = javascript_include_tag '/assets/ckeditor/init'
+
+= form_for [:admin, @screencast] do |f|
+  - if @screencast.errors.any?
+    #errors-explanation
+      h3.errors-title #{pluralize(@screencast.errors.count, "error")} prohibited this screencast from being saved:
+      ul.errors-list
+        - @screencast.errors.full_messages.each do |msg|
+          li = msg
+  
+  .form-group
+    label Title
+    br
+    = f.text_field :title, autocomplete: :off, autofocus: :on, class: 'text-field'
+  
+  .form-group
+    label Body
+    br
+    = f.text_area :body, class: 'ckeditor'
+  
+  .actions.left.form-group
+    label Actions
+    br
+    - submit_title = (params[:action] == 'new') ? 'Create' : 'Update'
+    = f.submit submit_title, class: 'button'
+    = link_to 'Back to Screencasts', admin_screencasts_path, class: 'button'

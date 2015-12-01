@@ -1,6 +1,6 @@
 - content_for :head do
-  = javascript_include_tag "/assets/ckeditor/ckeditor"
-  = javascript_include_tag "/assets/ckeditor/init"
+  = javascript_include_tag '/assets/ckeditor/ckeditor'
+  = javascript_include_tag '/assets/ckeditor/init'
 
 = form_for [:admin, @article] do |f|
   - if @article.errors.any?

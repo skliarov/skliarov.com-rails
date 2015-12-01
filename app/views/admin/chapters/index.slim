@@ -7,11 +7,12 @@
     = link_to 'New Chapter', new_admin_chapter_path, class: 'button small green'
   br
   
-  ul.admin-list
-    - @chapters.each do |chapter|
-      li
-        .left
-          = chapter.title
-        .right
-          = link_to 'Edit', edit_admin_chapter_path(chapter), class: 'button small'
-          = link_to 'Delete', admin_chapter_path(chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
+  - if @chapters.any?
+    ul.admin-list
+      - @chapters.each do |chapter|
+        li
+          .left
+            = chapter.title
+          .right
+            = link_to 'Edit', edit_admin_chapter_path(chapter), class: 'button small'
+            = link_to 'Delete', admin_chapter_path(chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

@@ -18,12 +18,13 @@
           = link_to 'Edit', edit_admin_article_path(article), class: 'button small'
           = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
   
-  h2 Articles
-  ul.admin-list
-    - @articles.each do |article|
-      li
-        .left
-          = link_to article.title, admin_article_path(article)
-        .right
-          = link_to 'Edit', edit_admin_article_path(article), class: 'button small'
-          = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
+  - if @articles.any?
+    h2 Articles
+    ul.admin-list
+      - @articles.each do |article|
+        li
+          .left
+            = link_to article.title, admin_article_path(article)
+          .right
+            = link_to 'Edit', edit_admin_article_path(article), class: 'button small'
+            = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

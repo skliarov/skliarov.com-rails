@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130145651) do
+ActiveRecord::Schema.define(version: 20151201121744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20151130145651) do
 
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
-    t.text     "description"
+    t.text     "body",                          null: false
     t.integer  "position"
     t.integer  "screencast_id"
     t.integer  "user_id"
@@ -79,13 +79,13 @@ ActiveRecord::Schema.define(version: 20151130145651) do
 
   create_table "screencasts", force: :cascade do |t|
     t.string   "title"
-    t.text     "description"
+    t.text     "body",                       null: false
     t.integer  "position"
     t.integer  "chapter_id"
     t.integer  "user_id"
-    t.boolean  "published",   default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "published",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "screencasts", ["chapter_id"], name: "index_screencasts_on_chapter_id", using: :btree

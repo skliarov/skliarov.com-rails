@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  
   # GET /articles
   def index
     @articles = Article.where.not(published_at: nil).order('published_at DESC').page(params[:page]).per(5)
@@ -15,9 +14,4 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.friendly.find(params[:id])
   end
-  
-  private
-    def article_params
-      params.require(:article).permit(:title, :preview, :body, :description, :keywords)
-    end
 end
