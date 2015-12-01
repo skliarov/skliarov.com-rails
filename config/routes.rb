@@ -1,4 +1,4 @@
-Consigliere::Application.routes.draw do
+AppDevAcademy::Application.routes.draw do
   # CKEditor routes integration
   mount Ckeditor::Engine => '/ckeditor'
   

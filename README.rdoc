@@ -1,4 +1,4 @@
-== My blog http://www.iosonrails.com
+== Source code of the website http://appdev.academy
 
 * Ruby version 2.2.0
 * Rails verion 4.2.0

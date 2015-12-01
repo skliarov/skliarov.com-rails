@@ -1,5 +1,5 @@
-Consigliere::Application.configure do
-  config.action_mailer.default_url_options = { :host => 'iosonrails.com' }
+AppDevAcademy::Application.configure do
+  config.action_mailer.default_url_options = { host: 'appdev.academy' }
   config.cache_classes = true
   config.eager_load = true
   config.consider_all_requests_local       = false

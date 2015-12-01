@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Consigliere::Application.load_tasks
+AppDevAcademy::Application.load_tasks
