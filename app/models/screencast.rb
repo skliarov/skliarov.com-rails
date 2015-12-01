@@ -1,8 +1,14 @@
 class Screencast < ActiveRecord::Base
+  # Validate fields
   validates :title, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true
   validates :body, presence: true
   
+  # Validate relationships
+  validates :chapter, presence: true
+  validates :user, presence: true
+  
+  # Declaration of relationships
   has_many :lessons
   belongs_to :chapter
   belongs_to :user
