@@ -48,10 +48,10 @@ class Admin::ScreencastsController < Admin::AdminController
   
   private
     def set_screencast
-      @screencast = Screencast.find(params[:id])
+      @screencast = Screencast.friendly.find(params[:id])
     end
     
     def screencast_params
-      params.require(:screencast).permit(:title, :body, :slug)
+      params.require(:screencast).permit(:title, :slug, :body, :chapter_id)
     end
 end
