@@ -2,12 +2,12 @@ class ArticlesController < ApplicationController
   
   # GET /articles
   def index
-    @articles = Article.all.where.not(published_at: nil).order('published_at DESC').page(params[:page]).per(5)
+    @articles = Article.where.not(published_at: nil).order('published_at DESC').page(params[:page]).per(5)
   end
   
   # GET /feed
   def feed
-    @articles = Article.all.where.not(published_at: nil).order('published_at DESC').limit(10)
+    @articles = Article.where.not(published_at: nil).order('published_at DESC').limit(10)
     render 'articles/feed', layout: false
   end
   

@@ -1,13 +1,57 @@
 class Admin::ScreencastsController < Admin::AdminController
+  before_action :set_screencast, only: [:show, :edit, :update, :destroy]
+  
+  # GET /admin/screencasts
   def index
+    @screencasts = Screencast.order('position ASC')
   end
   
+  # GET /admin/screencasts/1
   def show
   end
   
+  # GET /admin/screencasts/new
+  def new
+    @screencast = Screencast.new
+  end
+  
+  # GET /admin/screencasts/1/edit
   def edit
   end
   
-  def new
+  # POST /admin/screencasts
+  def create
+    @screencast = Screencast.new(screencast_params)
+    @screencast.user = current_user
+    
+    if @screencast.save
+      redirect_to admin_screencast_path(@screencast)
+    else
+      render action: 'new'
+    end
   end
+  
+  # PATCH/PUT /admin/screencasts/1
+  def update
+    if @screencast.update(screencast_params)
+      redirect_to admin_screencast_path(@screencast)
+    else
+      render action: 'edit'
+    end
+  end
+  
+  # DELETE /admin/screencasts/1
+  def destroy
+    @screencast.destroy
+    redirect_to admin_screencasts_path
+  end
+  
+  private
+    def set_screencast
+      @screencast = Screencast.find(params[:id])
+    end
+    
+    def screencast_params
+      params.require(:screencast).permit(:title, :slug)
+    end
 end

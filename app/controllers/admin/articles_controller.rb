@@ -36,18 +36,6 @@ class Admin::ArticlesController < Admin::AdminController
     end
   end
   
-  # POST /admin/articles/1/publish
-  def publish
-    if @article.published_at
-      redirect_to admin_articles_path
-      return
-    end
-    
-    @article.published_at = DateTime.current
-    @article.save
-    redirect_to admin_articles_path
-  end
-  
   # PATCH/PUT /admin/articles/1
   def update
     # Force update slug
@@ -63,6 +51,18 @@ class Admin::ArticlesController < Admin::AdminController
   # DELETE /admin/articles/1
   def destroy
     @article.destroy
+    redirect_to admin_articles_path
+  end
+  
+  # POST /admin/articles/1/publish
+  def publish
+    if @article.published_at
+      redirect_to admin_articles_path
+      return
+    end
+    
+    @article.published_at = DateTime.current
+    @article.save
     redirect_to admin_articles_path
   end
   

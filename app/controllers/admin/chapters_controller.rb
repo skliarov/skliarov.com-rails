@@ -3,7 +3,7 @@ class Admin::ChaptersController < Admin::AdminController
   
   # GET /admin/chapters
   def index
-    @chapters = Chapter.all.order('position ASC')
+    @chapters = Chapter.order('position ASC')
   end
   
   # GET /admin/chapters/new
