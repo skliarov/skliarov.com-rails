@@ -24,6 +24,8 @@ html
             = link_to 'Chapters', admin_chapters_path
           li class=('active' if params[:controller] == 'admin/screencasts')
             = link_to 'Screencasts', admin_screencasts_path
+          li class=('active' if params[:controller] == 'admin/lessons')
+            = link_to 'Lessons', admin_lessons_path
         ul.right
           - if user_signed_in?
             li

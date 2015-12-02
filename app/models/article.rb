@@ -1,7 +1,13 @@
 class Article < ActiveRecord::Base
-  validates_presence_of :title, :preview, :body, :keywords, :description
-  
+  # Declaration of relationships
   belongs_to :user
+  
+  # Validate fields
+  validates :title, presence: true
+  validates :preview, presence: true
+  validates :body, presence: true
+  validates :keywords, presence: true
+  validates :description, presence: true
   
   # Add user-friendly URL slug
   extend FriendlyId

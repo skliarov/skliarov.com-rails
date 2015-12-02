@@ -25,10 +25,9 @@ AppDevAcademy::Application.routes.draw do
     resources :articles do
       post :publish, on: :member
     end
-    resources :chapters, only: [:index, :new, :edit, :create, :update, :destroy]
-    resources :screencasts do
-      resources :lessons
-    end
+    resources :chapters
+    resources :screencasts
+    resources :lessons
   end
   get '/admin', to: redirect('/admin/articles')
   

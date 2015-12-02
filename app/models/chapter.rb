@@ -1,9 +1,11 @@
 class Chapter < ActiveRecord::Base
-  validates :title, presence: true, uniqueness: true
-  validates :slug, presence: true, uniqueness: true
-  
+  # Declaration of relationships
   has_many :screencasts
   belongs_to :user
+  
+  # Validate fields
+  validates :title, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: true
   
   # Add user-friendly URL slug
   extend FriendlyId

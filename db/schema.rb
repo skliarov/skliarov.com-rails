@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201160825) do
+ActiveRecord::Schema.define(version: 20151202174955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,10 +71,12 @@ ActiveRecord::Schema.define(version: 20151201160825) do
     t.boolean  "published",     default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.string   "slug",                          null: false
   end
 
   add_index "lessons", ["position"], name: "index_lessons_on_position", using: :btree
   add_index "lessons", ["screencast_id"], name: "index_lessons_on_screencast_id", using: :btree
+  add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true, using: :btree
   add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
 
   create_table "screencasts", force: :cascade do |t|

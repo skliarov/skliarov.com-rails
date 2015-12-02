@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  # Declaration of relationships
   has_many :articles
   has_many :chapters
   has_many :screencasts
@@ -9,6 +10,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   
   def username
-    return "username"
+    return 'username'
   end
 end

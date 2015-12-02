@@ -1,0 +1,11 @@
+- set_meta_tags title: 'Admin | Chapters | '+ @chapter.title,
+                noindex: true
+
+.column.column-800
+  .chapter
+    .title
+      h1.center = @chapter.title
+  .actions.left
+    = link_to 'Edit', edit_admin_chapter_path(@chapter), class: 'button green'
+    = link_to 'Delete', admin_chapter_path(@chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button red'
+    = link_to 'Back to Lessons', admin_chapters_path, class: 'button blue'

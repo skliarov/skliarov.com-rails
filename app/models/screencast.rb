@@ -1,4 +1,9 @@
 class Screencast < ActiveRecord::Base
+  # Declaration of relationships
+  has_many :lessons
+  belongs_to :chapter
+  belongs_to :user
+  
   # Validate fields
   validates :title, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true
@@ -7,11 +12,6 @@ class Screencast < ActiveRecord::Base
   # Validate relationships
   validates :chapter, presence: true
   validates :user, presence: true
-  
-  # Declaration of relationships
-  has_many :lessons
-  belongs_to :chapter
-  belongs_to :user
   
   # Add user-friendly URL slug
   extend FriendlyId

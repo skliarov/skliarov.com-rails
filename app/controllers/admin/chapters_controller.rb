@@ -1,5 +1,5 @@
 class Admin::ChaptersController < Admin::AdminController
-  before_action :set_chapter, only: [:edit, :update, :destroy]
+  before_action :set_chapter, only: [:show, :edit, :update, :destroy]
   
   # GET /admin/chapters
   def index
