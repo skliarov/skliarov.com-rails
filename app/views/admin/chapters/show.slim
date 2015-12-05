@@ -5,7 +5,20 @@
   .chapter
     .title
       h1.center = @chapter.title
+  
   .actions.left
     = link_to 'Edit', edit_admin_chapter_path(@chapter), class: 'button green'
     = link_to 'Delete', admin_chapter_path(@chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button red'
     = link_to 'Back to Lessons', admin_chapters_path, class: 'button blue'
+  
+  - if @chapter.screencasts.any?
+    br
+    ul.admin-list#screencasts
+      - @chapter.screencasts.each do |screencast|
+        - li_id = 'faq_'+ screencast.id.to_s
+        li id=li_id
+          .left
+            = link_to screencast.title, admin_screencast_path(screencast)
+          .right
+            = link_to 'Edit', edit_admin_screencast_path(screencast), class: 'button small blue'
+            = link_to 'Delete', admin_screencast_path(screencast), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

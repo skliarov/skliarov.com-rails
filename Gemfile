@@ -15,6 +15,8 @@ gem 'autoprefixer-rails'
 # JS
 # jQuery
 gem 'jquery-rails'
+# jQuery UI
+gem 'jquery-ui-rails'
 # Compiler of JS assets
 gem 'uglifier'
 # Carousel
