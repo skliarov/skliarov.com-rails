@@ -27,12 +27,14 @@ AppDevAcademy::Application.routes.draw do
       post :sort, on: :collection
     end
     resources :chapters do
+      resource :screencasts, only: [:new]
       post :sort, on: :collection
     end
-    resources :screencasts do
+    resources :screencasts, except: [:index, :new] do
+      resource :lessons, only: [:new]
       post :sort, on: :collection
     end
-    resources :lessons do
+    resources :lessons, except: [:index] do
       post :sort, on: :collection
     end
   end

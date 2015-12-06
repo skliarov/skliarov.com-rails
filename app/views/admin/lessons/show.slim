@@ -8,6 +8,6 @@
     .content
       = @lesson.body.html_safe
   .actions.left
-    = link_to 'Edit', edit_admin_lesson_path(@lesson), class: 'button green'
-    = link_to 'Delete', admin_lesson_path(@lesson), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button red'
-    = link_to 'Back to Lessons', admin_lessons_path, class: 'button blue'
+    = link_to 'Edit', edit_admin_lesson_path(@lesson), class: 'button small green'
+    = link_to 'Delete', admin_lesson_path(@lesson), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
+    = link_to 'Back to Lessons', admin_screencast_path(@lesson.screencast), class: 'button small blue'

@@ -7,12 +7,17 @@
       h1.center = @chapter.title
   
   .actions.left
-    = link_to 'Edit', edit_admin_chapter_path(@chapter), class: 'button green'
-    = link_to 'Delete', admin_chapter_path(@chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button red'
-    = link_to 'Back to Chapters', admin_chapters_path, class: 'button blue'
+    = link_to 'Edit', edit_admin_chapter_path(@chapter), class: 'button small green'
+    = link_to 'Delete', admin_chapter_path(@chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
+    = link_to 'Back to Chapters', admin_chapters_path, class: 'button small blue'
+  
+  h2 Screencasts for chapter: #{@chapter.title}
+  .actions.left
+    = link_to 'New screencast', new_admin_chapter_screencasts_path(@chapter), class: 'button small green'
+    br
+    br
   
   - if @chapter.screencasts.any?
-    h2 Reorder screencasts for chapter: #{@chapter.title}
     ul.admin-list#sortable-list data-update-url='#{sort_admin_screencasts_path}'
       - @chapter.screencasts.each do |screencast|
         = content_tag_for :li, screencast
