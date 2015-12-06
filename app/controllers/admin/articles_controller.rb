@@ -3,8 +3,8 @@ class Admin::ArticlesController < Admin::AdminController
   
   # GET /admin/articles
   def index
-    @draft_articles = Article.where(published_at: nil).order('created_at DESC')
-    @articles = Article.where.not(published_at: nil).order('published_at DESC')
+    @draft_articles = Article.where(published: false).order('position DESC')
+    @articles = Article.where(published: true).order('position DESC')
   end
   
   # GET /admin/articles/1
@@ -56,14 +56,17 @@ class Admin::ArticlesController < Admin::AdminController
   
   # POST /admin/articles/1/publish
   def publish
-    if @article.published_at
-      redirect_to admin_articles_path
-      return
-    end
-    
-    @article.published_at = DateTime.current
+    @article.published = true
+    @article.set_default_position
     @article.save
     redirect_to admin_articles_path
+  end
+  
+  def sort
+    params[:article].reverse.each_with_index do |id, index|
+      Article.where(id: id).update_all(position: index+1)
+    end
+    render nothing: true, status: 200, content_type: 'text/html'
   end
   
   private

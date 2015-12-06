@@ -21,9 +21,9 @@
   
   - if @articles.any?
     h2 Articles
-    ul.admin-list
+    ul.admin-list#sortable-list data-update-url='#{sort_admin_articles_path}'
       - @articles.each do |article|
-        li
+        = content_tag_for :li, article
           .left
             = link_to article.title, admin_article_path(article)
           .right

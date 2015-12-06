@@ -24,6 +24,7 @@ AppDevAcademy::Application.routes.draw do
   namespace :admin do
     resources :articles do
       post :publish, on: :member
+      post :sort, on: :collection
     end
     resources :chapters do
       post :sort_screencasts, on: :member
