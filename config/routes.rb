@@ -28,7 +28,9 @@ AppDevAcademy::Application.routes.draw do
     resources :chapters do
       post :sort_screencasts, on: :member
     end
-    resources :screencasts
+    resources :screencasts do
+      post :sort_lessons, on: :member
+    end
     resources :lessons
   end
   get '/admin', to: redirect('/admin/articles')

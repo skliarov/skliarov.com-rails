@@ -11,3 +11,14 @@
     = link_to 'Edit', edit_admin_screencast_path(@screencast), class: 'button green'
     = link_to 'Delete', admin_screencast_path(@screencast), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button red'
     = link_to 'Back to Screencasts', admin_screencasts_path, class: 'button blue'
+    
+  - if @screencast.lessons.any?
+    h2 Reorder lessons for screencast: #{@screencast.title}
+    ul.admin-list#sortable-list data-update-url='#{sort_lessons_admin_screencast_path(@screencast)}'
+      - @screencast.lessons.each do |lesson|
+        = content_tag_for :li, lesson
+          .left
+            = link_to lesson.title, admin_lesson_path(lesson)
+          .right
+            = link_to 'Edit', edit_admin_lesson_path(lesson), class: 'button small blue'
+            = link_to 'Delete', admin_lesson_path(lesson), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

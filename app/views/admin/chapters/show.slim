@@ -13,7 +13,7 @@
   
   - if @chapter.screencasts.any?
     h2 Reorder screencasts for chapter: #{@chapter.title}
-    ul.admin-list#screencasts data-update-url='#{sort_screencasts_admin_chapter_path(@chapter)}'
+    ul.admin-list#sortable-list data-update-url='#{sort_screencasts_admin_chapter_path(@chapter)}'
       - @chapter.screencasts.each do |screencast|
         = content_tag_for :li, screencast
           .left

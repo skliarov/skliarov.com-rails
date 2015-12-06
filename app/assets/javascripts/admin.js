@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('nav.desktop').toggleClass('open');
   });
   
-  $('#screencasts').sortable({
+  $('#sortable-list').sortable({
     update: function() {
       $.post($(this).data('update-url'), $(this).sortable('serialize'));
     }

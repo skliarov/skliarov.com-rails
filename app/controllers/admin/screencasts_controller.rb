@@ -46,6 +46,17 @@ class Admin::ScreencastsController < Admin::AdminController
     redirect_to admin_screencasts_path
   end
   
+  def sort_lessons
+    params[:lesson].each_with_index do |id, index|
+      lesson = Lesson.find(id)
+      unless lesson.nil?
+        lesson.position = index + 1
+        lesson.save
+      end
+    end
+    render nothing: true, status: 200, content_type: 'text/html'
+  end
+  
   private
     def set_screencast
       @screencast = Screencast.friendly.find(params[:id])
