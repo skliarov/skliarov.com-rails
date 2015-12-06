@@ -13,5 +13,9 @@ $(document).ready(function() {
     $('nav.desktop').toggleClass('open');
   });
   
-  $('#screencasts').sortable();
+  $('#screencasts').sortable({
+    update: function() {
+      $.post($(this).data('update-url'), $(this).sortable('serialize'));
+    }
+  });
 });

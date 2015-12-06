@@ -9,14 +9,13 @@
   .actions.left
     = link_to 'Edit', edit_admin_chapter_path(@chapter), class: 'button green'
     = link_to 'Delete', admin_chapter_path(@chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button red'
-    = link_to 'Back to Lessons', admin_chapters_path, class: 'button blue'
+    = link_to 'Back to Chapters', admin_chapters_path, class: 'button blue'
   
   - if @chapter.screencasts.any?
-    br
-    ul.admin-list#screencasts
+    h2 Reorder screencasts for chapter: #{@chapter.title}
+    ul.admin-list#screencasts data-update-url='#{sort_screencasts_admin_chapter_path(@chapter)}'
       - @chapter.screencasts.each do |screencast|
-        - li_id = 'faq_'+ screencast.id.to_s
-        li id=li_id
+        = content_tag_for :li, screencast
           .left
             = link_to screencast.title, admin_screencast_path(screencast)
           .right

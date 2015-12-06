@@ -1,4 +1,6 @@
 class Chapter < ActiveRecord::Base
+  default_scope { order('position ASC') }
+  
   # Declaration of relationships
   has_many :screencasts
   belongs_to :user

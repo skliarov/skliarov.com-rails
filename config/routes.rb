@@ -25,7 +25,9 @@ AppDevAcademy::Application.routes.draw do
     resources :articles do
       post :publish, on: :member
     end
-    resources :chapters
+    resources :chapters do
+      post :sort_screencasts, on: :member
+    end
     resources :screencasts
     resources :lessons
   end

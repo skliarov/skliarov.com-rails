@@ -1,4 +1,6 @@
 class Screencast < ActiveRecord::Base
+  default_scope { order('position ASC') }
+  
   # Declaration of relationships
   has_many :lessons
   belongs_to :chapter
