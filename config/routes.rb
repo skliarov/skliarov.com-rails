@@ -7,7 +7,7 @@ AppDevAcademy::Application.routes.draw do
     sign_up: 'register',
     sign_in: 'sign-in',
     sign_out: 'sign-out'
-  }
+  }, skip: :registrations
   
   # Root path
   root to: 'articles#index'
