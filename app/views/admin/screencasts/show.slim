@@ -14,7 +14,7 @@
     
   - if @screencast.lessons.any?
     h2 Reorder lessons for screencast: #{@screencast.title}
-    ul.admin-list#sortable-list data-update-url='#{sort_lessons_admin_screencast_path(@screencast)}'
+    ul.admin-list#sortable-list data-update-url='#{sort_admin_lessons_path}'
       - @screencast.lessons.each do |lesson|
         = content_tag_for :li, lesson
           .left

@@ -46,6 +46,13 @@ class Admin::LessonsController < Admin::AdminController
     redirect_to admin_lessons_path
   end
   
+  def sort
+    params[:lesson].each_with_index do |id, index|
+      Lesson.where(id: id).update_all(position: index+1)
+    end
+    render nothing: true, status: 200, content_type: 'text/html'
+  end
+  
   private
     def set_lesson
       @lesson = Lesson.friendly.find(params[:id])

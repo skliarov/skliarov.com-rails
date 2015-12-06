@@ -46,13 +46,9 @@ class Admin::ScreencastsController < Admin::AdminController
     redirect_to admin_screencasts_path
   end
   
-  def sort_lessons
-    params[:lesson].each_with_index do |id, index|
-      lesson = Lesson.find(id)
-      unless lesson.nil?
-        lesson.position = index + 1
-        lesson.save
-      end
+  def sort
+    params[:screencast].each_with_index do |id, index|
+      Screencast.where(id: id).update_all(position: index+1)
     end
     render nothing: true, status: 200, content_type: 'text/html'
   end

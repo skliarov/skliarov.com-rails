@@ -42,13 +42,9 @@ class Admin::ChaptersController < Admin::AdminController
     redirect_to admin_chapters_path
   end
   
-  def sort_screencasts
-    params[:screencast].each_with_index do |id, index|
-      screencast = Screencast.find(id)
-      unless screencast.nil?
-        screencast.position = index + 1
-        screencast.save
-      end
+  def sort
+    params[:chapter].each_with_index do |id, index|
+      Chapter.where(id: id).update_all(position: index+1)
     end
     render nothing: true, status: 200, content_type: 'text/html'
   end
