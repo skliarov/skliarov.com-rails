@@ -32,13 +32,10 @@ html
           - if user_signed_in?
             li
               = link_to 'Sign Out', destroy_user_session_path, method: :delete
-          - else
-            li class=("active" if params[:controller] == 'devise/sessions' && params[:action] == 'new')
-              = link_to 'Sign In', new_user_session_path
     
     nav.mobile
       .logo
-        = link_to 'App Dev', articles_path
+        = link_to '[App dev].academy;', articles_path
       .breadcrumb
         = link_to '', '#', { class: 'fa fa-bars' }
     

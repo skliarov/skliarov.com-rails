@@ -1,6 +1,6 @@
-- set_meta_tags title: "Articles | #{@article.title}",
-                description: "#{@article.description}",
-                keywords: "#{@article.keywords}"
+- set_meta_tags title: 'AppDev | Articles | ' + @article.title,
+                description: @article.description,
+                keywords: @article.keywords
 
 .column.column-800
   .article
@@ -9,7 +9,7 @@
     hr
     .publishing-information
       p
-        | Posted by #{} on #{@article.published_at.strftime("%B %d, %Y")}
+        | Posted by Maksym Skliarov on #{@article.created_at.strftime("%B %d, %Y")}
         br
         | last update #{@article.updated_at.strftime("%B %d, %Y")}
     hr
