@@ -2,18 +2,18 @@ class Screencast < ActiveRecord::Base
   default_scope { order('position ASC') }
   
   # Declaration of relationships
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
   belongs_to :chapter
   belongs_to :user
-  
-  # Validate fields
-  validates :title, presence: true, uniqueness: true
-  validates :slug, presence: true, uniqueness: true
-  validates :body, presence: true
   
   # Validate relationships
   validates :chapter, presence: true
   validates :user, presence: true
+  
+  # Validate fields
+  validates :title, presence: true, uniqueness: true
+  validates :body, presence: true
+  validates :slug, presence: true, uniqueness: true
   
   # Add user-friendly URL slug
   extend FriendlyId

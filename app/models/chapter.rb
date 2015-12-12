@@ -2,8 +2,11 @@ class Chapter < ActiveRecord::Base
   default_scope { order('position ASC') }
   
   # Declaration of relationships
-  has_many :screencasts
+  has_many :screencasts, dependent: :destroy
   belongs_to :user
+  
+  # Validate relationships
+  validates :user, presence: true
   
   # Validate fields
   validates :title, presence: true, uniqueness: true

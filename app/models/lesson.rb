@@ -5,14 +5,14 @@ class Lesson < ActiveRecord::Base
   belongs_to :screencast
   belongs_to :user
   
-  # Validate fields
-  validates :title, presence: true, uniqueness: true
-  validates :slug, presence: true, uniqueness: true
-  validates :body, presence: true
-  
   # Validate relationships
   validates :screencast, presence: true
   validates :user, presence: true
+  
+  # Validate fields
+  validates :title, presence: true, uniqueness: true
+  validates :body, presence: true
+  validates :slug, presence: true, uniqueness: true
   
   # Add user-friendly URL slug
   extend FriendlyId
