@@ -12,4 +12,8 @@ RSpec.describe ArticlesController, type: :routing do
   it 'routes "/articles/:id" should route to "articles#show"' do
     expect(get('/articles/1')).to route_to('articles#show', id: '1')
   end
+  
+  it 'routes "/feed" should route to "articles#feed"' do
+    expect(get('/feed')).to route_to('articles#feed', format: 'rss')
+  end
 end

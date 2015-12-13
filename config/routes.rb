@@ -15,6 +15,9 @@ AppDevAcademy::Application.routes.draw do
   # Articles
   resources :articles, only: [:index, :show]
   
+  # RSS feed
+  get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
+  
   # Screencasts and Lessons
   resources :screencasts, only: [:index, :show] do
     resources :lessons, only: [:show]
@@ -39,9 +42,6 @@ AppDevAcademy::Application.routes.draw do
     end
   end
   get '/admin', to: redirect('/admin/articles')
-  
-  # RSS feed
-  get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
   
   # Static pages
   get '/about', to: 'pages#about'
