@@ -41,7 +41,6 @@ AppDevAcademy::Application.routes.draw do
       post :sort, on: :collection
     end
   end
-  get '/admin', to: redirect('/admin/articles')
   
   # Static pages
   get '/about', to: 'pages#about'

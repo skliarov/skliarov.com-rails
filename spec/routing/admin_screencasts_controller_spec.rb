@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ScreencastsController, type: :routing do
+RSpec.describe 'Routes for Admin::ScreencastsController', type: :routing do
   context 'RESTful CRUD' do
     it 'routes GET "/admin/screencasts/1" to "admin/screencasts#show"' do
       expect(get('/admin/screencasts/1')).to route_to('admin/screencasts#show', id: '1')

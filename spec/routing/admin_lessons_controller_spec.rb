@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::LessonsController, type: :routing do
+RSpec.describe 'Routes for Admin::LessonsController', type: :routing do
   context 'RESTful CRUD' do
     it 'routes GET "/admin/lessons/1" to "admin/lessons#show"' do
       expect(get('/admin/lessons/1')).to route_to('admin/lessons#show', id: '1')

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ArticlesController, type: :routing do
+RSpec.describe 'Routes for Admin::ArticlesController', type: :routing do
   context 'RESTful CRUD' do
     it 'routes GET "/admin/articles" to "admin/articles#index"' do
       expect(get('/admin/articles')).to route_to('admin/articles#index')

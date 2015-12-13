@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ChaptersController, type: :routing do
+RSpec.describe 'Routes for Admin::ChaptersController', type: :routing do
   context 'RESTful CRUD' do
     it 'routes GET "/admin/chapters" to "admin/chapters#index"' do
       expect(get('/admin/chapters')).to route_to('admin/chapters#index')
