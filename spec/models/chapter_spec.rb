@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Chapter, type: :model do
-  it 'has a valid factory' do
+  it 'should have a valid factory' do
     expect(FactoryGirl.create(:chapter)).to be_valid
   end
   
@@ -11,18 +11,18 @@ RSpec.describe Chapter, type: :model do
   end
   
   context 'validations' do
-    # Fields
-    it { should validate_presence_of(:title) }
-    it 'should validate presense of slug' do
-      chapter = FactoryGirl.create(:chapter)
-      chapter.slug = nil
-      chapter.save
-      expect(chapter.slug).not_to eq(nil)
+    context 'fields' do
+      it { should validate_presence_of(:title) }
+      it 'should require slug to be set' do
+        chapter = FactoryGirl.create(:chapter)
+        chapter.slug = nil
+        chapter.save
+        expect(chapter.slug).not_to eq(nil)
+      end
+      it { should validate_uniqueness_of(:title) }
+      it { should validate_uniqueness_of(:slug) }
     end
-    it { should validate_uniqueness_of(:title) }
-    it { should validate_uniqueness_of(:slug) }
     
-    # Relations
     context 'relations' do
       it { should validate_presence_of(:user) }
     end
