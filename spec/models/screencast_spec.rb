@@ -14,6 +14,7 @@ RSpec.describe Screencast, type: :model do
   context 'validations' do
     context 'fields' do
       it { should validate_presence_of(:title) }
+      it { should validate_uniqueness_of(:title).scoped_to(:chapter_id) }
       it { should validate_presence_of(:body) }
       it 'should require slug to be set' do
         screencast = FactoryGirl.create(:screencast)

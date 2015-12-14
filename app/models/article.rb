@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
   validates :user, presence: true
   
   # Validate fields
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :preview, presence: true
   validates :body, presence: true
   validates :keywords, presence: true

@@ -13,13 +13,13 @@ RSpec.describe Chapter, type: :model do
   context 'validations' do
     context 'fields' do
       it { should validate_presence_of(:title) }
+      it { should validate_uniqueness_of(:title) }
       it 'should require slug to be set' do
         chapter = FactoryGirl.create(:chapter)
         chapter.slug = nil
         chapter.save
         expect(chapter.slug).not_to eq(nil)
       end
-      it { should validate_uniqueness_of(:title) }
       it { should validate_uniqueness_of(:slug) }
     end
     

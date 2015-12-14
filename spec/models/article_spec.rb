@@ -12,6 +12,7 @@ RSpec.describe Article, type: :model do
   context 'validations' do
     context 'fields' do
       it { should validate_presence_of(:title) }
+      it { should validate_uniqueness_of(:title) }
       it { should validate_presence_of(:preview) }
       it { should validate_presence_of(:body) }
       it { should validate_presence_of(:keywords) }

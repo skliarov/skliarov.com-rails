@@ -10,7 +10,7 @@ class Lesson < ActiveRecord::Base
   validates :user, presence: true
   
   # Validate fields
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: { scope: :screencast_id }
   validates :body, presence: true
   validates :slug, presence: true, uniqueness: true
   
