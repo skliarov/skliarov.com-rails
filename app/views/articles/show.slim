@@ -5,21 +5,17 @@
 .column.column-800
   .article
     .title
-      h1.center = @article.title
-    hr
+      h1.center
+        = @article.title
     .publishing-information
-      p
-        | Posted by Maksym Skliarov on #{@article.created_at.strftime("%B %d, %Y")}
-        br
-        | last update #{@article.updated_at.strftime("%B %d, %Y")}
-    hr
+      p Posted by Maksym Skliarov on #{@article.created_at.strftime("%B %d, %Y")}
+      p last update #{@article.updated_at.strftime("%B %d, %Y")}
     .content
       = @article.body.html_safe
     hr
     h3 Like it? Please share :)
     = render "articles/social", article: @article
-    hr
-
+  
   - if Rails.env.production?
     #disqus_thread
     
