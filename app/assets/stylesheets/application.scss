@@ -35,7 +35,7 @@
 @import 'owl.theme';
 
 body {
-  min-width: 240px;
+  min-width: 320px;
   padding-bottom: 50px;
 }
 hr {
@@ -85,4 +85,11 @@ img.about-avatar {
   width: 40%;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
 }

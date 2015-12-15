@@ -21,6 +21,10 @@
     = f.text_area :preview, class: 'ckeditor'
   
   .form-group
+    label Preview image
+    = f.file_field :preview_image
+  
+  .form-group
     label Article
     br
     = f.text_area :body, class: 'ckeditor'
@@ -29,6 +33,7 @@
     label Description
     br
     = f.text_field :description, autocomplete: :off, class: 'text-field'
+  
   .form-group
     label Keywords
     br

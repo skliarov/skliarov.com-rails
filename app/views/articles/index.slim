@@ -4,7 +4,9 @@
 
 .column.column-800
   - @articles.each do |article|
-    .article
+    .article.clearfix
+      - if article.preview_image && article.preview_image.url
+        = image_tag article.preview_image.url, size: '150x100', alt: 'Article preview image'
       .title
         h2
           = link_to article.title, article

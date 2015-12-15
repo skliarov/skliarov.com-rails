@@ -1,4 +1,7 @@
 class Article < ActiveRecord::Base
+  # Add ability to upload preview images
+  mount_uploader :preview_image, PreviewImageUploader
+  
   # Declaration of relationships
   belongs_to :user
   
