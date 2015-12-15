@@ -6,10 +6,11 @@
   - @articles.each do |article|
     .article
       .title
-        h1.center = link_to article.title, article
+        h2
+          = link_to article.title, article
       .content
         = article.preview.html_safe
-    hr
+    hr.big
 
   .center
     = paginate @articles
