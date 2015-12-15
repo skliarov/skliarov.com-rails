@@ -6,12 +6,14 @@
     .title
       h1.center = @article.title
     .preview
-      hr
-      h2 Preview
-      hr
+      h3 Preview
       = @article.preview.html_safe
     .content
-      hr
-      h2 Article
-      hr
+      h3 Article
       = @article.body.html_safe
+  
+  br
+  .buttons.left
+    = link_to 'Edit', edit_admin_article_path(@article), class: 'button small blue'
+    = link_to 'Delete', admin_article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
+    = link_to 'Back to all Articles', admin_articles_path, class: 'button small blue'
