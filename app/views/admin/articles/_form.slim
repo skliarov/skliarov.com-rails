@@ -22,7 +22,16 @@
   
   .form-group
     label Preview image
-    = f.file_field :preview_image
+    - if @article.preview_image && @article.preview_image.url
+      br
+      = image_tag @article.preview_image.url, size: '150x100', alt: 'Article preview image'
+      .form-group.checkbox
+        = f.check_box :remove_preview_image
+        = f.label :remove_preview_image, 'Remove image', class: 'small'
+      = f.file_field :preview_image
+    - else
+      br
+      = f.file_field :preview_image
   
   .form-group
     label Article
