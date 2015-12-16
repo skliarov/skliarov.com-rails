@@ -1,5 +1,5 @@
-$left-right-padding: 8px;
-$group-bottom-margin: 15px;
+$text-box-padding: 8px;
+$group-bottom-margin: 12px;
 
 .form-group {
   margin-bottom: $group-bottom-margin;
@@ -8,18 +8,28 @@ $group-bottom-margin: 15px;
     font-style: bold;
     margin: 10px 0;
   }
-  .text-field {
+  @mixin general-text-box {
     box-sizing: border-box;
     outline: none;
     border: 1px solid $main-color;
     border-radius: 5px;
     width: 100%;
-    line-height: 30px;
     font-size: 14px;
     transition: all 0.30s ease-in-out;
-    padding: 0 $left-right-padding;
   }
-  .text-field:focus {
+  .text-field {
+    @include general-text-box;
+    line-height: 30px;
+    padding: 0 $text-box-padding;
+  }
+  .text-area {
+    @include general-text-box;
+    line-height: 20px;
+    padding: $text-box-padding;
+    resize: none;
+    height: 120px;
+  }
+  .text-field:focus, .text-area:focus {
     box-shadow: 0 0 5px $main-color;
   }
   .select-box {
@@ -30,7 +40,7 @@ $group-bottom-margin: 15px;
     width: 100%;
     height: 30px;
     font-size: 14px;
-    padding: 0 $left-right-padding;
+    padding: 0 $text-box-padding;
   }
   .select-box:focus {
     box-shadow: 0 0 5px $main-color;

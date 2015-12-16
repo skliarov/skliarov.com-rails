@@ -6,10 +6,9 @@
   - @articles.each do |article|
     .article.clearfix
       - if article.preview_image && article.preview_image.url
-        = image_tag article.preview_image.url, size: '150x100', alt: 'Article preview image'
+        = image_tag article.preview_image.url, size: '150x100', alt: 'Article preview image', class: 'preview-image'
       .title
-        h3
-          = link_to article.title, article
+        = link_to article.title, article
       .content
         = article.preview.html_safe
     hr.big
