@@ -1,6 +1,9 @@
 class Screencast < ActiveRecord::Base
   default_scope { order('position ASC') }
   
+  # Add ability to upload preview images
+  mount_uploader :preview_image, PreviewImageUploader
+  
   # Declaration of relationships
   has_many :lessons, dependent: :destroy
   belongs_to :chapter

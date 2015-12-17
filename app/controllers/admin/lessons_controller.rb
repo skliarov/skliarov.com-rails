@@ -60,6 +60,6 @@ class Admin::LessonsController < Admin::AdminController
     end
     
     def lesson_params
-      params.require(:lesson).permit(:title, :slug, :body, :screencast_id)
+      params.require(:lesson).permit(:title, :preview_image, :remove_preview_image, :slug, :body, :screencast_id)
     end
 end

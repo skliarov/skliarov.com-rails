@@ -60,6 +60,6 @@ class Admin::ScreencastsController < Admin::AdminController
     end
     
     def screencast_params
-      params.require(:screencast).permit(:title, :slug, :body, :chapter_id)
+      params.require(:screencast).permit(:title, :preview_image, :remove_preview_image, :slug, :body, :chapter_id)
     end
 end

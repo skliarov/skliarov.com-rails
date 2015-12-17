@@ -16,6 +16,19 @@
     = f.text_field :title, autocomplete: :off, autofocus: :on, class: 'text-field'
   
   .form-group
+    label Preview image
+    - if @lesson.preview_image && @article.preview_image.url
+      br
+      = image_tag @lesson.preview_image.url, size: '150x100', alt: 'Article preview image'
+      .form-group.checkbox
+        = f.check_box :remove_preview_image
+        = f.label :remove_preview_image, 'Remove image', class: 'small'
+      = f.file_field :preview_image
+    - else
+      br
+      = f.file_field :preview_image
+  
+  .form-group
     label Slug (for user-friendly URL)
     br
     = f.text_field :slug, autocomplete: :off, class: 'text-field'
