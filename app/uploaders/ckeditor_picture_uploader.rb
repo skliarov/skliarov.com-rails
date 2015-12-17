@@ -10,8 +10,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    path = 'uploads/ckeditor/pictures/' + model.id.to_s
-    return path
+    "uploads/ckeditor/pictures/#{model.id}"
   end
   
   process :read_dimensions
