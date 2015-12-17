@@ -16,8 +16,13 @@
     = f.text_field :title, autocomplete: :off, autofocus: :on, class: 'text-field'
   
   .form-group
+    label Slug (for user-friendly URL)
+    br
+    = f.text_field :slug, autocomplete: :off, class: 'text-field'
+  
+  .form-group
     label Preview image
-    - if @lesson.preview_image && @article.preview_image.url
+    - if @lesson.preview_image && @lesson.preview_image.url
       br
       = image_tag @lesson.preview_image.url, size: '150x100', alt: 'Article preview image'
       .form-group.checkbox
@@ -27,11 +32,6 @@
     - else
       br
       = f.file_field :preview_image
-  
-  .form-group
-    label Slug (for user-friendly URL)
-    br
-    = f.text_field :slug, autocomplete: :off, class: 'text-field'
   
   .form-group
     label Screencast
@@ -48,4 +48,4 @@
     br
     - submit_title = (params[:action] == 'new') ? 'Create' : 'Update'
     = f.submit submit_title, class: 'button green'
-    = link_to 'Back to Lessons', admin_lessons_path(@lesson), class: 'button blue'
+    = link_to 'Back to Lessons', admin_screencast_path(@lesson.screencast), class: 'button blue'
