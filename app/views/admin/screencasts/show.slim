@@ -19,7 +19,7 @@
     br
   
   - if @screencast.lessons.any?
-    ul.admin-list#sortable-list data-update-url='#{sort_admin_lessons_path}'
+    ol.list.admin-list#sortable-list data-update-url='#{sort_admin_lessons_path}'
       - @screencast.lessons.each do |lesson|
         = content_tag_for :li, lesson
           .left

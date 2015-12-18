@@ -8,7 +8,7 @@
   br
   
   - if @draft_articles.any?
-    ul.admin-list
+    ol.list.admin-list
       - @draft_articles.each do |article|
         li
           .left
@@ -21,7 +21,7 @@
   
   - if @articles.any?
     h2 Articles
-    ul.admin-list#sortable-list data-update-url='#{sort_admin_articles_path}'
+    ol.list.admin-list#sortable-list data-update-url='#{sort_admin_articles_path}'
       - @articles.each do |article|
         = content_tag_for :li, article
           .left

@@ -18,7 +18,7 @@
     br
   
   - if @chapter.screencasts.any?
-    ul.admin-list#sortable-list data-update-url='#{sort_admin_screencasts_path}'
+    ol.list.admin-list#sortable-list data-update-url='#{sort_admin_screencasts_path}'
       - @chapter.screencasts.each do |screencast|
         = content_tag_for :li, screencast
           .left

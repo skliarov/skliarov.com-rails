@@ -1,0 +1,28 @@
+ol.list {
+  list-style-type: none;
+  border-top: 1px solid $main-color;
+  padding-bottom: 40px;
+  li {
+    display: block;
+    line-height: 40px;
+    width: 100%;
+    border-bottom: 1px solid $main-color;
+  }
+  .preview-image {
+    float: left;
+    width: 150px;
+    height: 100px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  .title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
+ol.screencasts, ol.lessons {
+  li {
+    line-height: 120px;
+  }
+}

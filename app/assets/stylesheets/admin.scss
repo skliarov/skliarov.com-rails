@@ -5,29 +5,20 @@
 
 $right-block-width: 250px;
 
-ul.admin-list {
-  list-style-type: none;
-  border-top: 1px solid $main-color;
-  padding-bottom: 40px;
-  li {
+ol.admin-list {
+  .left {
     display: inline-block;
-    line-height: 40px;
-    width: 100%;
-    border-bottom: 1px solid $main-color;
-    .left {
-      display: inline-block;
-      text-align: left;
-      width: calc(100% - #{$right-block-width});
-      margin-right: -0.25em;
-    }
-    .right {
-      display: inline-block;
-      text-align: right;
-      width: $right-block-width;
-      margin-right: -0.25em;
-    }
-    .button.small {
-      margin-left: 5px;
-    }
+    text-align: left;
+    width: calc(100% - #{$right-block-width});
+    margin-right: -0.25em;
+  }
+  .right {
+    display: inline-block;
+    text-align: right;
+    width: $right-block-width;
+    margin-right: -0.25em;
+  }
+  .button.small {
+    margin-left: 5px;
   }
 }

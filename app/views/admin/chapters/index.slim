@@ -8,7 +8,7 @@
   br
   
   - if @chapters.any?
-    ul.admin-list#sortable-list data-update-url='#{sort_admin_chapters_path}'
+    ol.list.admin-list#sortable-list data-update-url='#{sort_admin_chapters_path}'
       - @chapters.each do |chapter|
         = content_tag_for :li, chapter
           .left
