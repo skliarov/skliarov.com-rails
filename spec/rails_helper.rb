@@ -31,6 +31,13 @@ RSpec.configure do |config|
   # Include FactoryGirl
   config.include FactoryGirl::Syntax::Methods
   
+  # Include test helpers for Devise
+  config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+  end
+  
   # Include shoulda-matchers
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
