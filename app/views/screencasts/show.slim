@@ -1,2 +1,16 @@
-h1 Screencasts#show
-p Find me in app/views/screencasts/show.html.slim
+- set_meta_tags title: "AppDev | Screencasts | #{@screencast.title}",
+                description: "List of lessons for screencast: #{@screencast.title}"
+
+.column.column-800
+  - if @screencast.lessons.any?
+    .title
+      h2 = @screencast.title
+    .description
+      = @screencast.body.html_safe
+    ol.list.lessons
+      - @screencast.lessons.each do |lesson|
+        li.clearfix
+          - if lesson.preview_image && lesson.preview_image.url
+            = image_tag lesson.preview_image.url, size: '150x100', alt: 'Article preview image', class: 'preview-image'
+          .title
+            = link_to lesson.title, screencast_lesson_path(lesson.screencast, lesson)
