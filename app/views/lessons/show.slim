@@ -1,2 +1,8 @@
-h1 Lessons#show
-p Find me in app/views/lessons/show.html.slim
+- set_meta_tags title: "AppDev | Lesson | #{@lesson.title}",
+                description: "Lesson: #{@lesson.title} for screencast: #{@lesson.screencast.title}"
+
+.column.column-800
+  .title
+    h2 = @lesson.title
+  .description
+    = @lesson.body.html_safe
