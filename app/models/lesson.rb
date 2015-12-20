@@ -15,7 +15,7 @@ class Lesson < ActiveRecord::Base
   # Validate fields
   validates :title, presence: true, uniqueness: { scope: :screencast_id }
   validates :body, presence: true
-  validates :slug, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z0-9-]+\z/, message: 'Only lower case letters, numbers and dashes are allowed' }
   
   # Add user-friendly URL slug
   extend FriendlyId

@@ -25,6 +25,13 @@ RSpec.describe Screencast, type: :model do
       FactoryGirl.create(:screencast) do
         it { should validate_uniqueness_of(:slug) }
       end
+      it 'should validate format of slug to contain only lower case letters, numbers and dashes' do
+        should allow_value('some-slug-goes-here').for(:slug)
+        should_not allow_value('some.slug.goes.here').for(:slug).with_message('Only lower case letters, numbers and dashes are allowed')
+        should_not allow_value('some_slug_goes_here').for(:slug).with_message('Only lower case letters, numbers and dashes are allowed')
+        should_not allow_value('Some-Slug-Goes-HERE').for(:slug).with_message('Only lower case letters, numbers and dashes are allowed')
+        should_not allow_value('some/slug/goes/here').for(:slug).with_message('Only lower case letters, numbers and dashes are allowed')
+      end
     end
     
     context 'relations' do
