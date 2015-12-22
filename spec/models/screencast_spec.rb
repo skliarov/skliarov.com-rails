@@ -39,4 +39,17 @@ RSpec.describe Screencast, type: :model do
       it { should validate_presence_of(:user) }
     end
   end
+  
+  context 'set default position on create' do
+    it 'should set position to be last in the list' do
+      chapter = FactoryGirl.create(:chapter)
+      screencast1 = FactoryGirl.create(:screencast, published: true, chapter: chapter)
+      screencast2 = FactoryGirl.create(:screencast, published: false, chapter: chapter)
+      screencast3 = FactoryGirl.create(:screencast, published: true, chapter: chapter)
+      
+      expect(screencast1.position).to eq(1)
+      expect(screencast2.position).to eq(2)
+      expect(screencast3.position).to eq(3)
+    end
+  end
 end

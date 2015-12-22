@@ -34,4 +34,17 @@ RSpec.describe Chapter, type: :model do
       it { should validate_presence_of(:user) }
     end
   end
+  
+  context 'set default position on create' do
+    it 'should set position to be last in the list' do
+      Chapter.destroy_all
+      chapter1 = FactoryGirl.create(:chapter, published: true)
+      chapter2 = FactoryGirl.create(:chapter, published: false)
+      chapter3 = FactoryGirl.create(:chapter, published: true)
+      
+      expect(chapter1.position).to eq(1)
+      expect(chapter2.position).to eq(2)
+      expect(chapter3.position).to eq(3)
+    end
+  end
 end

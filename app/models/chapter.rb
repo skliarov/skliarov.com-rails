@@ -23,4 +23,15 @@ class Chapter < ActiveRecord::Base
       [:id, :title]
     ]
   end
+  
+  # Set position to be the last in the list
+  before_create :set_default_position
+  
+  private
+    def set_default_position
+      self.position = 1
+      if Chapter.count > 0
+        self.position = Chapter.maximum('position') + 1
+      end
+    end
 end

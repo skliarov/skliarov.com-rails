@@ -27,13 +27,11 @@ class Article < ActiveRecord::Base
   # Set position to be the last in the list
   before_create :set_default_position
   
-  def set_default_position
-    # Default position
-    self.position = 1
-    # Update position if other published/not published articles are present
-    articles_count = Article.where(published: self.published).count
-    if articles_count > 0
-      self.position = Article.where(published: self.published).maximum('position') + 1
+  private
+    def set_default_position
+      self.position = 1
+      if Article.count > 0
+        self.position = Article.maximum('position') + 1
+      end
     end
-  end
 end

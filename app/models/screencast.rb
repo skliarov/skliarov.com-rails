@@ -29,4 +29,15 @@ class Screencast < ActiveRecord::Base
       [:id, :title]
     ]
   end
+  
+  # Set position to be the last in the list
+  before_create :set_default_position
+  
+  private
+    def set_default_position
+      self.position = 1
+      if self.chapter.screencasts.count > 0
+        self.position = self.chapter.screencasts.maximum('position') + 1
+      end
+    end
 end
