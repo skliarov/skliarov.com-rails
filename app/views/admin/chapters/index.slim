@@ -14,5 +14,9 @@
           .left
             = link_to chapter.title, admin_chapter_path(chapter)
           .right
+            - if chapter.published
+              = link_to 'Hide', hide_admin_chapter_path(chapter), method: :post, class: 'button small orange'
+            - else
+              = link_to 'Publish', publish_admin_chapter_path(chapter), method: :post, class: 'button small green'
             = link_to 'Edit', edit_admin_chapter_path(chapter), class: 'button small blue'
             = link_to 'Delete', admin_chapter_path(chapter), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

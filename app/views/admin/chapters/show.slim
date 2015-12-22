@@ -24,5 +24,9 @@
           .left
             = link_to screencast.title, admin_screencast_path(screencast)
           .right
+            - if screencast.published
+              = link_to 'Hide', hide_admin_screencast_path(screencast), method: :post, class: 'button small orange'
+            - else
+              = link_to 'Publish', publish_admin_screencast_path(screencast), method: :post, class: 'button small green'
             = link_to 'Edit', edit_admin_screencast_path(screencast), class: 'button small blue'
             = link_to 'Delete', admin_screencast_path(screencast), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

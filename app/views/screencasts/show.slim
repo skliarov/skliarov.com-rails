@@ -2,15 +2,24 @@
                 description: "List of lessons for screencast: #{@screencast.title}"
 
 .column.column-800
-  - if @screencast.lessons.any?
+  - if @screencast.published
     .title
-      h2 = @screencast.title
+      h2
+        = @screencast.title
     .description
       = @screencast.body.html_safe
-    ol.list.lessons
-      - @screencast.lessons.each do |lesson|
-        li.clearfix
-          - if lesson.preview_image && lesson.preview_image.url
-            = image_tag lesson.preview_image.url, size: '150x100', alt: 'Article preview image', class: 'preview-image'
-          .title
-            = link_to lesson.title, screencast_lesson_path(lesson.screencast, lesson)
+    - if @screencast.lessons.any?
+      ol.list.lessons
+        - @screencast.lessons.each do |lesson|
+          li.clearfix
+            - if lesson.preview_image && lesson.preview_image.url
+              = image_tag lesson.preview_image.url, size: '150x100', alt: 'Article preview image', class: 'preview-image'
+            .title
+              - if lesson.published
+                = link_to lesson.title, screencast_lesson_path(lesson.screencast, lesson)
+              - else
+                = "#{lesson.title} (coming soon)"
+  - else
+    .title
+      h2
+        = "#{@screencast.title} (coming soon)"

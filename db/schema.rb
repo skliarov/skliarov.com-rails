@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217131558) do
+ActiveRecord::Schema.define(version: 20151221172658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151217131558) do
   end
 
   add_index "chapters", ["position"], name: "index_chapters_on_position", using: :btree
+  add_index "chapters", ["published"], name: "index_chapters_on_published", using: :btree
   add_index "chapters", ["slug"], name: "index_chapters_on_slug", unique: true, using: :btree
   add_index "chapters", ["user_id"], name: "index_chapters_on_user_id", using: :btree
 
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 20151217131558) do
   end
 
   add_index "lessons", ["position"], name: "index_lessons_on_position", using: :btree
+  add_index "lessons", ["published"], name: "index_lessons_on_published", using: :btree
   add_index "lessons", ["screencast_id"], name: "index_lessons_on_screencast_id", using: :btree
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true, using: :btree
   add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 20151217131558) do
 
   add_index "screencasts", ["chapter_id"], name: "index_screencasts_on_chapter_id", using: :btree
   add_index "screencasts", ["position"], name: "index_screencasts_on_position", using: :btree
+  add_index "screencasts", ["published"], name: "index_screencasts_on_published", using: :btree
   add_index "screencasts", ["slug"], name: "index_screencasts_on_slug", unique: true, using: :btree
   add_index "screencasts", ["user_id"], name: "index_screencasts_on_user_id", using: :btree
 

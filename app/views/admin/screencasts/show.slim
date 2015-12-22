@@ -11,7 +11,7 @@
     = link_to 'Edit', edit_admin_screencast_path(@screencast), class: 'button small green'
     = link_to 'Delete', admin_screencast_path(@screencast), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
     = link_to 'Back to Screencasts', admin_chapter_path(@screencast.chapter), class: 'button small blue'
-    
+  
   h2 Lessons for screencast: #{@screencast.title}
   .actions.left
     = link_to 'New lesson', new_admin_screencast_lessons_path(@screencast), class: 'button small green'
@@ -25,5 +25,9 @@
           .left
             = link_to lesson.title, admin_lesson_path(lesson)
           .right
+            - if lesson.published
+              = link_to 'Hide', hide_admin_lesson_path(lesson), method: :post, class: 'button small orange'
+            - else
+              = link_to 'Publish', publish_admin_lesson_path(lesson), method: :post, class: 'button small green'
             = link_to 'Edit', edit_admin_lesson_path(lesson), class: 'button small blue'
             = link_to 'Delete', admin_lesson_path(lesson), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

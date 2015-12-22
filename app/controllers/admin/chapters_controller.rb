@@ -1,5 +1,5 @@
 class Admin::ChaptersController < Admin::AdminController
-  before_action :set_chapter, only: [:show, :edit, :update, :destroy]
+  before_action :set_chapter, only: [:show, :edit, :update, :destroy, :publish, :hide]
   
   # GET /admin/chapters
   def index
@@ -47,6 +47,18 @@ class Admin::ChaptersController < Admin::AdminController
       Chapter.where(id: id).update_all(position: index+1)
     end
     render nothing: true, status: 200, content_type: 'text/html'
+  end
+  
+  def publish
+    @chapter.published = true
+    @chapter.save
+    redirect_to admin_chapters_path
+  end
+  
+  def hide
+    @chapter.published = false
+    @chapter.save
+    redirect_to admin_chapters_path
   end
   
   private

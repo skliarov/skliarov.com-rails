@@ -10,12 +10,18 @@
   
   - if @chapters.any?
     - @chapters.each do |chapter|
-      - if chapter.screencasts.any?
+      - if chapter.published
         h2 = chapter.title
-        ol.list.screencasts
-          - chapter.screencasts.each do |screencast|
-            li.clearfix
-              - if screencast.preview_image && screencast.preview_image.url
-                = image_tag screencast.preview_image.url, size: '150x100', alt: 'Article preview image', class: 'preview-image'
-              .title
-                = link_to screencast.title, screencast_path(screencast)
+        - if chapter.screencasts.any?
+          ol.list.screencasts
+            - chapter.screencasts.each do |screencast|
+              li.clearfix
+                - if screencast.preview_image && screencast.preview_image.url
+                  = image_tag screencast.preview_image.url, size: '150x100', alt: 'Article preview image', class: 'preview-image'
+                .title
+                  - if screencast.published
+                    = link_to screencast.title, screencast_path(screencast)
+                  - else
+                    = "#{screencast.title} (coming soon)"
+      - else
+        h2 = "#{chapter.title} (coming soon)"

@@ -26,19 +26,25 @@ AppDevAcademy::Application.routes.draw do
   # Admin panel
   namespace :admin do
     resources :articles do
-      post :publish, on: :member
       post :sort, on: :collection
+      post :publish, on: :member
     end
     resources :chapters do
       resource :screencasts, only: [:new]
       post :sort, on: :collection
+      post :publish, on: :member
+      post :hide, on: :member
     end
     resources :screencasts, except: [:index, :new] do
       resource :lessons, only: [:new]
       post :sort, on: :collection
+      post :publish, on: :member
+      post :hide, on: :member
     end
     resources :lessons, except: [:index] do
       post :sort, on: :collection
+      post :publish, on: :member
+      post :hide, on: :member
     end
   end
   

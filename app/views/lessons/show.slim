@@ -2,7 +2,11 @@
                 description: "Lesson: #{@lesson.title} for screencast: #{@lesson.screencast.title}"
 
 .column.column-800
-  .title
-    h2 = @lesson.title
-  .description
-    = @lesson.body.html_safe
+  - if @lesson.published
+    .title
+      h2 = @lesson.title
+    .description
+      = @lesson.body.html_safe
+  - else
+    .title
+      h2 = "#{@lesson.title} (coming soon)"

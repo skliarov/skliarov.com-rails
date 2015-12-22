@@ -1,5 +1,5 @@
 class Admin::LessonsController < Admin::AdminController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :publish, :hide]
   
   # GET /admin/lessons
   def index
@@ -43,8 +43,9 @@ class Admin::LessonsController < Admin::AdminController
   
   # DELETE /admin/lessons/1
   def destroy
+    screencast = @lesson.screencast
     @lesson.destroy
-    redirect_to admin_lessons_path
+    redirect_to admin_screencast_path(screencast)
   end
   
   def sort
@@ -52,6 +53,18 @@ class Admin::LessonsController < Admin::AdminController
       Lesson.where(id: id).update_all(position: index+1)
     end
     render nothing: true, status: 200, content_type: 'text/html'
+  end
+  
+  def publish
+    @lesson.published = true
+    @lesson.save
+    redirect_to admin_screencast_path(@lesson.screencast)
+  end
+  
+  def hide
+    @lesson.published = false
+    @lesson.save
+    redirect_to admin_screencast_path(@lesson.screencast)
   end
   
   private

@@ -1,5 +1,5 @@
 class Admin::ScreencastsController < Admin::AdminController
-  before_action :set_screencast, only: [:show, :edit, :update, :destroy]
+  before_action :set_screencast, only: [:show, :edit, :update, :destroy, :publish, :hide]
   
   # GET /admin/screencasts
   def index
@@ -43,8 +43,9 @@ class Admin::ScreencastsController < Admin::AdminController
   
   # DELETE /admin/screencasts/1
   def destroy
+    chapter = @screencast.chapter
     @screencast.destroy
-    redirect_to admin_screencasts_path
+    redirect_to admin_chapter_path(chapter)
   end
   
   def sort
@@ -52,6 +53,18 @@ class Admin::ScreencastsController < Admin::AdminController
       Screencast.where(id: id).update_all(position: index+1)
     end
     render nothing: true, status: 200, content_type: 'text/html'
+  end
+  
+  def publish
+    @screencast.published = true
+    @screencast.save
+    redirect_to admin_chapter_path(@screencast.chapter)
+  end
+  
+  def hide
+    @screencast.published = false
+    @screencast.save
+    redirect_to admin_chapter_path(@screencast.chapter)
   end
   
   private
