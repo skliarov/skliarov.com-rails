@@ -2,30 +2,20 @@
                 noindex: true
 
 .column.column-800
-  h2 Drafts
+  h2 Articles
   .actions.left
     = link_to 'New Article', new_admin_article_path, class: 'button small green'
   br
-  
-  - if @draft_articles.any?
-    ol.list.admin-list
-      - @draft_articles.each do |article|
-        li
-          .left
-            = link_to article.title, admin_article_path(article)
-          .right
-            - publish_message = 'Are you sure you want to publish "' + article.title + '"?'
-            = link_to 'Publish', publish_admin_article_path(article), method: :post, data: { confirm: publish_message }, class: 'button small green'
-            = link_to 'Edit', edit_admin_article_path(article), class: 'button small blue'
-            = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'
-  
   - if @articles.any?
-    h2 Articles
     ol.list.admin-list#sortable-list data-update-url='#{sort_admin_articles_path}'
       - @articles.each do |article|
         = content_tag_for :li, article
           .left
             = link_to article.title, admin_article_path(article)
           .right
+            - if article.published
+              = link_to 'Hide', hide_admin_article_path(article), method: :post, class: 'button small orange'
+            - else
+              = link_to 'Publish', publish_admin_article_path(article), method: :post, data: { confirm: "Are you sure?" }, class: 'button small green'
             = link_to 'Edit', edit_admin_article_path(article), class: 'button small blue'
             = link_to 'Delete', admin_article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small red'

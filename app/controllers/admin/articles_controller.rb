@@ -1,10 +1,9 @@
 class Admin::ArticlesController < Admin::AdminController
-  before_action :set_article, only: [:show, :edit, :update, :destroy, :publish]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :publish, :hide]
   
   # GET /admin/articles
   def index
-    @draft_articles = Article.where(published: false).order('position DESC')
-    @articles = Article.where(published: true).order('position DESC')
+    @articles = Article.all.order('position DESC')
   end
   
   # GET /admin/articles/1
@@ -54,19 +53,26 @@ class Admin::ArticlesController < Admin::AdminController
     redirect_to admin_articles_path
   end
   
-  # POST /admin/articles/1/publish
-  def publish
-    @article.published = true
-    @article.set_default_position
-    @article.save
-    redirect_to admin_articles_path
-  end
-  
+  # POST /admin/articles/1/sort
   def sort
     params[:article].reverse.each_with_index do |id, index|
       Article.where(id: id).update_all(position: index+1)
     end
     render nothing: true, status: 200, content_type: 'text/html'
+  end
+  
+  # POST /admin/articles/1/publish
+  def publish
+    @article.published = true
+    @article.save
+    redirect_to admin_articles_path
+  end
+  
+  # POST /admin/articles/1/hide
+  def hide
+    @article.published = false
+    @article.save
+    redirect_to admin_articles_path
   end
   
   private
