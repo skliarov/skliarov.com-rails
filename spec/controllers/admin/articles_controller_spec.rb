@@ -1,11 +1,65 @@
 require 'rails_helper'
 
 RSpec.describe Admin::ArticlesController, type: :controller do
+  before :all do
+    @user = FactoryGirl.create(:user)
+  end
+  
+  describe 'GET #index' do
+    context 'user is signed in' do
+      before :each do
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        sign_in :user, @user
+      end
+      
+      it 'should return valid response' do
+        get :index
+        expect(response).to be_success
+        expect(response).to render_template(:index)
+        expect(response.content_type).to eq('text/html')
+      end
+    end
+    
+    context 'user is not signed in' do
+      it 'should redirect to new user session path' do
+        get :index
+        expect(response).to redirect_to(new_user_session_path)
+        expect(response.content_type).to eq('text/html; charset=utf-8')
+      end
+    end
+  end
+  
+  describe 'GET #show' do
+    before :all do
+      @article = FactoryGirl.create(:article)
+      @article.reload # reload article in order to generate slug
+    end
+    
+    context 'user is signed in' do
+      before :each do
+        @request.env["devise.mapping"] = Devise.mappings[:user]
+        sign_in :user, @user
+      end
+      
+      it 'should return valid response' do
+        get :show, id: @article.slug
+        expect(response).to be_success
+        expect(response).to render_template(:show)
+        expect(response.content_type).to eq('text/html')
+      end
+    end
+    
+    context 'user is not signed in' do
+      it 'should redirect to new user session path' do
+        get :show, id: @article.slug
+        expect(response).to redirect_to(new_user_session_path)
+        expect(response.content_type).to eq('text/html; charset=utf-8')
+      end
+    end
+  end
+  
   describe 'POST #sort' do
     before :all do
-      # Create user
-      @user = FactoryGirl.create(:user)
-      
       # Create articles
       @article1 = FactoryGirl.create(:article, published: true, user: @user)
       @article2 = FactoryGirl.create(:article, published: true, user: @user)
