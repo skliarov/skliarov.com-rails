@@ -5,9 +5,9 @@ RSpec.describe Admin::ChaptersController, type: :controller do
     # Create User
     @user = FactoryGirl.create(:user)
     # Create test chapters
-    chapter1 = FactoryGirl.create(:chapter, published: true, user: @user)
-    chapter2 = FactoryGirl.create(:chapter, published: false, user: @user)
-    chapter3 = FactoryGirl.create(:chapter, published: true, user: @user)
+    chapter1 = FactoryGirl.create(:chapter, user: @user, published: true)
+    chapter2 = FactoryGirl.create(:chapter, user: @user, published: false)
+    chapter3 = FactoryGirl.create(:chapter, user: @user, published: true)
     @chapters = [chapter1, chapter2, chapter3]
   end
   
@@ -80,7 +80,7 @@ RSpec.describe Admin::ChaptersController, type: :controller do
     end
     
     describe 'POST #create' do
-      context 'valid chapter params' do
+      context 'with valid chapter params' do
         before :each do
           chapter_params = FactoryGirl.attributes_for(:chapter, user: @user)
           post :create, chapter: chapter_params
@@ -94,10 +94,10 @@ RSpec.describe Admin::ChaptersController, type: :controller do
         end
       end
       
-      context 'invalid chapter params' do
+      context 'with invalid chapter params' do
         before :each do
           chapter_params = FactoryGirl.attributes_for(:chapter, user: @user)
-          chapter_params['title'] = nil
+          chapter_params[:title] = nil
           post :create, chapter: chapter_params
           @chapter = Chapter.find_by(chapter_params)
         end
@@ -129,7 +129,7 @@ RSpec.describe Admin::ChaptersController, type: :controller do
         before :each do
           @chapter = FactoryGirl.create(:chapter)
           chapter_params = FactoryGirl.attributes_for(:chapter)
-          chapter_params['title'] = nil
+          chapter_params[:title] = nil
           patch :update, id: @chapter.slug, chapter: chapter_params
         end
         it 'should not update chapter' do
@@ -160,7 +160,7 @@ RSpec.describe Admin::ChaptersController, type: :controller do
         before :each do
           @chapter = FactoryGirl.create(:chapter)
           chapter_params = FactoryGirl.attributes_for(:chapter)
-          chapter_params['title'] = nil
+          chapter_params[:title] = nil
           put :update, id: @chapter.slug, chapter: chapter_params
         end
         it 'should not update chapter' do

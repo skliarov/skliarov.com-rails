@@ -26,7 +26,7 @@ class Admin::ScreencastsController < Admin::AdminController
     @screencast.user = current_user
     
     if @screencast.save
-      redirect_to admin_chapter_path(@screencast.chapter)
+      redirect_to admin_screencast_path(@screencast)
     else
       render action: 'new'
     end
@@ -35,7 +35,7 @@ class Admin::ScreencastsController < Admin::AdminController
   # PATCH/PUT /admin/screencasts/1
   def update
     if @screencast.update(screencast_params)
-      redirect_to admin_chapter_path(@screencast.chapter)
+      redirect_to admin_screencast_path(@screencast)
     else
       render action: 'edit'
     end

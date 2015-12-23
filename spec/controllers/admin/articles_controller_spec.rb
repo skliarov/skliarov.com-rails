@@ -80,7 +80,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     end
     
     describe 'POST #create' do
-      context 'valid article params' do
+      context 'with valid article params' do
         before :each do
           article_params = FactoryGirl.attributes_for(:article, user: @user)
           post :create, article: article_params
@@ -94,10 +94,10 @@ RSpec.describe Admin::ArticlesController, type: :controller do
         end
       end
       
-      context 'invalid article params' do
+      context 'with invalid article params' do
         before :each do
           article_params = FactoryGirl.attributes_for(:article, user: @user)
-          article_params['title'] = nil
+          article_params[:title] = nil
           post :create, article: article_params
           @article = Article.find_by(article_params)
         end
@@ -111,7 +111,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     end
     
     describe 'PATCH #update' do
-      context 'valid article params' do
+      context 'with valid article params' do
         before :each do
           @article = FactoryGirl.create(:article)
           patch :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
@@ -127,11 +127,11 @@ RSpec.describe Admin::ArticlesController, type: :controller do
         end
       end
       
-      context 'invalid article params' do
+      context 'with invalid article params' do
         before :each do
           @article = FactoryGirl.create(:article)
           article_params = FactoryGirl.attributes_for(:article)
-          article_params['title'] = nil
+          article_params[:title] = nil
           patch :update, id: @article.slug, article: article_params
         end
         it 'should not update article' do
@@ -144,7 +144,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     end
     
     describe 'PUT #update' do
-      context 'valid article params' do
+      context 'with valid article params' do
         before :each do
           @article = FactoryGirl.create(:article)
           put :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
@@ -160,11 +160,11 @@ RSpec.describe Admin::ArticlesController, type: :controller do
         end
       end
       
-      context 'invalid article params' do
+      context 'with invalid article params' do
         before :each do
           @article = FactoryGirl.create(:article)
           article_params = FactoryGirl.attributes_for(:article)
-          article_params['title'] = nil
+          article_params[:title] = nil
           put :update, id: @article.slug, article: article_params
         end
         it 'should not update article' do
