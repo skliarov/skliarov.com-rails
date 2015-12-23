@@ -68,13 +68,16 @@ RSpec.describe Admin::ScreencastsController, type: :controller do
     describe 'POST #create' do
       context 'with valid screencast params' do
         before :each do
-          screencast_params = FactoryGirl.attributes_for(:screencast)
+          screencast_params = FactoryGirl.attributes_for(:screencast, user: nil, chapter: nil)
           screencast_params[:chapter_id] = @chapter.id
           post :create, screencast: screencast_params
           @screencast = Screencast.find_by(slug: screencast_params[:slug])
         end
         it 'should create new screencast' do
           expect(@screencast).not_to eq(nil)
+        end
+        it 'should assign current user as author' do
+          expect(@screencast.user).to eq(@user)
         end
         it 'should redirect to #show screencast' do
           expect(response).to redirect_to(admin_screencast_path(@screencast))

@@ -82,12 +82,15 @@ RSpec.describe Admin::ChaptersController, type: :controller do
     describe 'POST #create' do
       context 'with valid chapter params' do
         before :each do
-          chapter_params = FactoryGirl.attributes_for(:chapter, user: @user)
+          chapter_params = FactoryGirl.attributes_for(:chapter, user: nil)
           post :create, chapter: chapter_params
-          @chapter = Chapter.find_by(chapter_params)
+          @chapter = Chapter.find_by(slug: chapter_params[:slug])
         end
         it 'should create new chapter' do
           expect(@chapter).not_to eq(nil)
+        end
+        it 'should assign current user as author' do
+          expect(@chapter.user).to eq(@user)
         end
         it 'should redirect to #show chapter' do
           expect(response).to redirect_to(admin_chapter_path(@chapter))
@@ -276,9 +279,9 @@ RSpec.describe Admin::ChaptersController, type: :controller do
     
     describe 'POST #create' do
       before :each do
-        chapter_params = FactoryGirl.attributes_for(:chapter, user: @user)
+        chapter_params = FactoryGirl.attributes_for(:chapter, user: nil)
         post :create, chapter: chapter_params
-        @chapter = Chapter.find_by(chapter_params)
+        @chapter = Chapter.find_by(slug: chapter_params[:slug])
       end
       it 'should not create new chapter' do
         expect(@chapter).to eq(nil)

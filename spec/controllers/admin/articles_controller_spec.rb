@@ -82,12 +82,15 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'POST #create' do
       context 'with valid article params' do
         before :each do
-          article_params = FactoryGirl.attributes_for(:article, user: @user)
+          article_params = FactoryGirl.attributes_for(:article, user: nil)
           post :create, article: article_params
-          @article = Article.find_by(article_params)
+          @article = Article.find_by(title: article_params[:title], body: article_params[:body])
         end
         it 'should create new article' do
           expect(@article).not_to eq(nil)
+        end
+        it 'should assign current user as author' do
+          expect(@article.user).to eq(@user)
         end
         it 'should redirect to #show article' do
           expect(response).to redirect_to(admin_article_path(@article))
@@ -281,7 +284,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     
     describe 'POST #create' do
       before :each do
-        article_params = FactoryGirl.attributes_for(:article, user: @user)
+        article_params = FactoryGirl.attributes_for(:article, user: nil)
         post :create, article: article_params
         @article = Article.find_by(article_params)
       end

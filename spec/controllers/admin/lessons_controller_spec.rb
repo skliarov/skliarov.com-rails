@@ -76,6 +76,9 @@ RSpec.describe Admin::LessonsController, type: :controller do
         it 'should create new lesson' do
           expect(@lesson).not_to eq(nil)
         end
+        it 'should assign current user as author' do
+          expect(@lesson.user).to eq(@user)
+        end
         it 'should redirect to #show lesson' do
           expect(response).to redirect_to(admin_lesson_path(@lesson))
         end
@@ -258,7 +261,7 @@ RSpec.describe Admin::LessonsController, type: :controller do
     
     describe 'POST #create' do
       before :each do
-        lesson_params = FactoryGirl.attributes_for(:lesson, user: @user)
+        lesson_params = FactoryGirl.attributes_for(:lesson, user: nil)
         post :create, lesson: lesson_params
         @lesson = Lesson.find_by(lesson_params)
       end
