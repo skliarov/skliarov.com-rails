@@ -79,12 +79,151 @@ RSpec.describe Admin::ArticlesController, type: :controller do
       end
     end
     
+    describe 'POST #create' do
+      context 'valid article params' do
+        before :each do
+          article_params = FactoryGirl.attributes_for(:article, user: @user)
+          post :create, article: article_params
+          @article = Article.find_by(article_params)
+        end
+        it 'should create new article' do
+          expect(@article).not_to eq(nil)
+        end
+        it 'should redirect to #show article' do
+          expect(response).to redirect_to(admin_article_path(@article))
+        end
+      end
+      
+      context 'invalid article params' do
+        before :each do
+          article_params = FactoryGirl.attributes_for(:article, user: @user)
+          article_params['title'] = nil
+          post :create, article: article_params
+          @article = Article.find_by(article_params)
+        end
+        it 'should not create new article' do
+          expect(@article).to eq(nil)
+        end
+        it 'should render #new' do
+          expect(response).to render_template(:new)
+        end
+      end
+    end
+    
+    describe 'PATCH #update' do
+      context 'valid article params' do
+        before :each do
+          @article = FactoryGirl.create(:article)
+          patch :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+        end
+        it 'should update fields of article' do
+          expect(@article.title).not_to eq(Article.find(@article.id).title)
+          expect(@article.body).not_to eq(Article.find(@article.id).body)
+          expect(@article.preview).not_to eq(Article.find(@article.id).preview)
+        end
+        it 'should redirect to #show article' do
+          @article.reload
+          expect(response).to redirect_to(admin_article_path(@article))
+        end
+      end
+      
+      context 'invalid article params' do
+        before :each do
+          @article = FactoryGirl.create(:article)
+          article_params = FactoryGirl.attributes_for(:article)
+          article_params['title'] = nil
+          patch :update, id: @article.slug, article: article_params
+        end
+        it 'should not update article' do
+          expect(@article.updated_at).to eq(Article.find(@article.id).updated_at)
+        end
+        it 'should render #edit' do
+          expect(response).to render_template(:edit)
+        end
+      end
+    end
+    
+    describe 'PUT #update' do
+      context 'valid article params' do
+        before :each do
+          @article = FactoryGirl.create(:article)
+          put :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+        end
+        it 'should update fields of article' do
+          expect(@article.title).not_to eq(Article.find(@article.id).title)
+          expect(@article.body).not_to eq(Article.find(@article.id).body)
+          expect(@article.preview).not_to eq(Article.find(@article.id).preview)
+        end
+        it 'should redirect to #show article' do
+          @article.reload
+          expect(response).to redirect_to(admin_article_path(@article))
+        end
+      end
+      
+      context 'invalid article params' do
+        before :each do
+          @article = FactoryGirl.create(:article)
+          article_params = FactoryGirl.attributes_for(:article)
+          article_params['title'] = nil
+          put :update, id: @article.slug, article: article_params
+        end
+        it 'should not update article' do
+          expect(@article.updated_at).to eq(Article.find(@article.id).updated_at)
+        end
+        it 'should render #edit' do
+          expect(response).to render_template(:edit)
+        end
+      end
+    end
+    
+    describe 'DELETE #destroy' do
+      before :each do
+        @article = FactoryGirl.create(:article)
+        delete :destroy, id: @article.slug
+      end
+      it 'should destroy the article' do
+        articles_count = Article.where(id: @article.id).count
+        expect(articles_count).to eq(0)
+      end
+      it 'should redirect to admin/articles#index' do
+        expect(response).to redirect_to(admin_articles_path)
+      end
+    end
+    
+    describe 'POST #publish' do
+      before :each do
+        @article = FactoryGirl.create(:article, published: false)
+        post :publish, id: @article.slug
+      end
+      it 'should publish the article' do
+        @article.reload
+        expect(@article.published).to eq(true)
+      end
+      it 'should redirect to admin/articles#index' do
+        expect(response).to redirect_to(admin_articles_path)
+      end
+    end
+    
+    describe 'POST #hide' do
+      before :each do
+        @article = FactoryGirl.create(:article, published: true)
+        post :hide, id: @article.slug
+      end
+      it 'should hide the article' do
+        @article.reload
+        expect(@article.published).to eq(false)
+      end
+      it 'should redirect to admin/articles#index' do
+        expect(response).to redirect_to(admin_articles_path)
+      end
+    end
+    
     describe 'POST #sort' do
       it 'should not touch timestamps' do
         # Get references to articles
-        article1 = @articles[0]
-        article2 = @articles[1]
-        article3 = @articles[2]
+        article1 = @articles[0].reload
+        article2 = @articles[1].reload
+        article3 = @articles[2].reload
         # Execute action
         post :sort, article: [article3.id.to_s, article2.id.to_s, article1.id.to_s]
         # Make sure User is signed in
@@ -94,12 +233,12 @@ RSpec.describe Admin::ArticlesController, type: :controller do
         expect(article2.updated_at).to eq(Article.find(article2.id).updated_at)
         expect(article3.updated_at).to eq(Article.find(article3.id).updated_at)
       end
-    
+      
       it 'should assign position to articles in reverse order' do
         # Get references to articles
-        article1 = @articles[0]
-        article2 = @articles[1]
-        article3 = @articles[2]
+        article1 = @articles[0].reload
+        article2 = @articles[1].reload
+        article3 = @articles[2].reload
         # Execute action
         post :sort, article: [article3.id.to_s, article1.id.to_s, article2.id.to_s]
         # Make sure User is signed in
@@ -115,53 +254,130 @@ RSpec.describe Admin::ArticlesController, type: :controller do
   context 'user is not signed in' do
     describe 'GET #index' do
       it 'should redirect to new user session path' do
-        # Execute action
         get :index
-        # Check result
         expect(response).to redirect_to(new_user_session_path)
       end
     end
     
     describe 'GET #show' do
       it 'should redirect to new user session path' do
-        # Get reference to article
-        article = @articles[1]
-        # Execute request
+        article = @articles[0]
         get :show, id: article.slug
-        # Check results
         expect(response).to redirect_to(new_user_session_path)
       end
     end
     
     describe 'GET #new' do
       it 'should redirect to new user session path' do
-        # Execute action
         get :new
-        # Check result
         expect(response).to redirect_to(new_user_session_path)
       end
     end
     
     describe 'GET #edit' do
-      it 'should redirect to new user session path' do
-        # Get reference to article
-        article = @articles[1]
-        # Execute request
+      before :each do
+        article = @articles[0]
         get :edit, id: article.slug
-        # Check results
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'POST #create' do
+      before :each do
+        article_params = FactoryGirl.attributes_for(:article, user: @user)
+        post :create, article: article_params
+        @article = Article.find_by(article_params)
+      end
+      it 'should not create new article' do
+        expect(@article).to eq(nil)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'PATCH #update' do
+      before :each do
+        @article = FactoryGirl.create(:article)
+        patch :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+      end
+      it 'should not update fields of article' do
+        expect(@article.title).to eq(Article.find(@article.id).title)
+        expect(@article.body).to eq(Article.find(@article.id).body)
+        expect(@article.preview).to eq(Article.find(@article.id).preview)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'PUT #update' do
+      before :each do
+        @article = FactoryGirl.create(:article)
+        put :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+      end
+      it 'should not update fields of article' do
+        expect(@article.title).to eq(Article.find(@article.id).title)
+        expect(@article.body).to eq(Article.find(@article.id).body)
+        expect(@article.preview).to eq(Article.find(@article.id).preview)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'DELETE #destroy' do
+      before :each do
+        @article = FactoryGirl.create(:article)
+        delete :destroy, id: @article.slug
+      end
+      it 'should not destroy the article' do
+        articles_count = Article.where(id: @article.id).count
+        expect(articles_count).to eq(1)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'POST #publish' do
+      before :each do
+        @article = FactoryGirl.create(:article, published: false)
+        post :publish, id: @article.slug
+      end
+      it 'should not publish the article' do
+        @article.reload
+        expect(@article.published).to eq(false)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'POST #hide' do
+      before :each do
+        @article = FactoryGirl.create(:article, published: true)
+        post :hide, id: @article.slug
+      end
+      it 'should not hide the article' do
+        @article.reload
+        expect(@article.published).to eq(true)
+      end
+      it 'should redirect to new user session path' do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
     
     describe 'POST #sort' do
-      it 'should redirect to new user session path' do
-        # Get references to articles
+      before :each do
         article1 = @articles[0]
         article2 = @articles[1]
         article3 = @articles[2]
-        # Execute action
         post :sort, article: [article3.id.to_s, article2.id.to_s, article1.id.to_s]
-        # Check results
+      end
+      it 'should redirect to new user session path' do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
