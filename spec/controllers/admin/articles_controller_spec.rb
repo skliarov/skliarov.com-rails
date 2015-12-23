@@ -92,6 +92,10 @@ RSpec.describe Admin::ArticlesController, type: :controller do
         it 'should assign current user as author' do
           expect(@article.user).to eq(@user)
         end
+        it 'should have id as prefix of slug' do
+          prefix = @article.slug.split('-').first
+          expect(prefix).to eq(@article.id.to_s)
+        end
         it 'should redirect to #show article' do
           expect(response).to redirect_to(admin_article_path(@article))
         end
@@ -123,6 +127,11 @@ RSpec.describe Admin::ArticlesController, type: :controller do
           expect(@article.title).not_to eq(Article.find(@article.id).title)
           expect(@article.body).not_to eq(Article.find(@article.id).body)
           expect(@article.preview).not_to eq(Article.find(@article.id).preview)
+        end
+        it 'should have id as prefix of slug' do
+          @article.reload
+          prefix = @article.slug.split('-').first
+          expect(prefix).to eq(@article.id.to_s)
         end
         it 'should redirect to #show article' do
           @article.reload
@@ -156,6 +165,11 @@ RSpec.describe Admin::ArticlesController, type: :controller do
           expect(@article.title).not_to eq(Article.find(@article.id).title)
           expect(@article.body).not_to eq(Article.find(@article.id).body)
           expect(@article.preview).not_to eq(Article.find(@article.id).preview)
+        end
+        it 'should have id as prefix of slug' do
+          @article.reload
+          prefix = @article.slug.split('-').first
+          expect(prefix).to eq(@article.id.to_s)
         end
         it 'should redirect to #show article' do
           @article.reload

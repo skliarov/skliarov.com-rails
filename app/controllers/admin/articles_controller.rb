@@ -25,7 +25,7 @@ class Admin::ArticlesController < Admin::AdminController
     @article.user = current_user
     
     if @article.save
-      # Create URL slug for article on creation
+      # Force update slug
       @article.slug = nil
       @article.save
       
