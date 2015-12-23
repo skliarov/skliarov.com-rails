@@ -21,7 +21,7 @@ class Admin::ChaptersController < Admin::AdminController
     @chapter.user = current_user
     
     if @chapter.save
-      redirect_to admin_chapters_path
+      redirect_to admin_chapter_path(@chapter)
     else
       render action: 'new'
     end
@@ -30,7 +30,7 @@ class Admin::ChaptersController < Admin::AdminController
   # PATCH/PUT /admin/chapters/1
   def update
     if @chapter.update(chapter_params)
-      redirect_to admin_chapters_path
+      redirect_to admin_chapter_path(@chapter)
     else
       render action: 'edit'
     end
