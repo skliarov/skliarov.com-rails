@@ -79,6 +79,9 @@ RSpec.describe Admin::LessonsController, type: :controller do
         it 'should assign current user as author' do
           expect(@lesson.user).to eq(@user)
         end
+        it 'should assign relation to proper screencast' do
+          expect(@lesson.screencast).to eq(@screencast)
+        end
         it 'should redirect to #show lesson' do
           expect(response).to redirect_to(admin_lesson_path(@lesson))
         end

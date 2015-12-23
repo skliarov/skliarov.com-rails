@@ -79,6 +79,9 @@ RSpec.describe Admin::ScreencastsController, type: :controller do
         it 'should assign current user as author' do
           expect(@screencast.user).to eq(@user)
         end
+        it 'should assign relation to proper chapter' do
+          expect(@screencast.chapter).to eq(@chapter)
+        end
         it 'should redirect to #show screencast' do
           expect(response).to redirect_to(admin_screencast_path(@screencast))
         end
@@ -173,7 +176,7 @@ RSpec.describe Admin::ScreencastsController, type: :controller do
         screencasts_count = Screencast.where(id: @screencast.id).count
         expect(screencasts_count).to eq(0)
       end
-      it 'should redirect to admin/screencasts#index' do
+      it 'should redirect to admin/chapters#show' do
         expect(response).to redirect_to(admin_chapter_path(@chapter))
       end
     end
@@ -187,7 +190,7 @@ RSpec.describe Admin::ScreencastsController, type: :controller do
         @screencast.reload
         expect(@screencast.published).to eq(true)
       end
-      it 'should redirect to admin/screencasts#index' do
+      it 'should redirect to admin/chapters#show' do
         expect(response).to redirect_to(admin_chapter_path(@chapter))
       end
     end
@@ -201,7 +204,7 @@ RSpec.describe Admin::ScreencastsController, type: :controller do
         @screencast.reload
         expect(@screencast.published).to eq(false)
       end
-      it 'should redirect to admin/screencasts#index' do
+      it 'should redirect to admin/chapters#show' do
         expect(response).to redirect_to(admin_chapter_path(@chapter))
       end
     end
