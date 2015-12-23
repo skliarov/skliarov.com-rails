@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ScreencastsController, type: :controller do
   before :all do
-    @user = FactoryGirl.create(:user)
-    @chapter = FactoryGirl.create(:chapter, user: @user)
-    # Create test articles
-    screencast1 = FactoryGirl.create(:screencast, user: @user, chapter: @chapter, published: true)
-    screencast2 = FactoryGirl.create(:screencast, user: @user, chapter: @chapter, published: false)
-    screencast3 = FactoryGirl.create(:screencast, user: @user, chapter: @chapter, published: true)
-    @screencasts = [screencast1, screencast2, screencast3]
+    @screencast = FactoryGirl.create(:screencast, published: true)
   end
   
   describe 'GET #index' do
@@ -28,8 +22,7 @@ RSpec.describe ScreencastsController, type: :controller do
   
   describe 'GET #show' do
     before :each do
-      screencast = @screencasts[0]
-      get :show, id: screencast.slug
+      get :show, id: @screencast.slug
     end
     it 'should have successful response status' do
       expect(response).to be_success

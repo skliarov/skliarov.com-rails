@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
   before :all do
-    # Create User
-    @user = FactoryGirl.create(:user)
-    # Create test articles
-    article1 = FactoryGirl.create(:article, published: true, user: @user)
-    article2 = FactoryGirl.create(:article, published: false, user: @user)
-    article3 = FactoryGirl.create(:article, published: true, user: @user)
-    @articles = [article1, article2, article3]
+    @article = FactoryGirl.create(:article, published: true)
   end
   
   describe 'GET #index' do
@@ -28,8 +22,7 @@ RSpec.describe ArticlesController, type: :controller do
   
   describe 'GET #show' do
     before :each do
-      article = @articles[0]
-      get :show, id: article.slug
+      get :show, id: @article.slug
     end
     it 'should have successful response status' do
       expect(response).to be_success
