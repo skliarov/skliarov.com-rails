@@ -246,4 +246,132 @@ RSpec.describe Admin::ChaptersController, type: :controller do
       end
     end
   end
+  
+  context 'user is not signed in' do
+    describe 'GET #index' do
+      it 'should redirect to new user session path' do
+        get :index
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'GET #show' do
+      it 'should redirect to new user session path' do
+        chapter = @chapters[0]
+        get :show, id: chapter.slug
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'GET #new' do
+      it 'should redirect to new user session path' do
+        get :new
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'GET #edit' do
+      before :each do
+        chapter = @chapters[0]
+        get :edit, id: chapter.slug
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'POST #create' do
+      before :each do
+        chapter_params = FactoryGirl.attributes_for(:chapter, user: @user)
+        post :create, chapter: chapter_params
+        @chapter = Chapter.find_by(chapter_params)
+      end
+      it 'should not create new chapter' do
+        expect(@chapter).to eq(nil)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'PATCH #update' do
+      before :each do
+        @chapter = FactoryGirl.create(:chapter)
+        patch :update, id: @chapter.slug, chapter: FactoryGirl.attributes_for(:chapter)
+      end
+      it 'should not update fields of chapter' do
+        expect(@chapter.title).to eq(Chapter.find(@chapter.id).title)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'PUT #update' do
+      before :each do
+        @chapter = FactoryGirl.create(:chapter)
+        put :update, id: @chapter.slug, chapter: FactoryGirl.attributes_for(:chapter)
+      end
+      it 'should not update fields of chapter' do
+        expect(@chapter.title).to eq(Chapter.find(@chapter.id).title)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'DELETE #destroy' do
+      before :each do
+        @chapter = FactoryGirl.create(:chapter)
+        delete :destroy, id: @chapter.slug
+      end
+      it 'should not destroy the chapter' do
+        chapters_count = Chapter.where(id: @chapter.id).count
+        expect(chapters_count).to eq(1)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'POST #publish' do
+      before :each do
+        @chapter = FactoryGirl.create(:chapter, published: false)
+        post :publish, id: @chapter.slug
+      end
+      it 'should not publish the chapter' do
+        @chapter.reload
+        expect(@chapter.published).to eq(false)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'POST #hide' do
+      before :each do
+        @chapter = FactoryGirl.create(:chapter, published: true)
+        post :hide, id: @chapter.slug
+      end
+      it 'should not hide the chapter' do
+        @chapter.reload
+        expect(@chapter.published).to eq(true)
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe 'POST #sort' do
+      before :each do
+        chapter1 = @chapters[0]
+        chapter2 = @chapters[1]
+        chapter3 = @chapters[2]
+        post :sort, chapter: [chapter3.id.to_s, chapter2.id.to_s, chapter1.id.to_s]
+      end
+      it 'should redirect to new user session path' do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
 end
