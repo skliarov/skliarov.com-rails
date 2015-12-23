@@ -215,34 +215,28 @@ RSpec.describe Admin::ChaptersController, type: :controller do
     end
     
     describe 'POST #sort' do
+      before :each do
+        @chapter1 = @chapters[0].reload
+        @chapter2 = @chapters[1].reload
+        @chapter3 = @chapters[2].reload
+      end
       it 'should not touch timestamps' do
-        # Get references to chapters
-        chapter1 = @chapters[0].reload
-        chapter2 = @chapters[1].reload
-        chapter3 = @chapters[2].reload
-        # Execute action
-        post :sort, chapter: [chapter3.id.to_s, chapter2.id.to_s, chapter1.id.to_s]
+        post :sort, chapter: [@chapter3.id.to_s, @chapter2.id.to_s, @chapter1.id.to_s]
         # Make sure User is signed in
         expect(response).to be_success
         # Test timestamps
-        expect(chapter1.updated_at).to eq(Chapter.find(chapter1.id).updated_at)
-        expect(chapter2.updated_at).to eq(Chapter.find(chapter2.id).updated_at)
-        expect(chapter3.updated_at).to eq(Chapter.find(chapter3.id).updated_at)
+        expect(@chapter1.updated_at).to eq(Chapter.find(@chapter1.id).updated_at)
+        expect(@chapter2.updated_at).to eq(Chapter.find(@chapter2.id).updated_at)
+        expect(@chapter3.updated_at).to eq(Chapter.find(@chapter3.id).updated_at)
       end
-      
       it 'should assign position to chapters in straight order' do
-        # Get references to chapters
-        chapter1 = @chapters[0].reload
-        chapter2 = @chapters[1].reload
-        chapter3 = @chapters[2].reload
-        # Execute action
-        post :sort, chapter: [chapter3.id.to_s, chapter1.id.to_s, chapter2.id.to_s]
+        post :sort, chapter: [@chapter3.id.to_s, @chapter1.id.to_s, @chapter2.id.to_s]
         # Make sure User is signed in
         expect(response).to be_success
         # Test positions
-        expect(Chapter.find(chapter1.id).position).to eq(2)
-        expect(Chapter.find(chapter2.id).position).to eq(3)
-        expect(Chapter.find(chapter3.id).position).to eq(1)
+        expect(Chapter.find(@chapter1.id).position).to eq(2)
+        expect(Chapter.find(@chapter2.id).position).to eq(3)
+        expect(Chapter.find(@chapter3.id).position).to eq(1)
       end
     end
   end

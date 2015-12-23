@@ -219,34 +219,29 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     end
     
     describe 'POST #sort' do
+      before :each do
+        @article1 = @articles[0].reload
+        @article2 = @articles[1].reload
+        @article3 = @articles[2].reload
+      end
       it 'should not touch timestamps' do
-        # Get references to articles
-        article1 = @articles[0].reload
-        article2 = @articles[1].reload
-        article3 = @articles[2].reload
-        # Execute action
-        post :sort, article: [article3.id.to_s, article2.id.to_s, article1.id.to_s]
+        post :sort, article: [@article3.id.to_s, @article2.id.to_s, @article1.id.to_s]
         # Make sure User is signed in
         expect(response).to be_success
         # Test timestamps
-        expect(article1.updated_at).to eq(Article.find(article1.id).updated_at)
-        expect(article2.updated_at).to eq(Article.find(article2.id).updated_at)
-        expect(article3.updated_at).to eq(Article.find(article3.id).updated_at)
+        expect(@article1.updated_at).to eq(Article.find(@article1.id).updated_at)
+        expect(@article2.updated_at).to eq(Article.find(@article2.id).updated_at)
+        expect(@article3.updated_at).to eq(Article.find(@article3.id).updated_at)
       end
       
       it 'should assign position to articles in reverse order' do
-        # Get references to articles
-        article1 = @articles[0].reload
-        article2 = @articles[1].reload
-        article3 = @articles[2].reload
-        # Execute action
-        post :sort, article: [article3.id.to_s, article1.id.to_s, article2.id.to_s]
+        post :sort, article: [@article3.id.to_s, @article1.id.to_s, @article2.id.to_s]
         # Make sure User is signed in
         expect(response).to be_success
         # Test positions
-        expect(Article.find(article1.id).position).to eq(2)
-        expect(Article.find(article2.id).position).to eq(1)
-        expect(Article.find(article3.id).position).to eq(3)
+        expect(Article.find(@article1.id).position).to eq(2)
+        expect(Article.find(@article2.id).position).to eq(1)
+        expect(Article.find(@article3.id).position).to eq(3)
       end
     end
   end
