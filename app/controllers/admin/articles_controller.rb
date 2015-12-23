@@ -67,7 +67,7 @@ class Admin::ArticlesController < Admin::AdminController
     redirect_to admin_articles_path
   end
   
-  # POST /admin/articles/1/sort
+  # POST /admin/articles/sort
   def sort
     params[:article].reverse.each_with_index do |id, index|
       Article.where(id: id).update_all(position: index+1)

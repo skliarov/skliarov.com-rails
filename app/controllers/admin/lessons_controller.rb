@@ -10,7 +10,7 @@ class Admin::LessonsController < Admin::AdminController
   def show
   end
   
-  # GET /admin/lessons/new
+  # GET /admin/screencasts/1/lessons/new
   def new
     @lesson = Lesson.new
     @lesson.screencast = Screencast.friendly.find(params[:screencast_id])
@@ -48,23 +48,26 @@ class Admin::LessonsController < Admin::AdminController
     redirect_to admin_screencast_path(screencast)
   end
   
-  def sort
-    params[:lesson].each_with_index do |id, index|
-      Lesson.where(id: id).update_all(position: index+1)
-    end
-    render nothing: true, status: 200, content_type: 'text/html'
-  end
-  
+  # POST /admin/lessons/1/publish
   def publish
     @lesson.published = true
     @lesson.save
     redirect_to admin_screencast_path(@lesson.screencast)
   end
   
+  # POST /admin/lessons/1/hide
   def hide
     @lesson.published = false
     @lesson.save
     redirect_to admin_screencast_path(@lesson.screencast)
+  end
+  
+  # POST /admin/lessons/sort
+  def sort
+    params[:lesson].each_with_index do |id, index|
+      Lesson.where(id: id).update_all(position: index+1)
+    end
+    render nothing: true, status: 200, content_type: 'text/html'
   end
   
   private

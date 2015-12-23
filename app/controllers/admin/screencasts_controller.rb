@@ -10,7 +10,7 @@ class Admin::ScreencastsController < Admin::AdminController
   def show
   end
   
-  # GET /admin/screencasts/new
+  # GET /admin/chapter/1/screencasts/new
   def new
     @screencast = Screencast.new
     @screencast.chapter = Chapter.friendly.find(params[:chapter_id])
@@ -48,23 +48,26 @@ class Admin::ScreencastsController < Admin::AdminController
     redirect_to admin_chapter_path(chapter)
   end
   
-  def sort
-    params[:screencast].each_with_index do |id, index|
-      Screencast.where(id: id).update_all(position: index+1)
-    end
-    render nothing: true, status: 200, content_type: 'text/html'
-  end
-  
+  # POST /admin/screencasts/1/publish
   def publish
     @screencast.published = true
     @screencast.save
     redirect_to admin_chapter_path(@screencast.chapter)
   end
   
+  # POST /admin/screencasts/1/hide
   def hide
     @screencast.published = false
     @screencast.save
     redirect_to admin_chapter_path(@screencast.chapter)
+  end
+  
+  # POST /admin/screencasts/sort
+  def sort
+    params[:screencast].each_with_index do |id, index|
+      Screencast.where(id: id).update_all(position: index+1)
+    end
+    render nothing: true, status: 200, content_type: 'text/html'
   end
   
   private

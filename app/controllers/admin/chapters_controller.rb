@@ -42,23 +42,26 @@ class Admin::ChaptersController < Admin::AdminController
     redirect_to admin_chapters_path
   end
   
-  def sort
-    params[:chapter].each_with_index do |id, index|
-      Chapter.where(id: id).update_all(position: index+1)
-    end
-    render nothing: true, status: 200, content_type: 'text/html'
-  end
-  
+  # POST /admin/chapters/1/publish
   def publish
     @chapter.published = true
     @chapter.save
     redirect_to admin_chapters_path
   end
   
+  # POST /admin/chapters/1/hide
   def hide
     @chapter.published = false
     @chapter.save
     redirect_to admin_chapters_path
+  end
+  
+  # POST /admin/chapters/sort
+  def sort
+    params[:chapter].each_with_index do |id, index|
+      Chapter.where(id: id).update_all(position: index+1)
+    end
+    render nothing: true, status: 200, content_type: 'text/html'
   end
   
   private
