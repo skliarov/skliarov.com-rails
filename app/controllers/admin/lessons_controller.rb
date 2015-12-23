@@ -26,7 +26,7 @@ class Admin::LessonsController < Admin::AdminController
     @lesson.user = current_user
     
     if @lesson.save
-      redirect_to admin_screencast_path(@lesson.screencast)
+      redirect_to admin_lesson_path(@lesson)
     else
       render action: 'new'
     end
@@ -35,7 +35,7 @@ class Admin::LessonsController < Admin::AdminController
   # PATCH/PUT /admin/lessons/1
   def update
     if @lesson.update(lesson_params)
-      redirect_to admin_screencast_path(@lesson.screencast)
+      redirect_to admin_lesson_path(@lesson)
     else
       render action: 'edit'
     end
