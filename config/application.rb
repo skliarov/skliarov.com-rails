@@ -24,7 +24,6 @@ module AppDevAcademy
     config.autoload_paths    += %w( #{config.root}/app/models/ckeditor )
     config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w( ckeditor/* )
-    config.assets.precompile += %w( admin.css )
     
     # Very strange stuff, used this line to mute DEPRECATION WARNING 
     config.active_record.raise_in_transactional_callbacks = true
