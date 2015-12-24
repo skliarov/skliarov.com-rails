@@ -1,3 +1,5 @@
+$text-bottom-margin: 20px;
+$article-font-size: 16px;
 .article {
   .title {
     font-size: 1.2em;
@@ -18,17 +20,26 @@
     }
   }
   .content {
+    p {
+      font-size: $article-font-size;
+      margin-bottom: $text-bottom-margin;
+    }
     pre {
-      font-size: 14px;
-      background-color: white;
+      font-size: $article-font-size;
+      font-family: monospace;
       border: none;
       padding: 0px;
+      margin-bottom: $text-bottom-margin;
+    }
+    ul, ol {
+      list-style-position: inside;
+      margin: 20px 0 20px 20px;
+      li {
+        margin-bottom: 10px;
+      }
     }
   }
   img {
     max-width: 100%;
-  }
-  p {
-    margin-bottom: 15px;
   }
 }
