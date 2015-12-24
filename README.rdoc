@@ -1,4 +1,4 @@
-== Source code of the website http://appdev.academy
+== Source code of my blog http://wwww.appdev.academy
 
 * Ruby version 2.2.0
 * Rails verion 4.2.0
