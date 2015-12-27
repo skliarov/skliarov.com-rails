@@ -13,6 +13,8 @@ CKEDITOR.editorConfig = function( config ) {
   
   config.stylesSet = 'styling';
   
+  config.extraAllowedContent = 'code(*)'
+  
   config.toolbar = [
     ["Save", "-", "Source"],
     ["Highlight"],
