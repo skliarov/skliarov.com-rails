@@ -13,6 +13,7 @@ CKEDITOR.editorConfig = function( config ) {
   
   config.stylesSet = 'styling';
   
+  // Allow code tags to have classes
   config.extraAllowedContent = 'code(*)'
   
   config.toolbar = [
