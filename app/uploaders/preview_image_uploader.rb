@@ -12,7 +12,7 @@ class PreviewImageUploader < CarrierWave::Uploader::Base
   end
   
   # Process files as they are uploaded:
-  process resize_to_fit: [150, 100]
+  process resize_to_limit: [150, 100]
   
   def extension_white_list
     %w(jpg jpeg gif png)
