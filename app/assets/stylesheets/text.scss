@@ -1,0 +1,84 @@
+// General text styling
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.italic {
+  font-style: italic;
+}
+.strong {
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+  color: $main-color;
+}
+a:hover {
+  color: $main-color-dark;
+}
+a.contact {
+  margin-right: 5px;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $p-bottom-margin;
+}
+p {
+  font-size: $p-font-size-regular;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: $p-bottom-margin;
+}
+// Article content styling
+.article {
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .preview-image {
+    float: left;
+    width: 150px;
+    height: 100px;
+    margin-right: 10px;
+  }
+  .publishing-information {
+    margin: 25px 0;
+    p {
+      font-style: italic;
+      margin-bottom: 0;
+    }
+  }
+  .content {
+    font-size: $p-font-size-regular;
+    pre {
+      font-family: monospace;
+      border: none;
+      padding: 0px;
+    }
+    ul, ol {
+      list-style-position: inside;
+      margin: 20px 0 20px 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  img {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  p {
+    font-size: $p-font-size-small;
+  }
+  .article {
+    .content {
+      font-size: $p-font-size-small;
+    }
+  }
+}

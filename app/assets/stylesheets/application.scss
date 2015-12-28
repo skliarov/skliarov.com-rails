@@ -3,8 +3,6 @@
 // Varibales for colors, fonts...
 @import 'variables';
 
-// Styling for articles
-@import 'articles';
 // All buttons in the app
 @import 'buttons';
 // Owl carousel elements styling
@@ -25,6 +23,8 @@
 @import 'portfolio';
 // Social network fonts and styles
 @import 'social';
+// General text & articles styling
+@import 'text';
 // Responsive video iframe
 @import 'video-wrapper';
 
@@ -50,37 +50,6 @@ hr {
 hr.big {
   margin: 50px 0;
 }
-.center {
-  text-align: center;
-}
-.left {
-  text-align: left;
-}
-.right {
-  text-align: right;
-}
-.italic {
-  font-style: italic;
-}
-.strong {
-  font-weight: bold;
-}
-a {
-  text-decoration: none;
-  color: $main-color;
-}
-a:hover {
-  color: $main-color-dark;
-}
-a.contact {
-  margin-right: 5px;
-}
-p, h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 10px;
-}
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 10px;
-}
 // About page avatar image styling
 img.about-avatar {
   float: left;
@@ -88,6 +57,7 @@ img.about-avatar {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+// Clearfix for floating elements
 .clearfix:after { 
    content: "."; 
    visibility: hidden; 
