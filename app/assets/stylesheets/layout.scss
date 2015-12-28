@@ -21,8 +21,8 @@
 .column-900 {
   max-width: 900px;
 }
-.column-1024 {
-  max-width: 1024px;
+.column-1280 {
+  max-width: 1280px;
 }
 @media screen and (max-width: 420px) {
   .column-400 {
@@ -60,8 +60,8 @@
     padding-right: 10px;
   }
 }
-@media screen and (max-width: 1020px) {
-  .column-100 {
+@media screen and (max-width: 1300px) {
+  .column-1280 {
     padding-left: 10px;
     padding-right: 10px;
   }
