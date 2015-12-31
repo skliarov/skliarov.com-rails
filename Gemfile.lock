@@ -39,7 +39,7 @@ GEM
     activesupport-json_encoder (1.1.0)
       activesupport (>= 4.1.0, < 5.0)
     arel (6.0.3)
-    autoprefixer-rails (6.2.1)
+    autoprefixer-rails (6.2.3)
       execjs
       json
     bcrypt (3.1.10)
