@@ -10,7 +10,7 @@ AppDevAcademy::Application.routes.draw do
   }, skip: :registrations
   
   # Root path
-  root to: 'articles#index'
+  root to: 'pages#home'
   
   # Articles
   resources :articles, only: [:index, :show]
@@ -50,6 +50,7 @@ AppDevAcademy::Application.routes.draw do
   end
   
   # Static pages
+  get '/', to: 'pages#home'
   get '/about', to: 'pages#about'
   get '/portfolio', to: 'pages#portfolio'
   get '/contacts', to: 'pages#contacts'

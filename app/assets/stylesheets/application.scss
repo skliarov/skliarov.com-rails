@@ -40,6 +40,7 @@ body {
   min-width: 320px;
   padding-bottom: 50px;
 }
+
 hr {
   border: 0 none;
   height: 1px;
@@ -50,6 +51,7 @@ hr {
 hr.big {
   margin: 50px 0;
 }
+
 // About page avatar image styling
 img.about-avatar {
   float: left;
@@ -57,6 +59,7 @@ img.about-avatar {
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
 // Clearfix for floating elements
 .clearfix:after { 
    content: "."; 
@@ -64,4 +67,17 @@ img.about-avatar {
    display: block; 
    height: 0; 
    clear: both;
+}
+
+.app-dev-block {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  h1, p {
+    text-align: center;
+  }
+  h1 {
+    color: $main-color;
+  }
 }

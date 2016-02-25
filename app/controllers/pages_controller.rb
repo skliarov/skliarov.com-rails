@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+  # GET /
+  def home
+  end
+  
   # GET /portfolio
   def portfolio
   end

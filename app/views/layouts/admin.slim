@@ -16,7 +16,7 @@ html
   body
     /! Navigation bar
     nav.desktop
-      .column.column-1280
+      .column.top-menu
         ul.left
           li class=('active' if params[:controller] == 'admin/articles')
             = link_to 'Articles', admin_articles_path
@@ -34,7 +34,7 @@ html
     
     nav.mobile
       .logo
-        = link_to '[App dev].academy;', articles_path
+        = link_to 'App Dev Academy', articles_path
       .breadcrumb
         = link_to '', '#', { class: 'fa fa-bars' }
     
