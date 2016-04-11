@@ -18,11 +18,6 @@ AppDevAcademy::Application.routes.draw do
   # RSS feed
   get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
   
-  # Screencasts and Lessons
-  resources :screencasts, only: [:index, :show] do
-    resources :lessons, only: [:show]
-  end
-  
   # Admin panel
   namespace :admin do
     resources :articles do
@@ -30,27 +25,9 @@ AppDevAcademy::Application.routes.draw do
       post :hide, on: :member
       post :sort, on: :collection
     end
-    resources :chapters do
-      resource :screencasts, only: [:new]
-      post :publish, on: :member
-      post :hide, on: :member
-      post :sort, on: :collection
-    end
-    resources :screencasts, except: [:index, :new] do
-      resource :lessons, only: [:new]
-      post :publish, on: :member
-      post :hide, on: :member
-      post :sort, on: :collection
-    end
-    resources :lessons, except: [:index] do
-      post :publish, on: :member
-      post :hide, on: :member
-      post :sort, on: :collection
-    end
   end
   
   # Static pages
-  get '/', to: 'pages#home'
   get '/about', to: 'pages#about'
   get '/portfolio', to: 'pages#portfolio'
   get '/contacts', to: 'pages#contacts'

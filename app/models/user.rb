@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
   # Declaration of relationships
   has_many :articles, dependent: :destroy
-  has_many :chapters, dependent: :destroy
-  has_many :screencasts, dependent: :destroy
-  has_many :lessons, dependent: :destroy
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

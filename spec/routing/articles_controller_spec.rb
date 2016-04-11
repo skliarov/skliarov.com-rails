@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Routes for ArticlesController', type: :routing do
-  context 'root route' do
-    it 'routes GET "/" to articles#index' do
-      expect(get('/')).to route_to('articles#index')
-    end
-  end
-  
   context 'RESTful CRUD' do
     it 'routes GET "/articles" to "articles#index"' do
       expect(get('/articles')).to route_to('articles#index')

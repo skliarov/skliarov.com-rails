@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221172658) do
+ActiveRecord::Schema.define(version: 20160411131237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,21 +36,6 @@ ActiveRecord::Schema.define(version: 20151221172658) do
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
-  create_table "chapters", force: :cascade do |t|
-    t.string   "title",                      null: false
-    t.integer  "position",   default: 0,     null: false
-    t.integer  "user_id",                    null: false
-    t.boolean  "published",  default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "slug",                       null: false
-  end
-
-  add_index "chapters", ["position"], name: "index_chapters_on_position", using: :btree
-  add_index "chapters", ["published"], name: "index_chapters_on_published", using: :btree
-  add_index "chapters", ["slug"], name: "index_chapters_on_slug", unique: true, using: :btree
-  add_index "chapters", ["user_id"], name: "index_chapters_on_user_id", using: :btree
-
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -66,44 +51,6 @@ ActiveRecord::Schema.define(version: 20151221172658) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
-
-  create_table "lessons", force: :cascade do |t|
-    t.string   "title",                         null: false
-    t.text     "body",                          null: false
-    t.integer  "position",      default: 0,     null: false
-    t.integer  "screencast_id",                 null: false
-    t.integer  "user_id",                       null: false
-    t.boolean  "published",     default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "slug",                          null: false
-    t.string   "preview_image"
-  end
-
-  add_index "lessons", ["position"], name: "index_lessons_on_position", using: :btree
-  add_index "lessons", ["published"], name: "index_lessons_on_published", using: :btree
-  add_index "lessons", ["screencast_id"], name: "index_lessons_on_screencast_id", using: :btree
-  add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true, using: :btree
-  add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
-
-  create_table "screencasts", force: :cascade do |t|
-    t.string   "title",                         null: false
-    t.text     "body",                          null: false
-    t.integer  "position",      default: 0,     null: false
-    t.integer  "chapter_id",                    null: false
-    t.integer  "user_id",                       null: false
-    t.boolean  "published",     default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "slug",                          null: false
-    t.string   "preview_image"
-  end
-
-  add_index "screencasts", ["chapter_id"], name: "index_screencasts_on_chapter_id", using: :btree
-  add_index "screencasts", ["position"], name: "index_screencasts_on_position", using: :btree
-  add_index "screencasts", ["published"], name: "index_screencasts_on_published", using: :btree
-  add_index "screencasts", ["slug"], name: "index_screencasts_on_slug", unique: true, using: :btree
-  add_index "screencasts", ["user_id"], name: "index_screencasts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

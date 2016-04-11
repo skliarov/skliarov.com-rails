@@ -7,8 +7,5 @@ RSpec.describe User, type: :model do
   
   context 'relations' do
     it { should have_many(:articles).dependent(:destroy) }
-    it { should have_many(:chapters).dependent(:destroy) }
-    it { should have_many(:screencasts).dependent(:destroy) }
-    it { should have_many(:lessons).dependent(:destroy) }
   end
 end
