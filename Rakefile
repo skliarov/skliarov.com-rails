@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-AppDevAcademy::Application.load_tasks
+SkliarovCom::Application.load_tasks

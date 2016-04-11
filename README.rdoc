@@ -1,4 +1,5 @@
-== Source code of my blog http://wwww.appdev.academy
+== Source code of my blog https://wwww.skliarov.com
 
-* Ruby version 2.2.0
+* Ruby version 2.2.1
 * Rails verion 4.2.0
+* database.yml and secrets.yml are not included into repository - you have to create those files after cloning the project.

@@ -1,8 +1,8 @@
 xml.instruct! :xml, version: '1.0'
 xml.rss version: '2.0' do
   xml.channel do
-    xml.title 'AppDev Academy'
-    xml.description 'AppDev Academy is all about learning new technologies (iOS, Android, Ruby on Rails, React, Angular, etc) freelance and entrepreneurship'
+    xml.title 'Максим Скляров - Блог'
+    xml.description 'Мій блог про життя і бізнес в Україні'
     xml.link articles_url
     
     for article in @articles

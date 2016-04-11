@@ -8,7 +8,7 @@ require "sprockets/railtie"
 
 Bundler.require(:default, Rails.env)
 
-module AppDevAcademy
+module SkliarovCom
   class Application < Rails::Application
     
     # Disable automatic generation for TestUnit, JS, CSS files and helpers

@@ -1,4 +1,4 @@
-AppDevAcademy::Application.routes.draw do
+SkliarovCom::Application.routes.draw do
   # Root path
   root to: 'pages#home'
   
