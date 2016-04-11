@@ -20,8 +20,6 @@ html
         ul.left
           li class=('active' if params[:controller] == 'admin/articles')
             = link_to 'Articles', admin_articles_path
-          li class=('active' if ['admin/chapters', 'admin/screencasts', 'admin/lessons'].include? params[:controller])
-            = link_to 'Screencasts', admin_chapters_path
         ul.right
           - if user_signed_in?
             li

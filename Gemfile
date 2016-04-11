@@ -19,8 +19,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Compiler of JS assets
 gem 'uglifier'
-# Carousel
-gem 'owlcarousel-rails'
 
 # Template engines
 # For HTML

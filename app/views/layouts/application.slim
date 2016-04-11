@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    = auto_discovery_link_tag :rss, 'http://www.appdev.academy/feed'
+    = auto_discovery_link_tag :rss, 'https://www.skliarov.com/feed'
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     
@@ -17,17 +17,13 @@ html
       .column.top-menu
         ul.left
           li class=('active' if params[:controller] == 'pages' && params[:action] == 'home')
-            = link_to 'Home', '/'
+            = link_to 'Головна', '/'
           li class=('active' if params[:controller] == 'articles')
-            = link_to 'Articles', articles_path
-          li class=('active' if params[:controller] == 'screencasts' || params[:controller] == 'lessons')
-            = link_to 'Screencasts', screencasts_path
+            = link_to 'Статті', articles_path
           li class=('active' if params[:controller] == 'pages' && params[:action] == 'about')
-            = link_to 'About', '/about'
-          li class=('active' if params[:controller] == 'pages' && params[:action] == 'portfolio')
-            = link_to 'Portfolio', '/portfolio'
+            = link_to 'Про мене', '/about'
           li class=('active' if params[:controller] == 'pages' && params[:action] == 'contacts')
-            = link_to 'Contacts', '/contacts'
+            = link_to 'Контакти', '/contacts'
         ul.right
           li
             = link_to '', feed_path, { class: 'fa fa-rss' }
@@ -37,7 +33,7 @@ html
     
     nav.mobile
       .logo
-        = link_to 'App Dev Academy', articles_path
+        = link_to 'Скляров Максим', articles_path
       .breadcrumb
         = link_to '', '#', { class: 'fa fa-bars' }
     

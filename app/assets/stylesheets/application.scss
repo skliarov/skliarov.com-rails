@@ -5,8 +5,6 @@
 
 // All buttons in the app
 @import 'buttons';
-// Owl carousel elements styling
-@import 'carousel';
 // Fonts for all pages
 @import 'fonts';
 // Form styling
@@ -19,22 +17,15 @@
 @import 'navigation';
 // Custom pagination
 @import 'pagination';
-// Portfolio styling
-@import 'portfolio';
 // Social network fonts and styles
 @import 'social';
 // General text & articles styling
 @import 'text';
-// Responsive video iframe
-@import 'video-wrapper';
 
 // highlight.js theme (in vendor/highlight folder)
 @import 'highlight/monokai_sublime';
 // Font Awesome https://fortawesome.github.io/Font-Awesome/ (installed via RubyGems)
 @import 'font-awesome';
-// Carousel http://owlgraphic.com/owlcarousel/ (installed via RubyGems)
-@import 'owl.carousel';
-@import 'owl.theme';
 
 body {
   min-width: 320px;
@@ -56,7 +47,7 @@ hr.big {
 img.about-avatar {
   float: left;
   width: 40%;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-bottom: 10px;
 }
 
@@ -67,17 +58,4 @@ img.about-avatar {
    display: block; 
    height: 0; 
    clear: both;
-}
-
-.app-dev-block {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  h1, p {
-    text-align: center;
-  }
-  h1 {
-    color: $main-color;
-  }
 }

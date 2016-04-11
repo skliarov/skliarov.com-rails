@@ -1,4 +1,7 @@
 AppDevAcademy::Application.routes.draw do
+  # Root path
+  root to: 'pages#home'
+  
   # CKEditor routes integration
   mount Ckeditor::Engine => '/ckeditor'
   
@@ -8,9 +11,6 @@ AppDevAcademy::Application.routes.draw do
     sign_in: 'sign-in',
     sign_out: 'sign-out'
   }, skip: :registrations
-  
-  # Root path
-  root to: 'pages#home'
   
   # Articles
   resources :articles, only: [:index, :show]
@@ -29,6 +29,5 @@ AppDevAcademy::Application.routes.draw do
   
   # Static pages
   get '/about', to: 'pages#about'
-  get '/portfolio', to: 'pages#portfolio'
   get '/contacts', to: 'pages#contacts'
 end
