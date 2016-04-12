@@ -40,6 +40,9 @@ gem 'activesupport-json_encoder'
 gem 'friendly_id'
 gem 'meta-tags'
 
+# Localization
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
+
 group :production do
 	gem 'therubyracer'
 end

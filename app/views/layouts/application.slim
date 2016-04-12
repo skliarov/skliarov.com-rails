@@ -16,14 +16,10 @@ html
     nav.desktop
       .column.top-menu
         ul.left
-          li class=('active' if params[:controller] == 'pages' && params[:action] == 'home')
-            = link_to 'Головна', '/'
+          li class=('active' if params[:controller] == 'pages' && params[:action] == 'about')
+            = link_to 'Про мене', '/'
           li class=('active' if params[:controller] == 'articles')
             = link_to 'Статті', articles_path
-          li class=('active' if params[:controller] == 'pages' && params[:action] == 'about')
-            = link_to 'Про мене', '/about'
-          li class=('active' if params[:controller] == 'pages' && params[:action] == 'contacts')
-            = link_to 'Контакти', '/contacts'
         ul.right
           li
             = link_to '', feed_path, { class: 'fa fa-rss' }

@@ -1,6 +1,6 @@
 SkliarovCom::Application.routes.draw do
   # Root path
-  root to: 'pages#home'
+  root to: 'pages#about'
   
   # CKEditor routes integration
   mount Ckeditor::Engine => '/ckeditor'
@@ -27,7 +27,8 @@ SkliarovCom::Application.routes.draw do
     end
   end
   
+  match '/admin', to: redirect('/admin/articles'), via: :get
+  
   # Static pages
-  get '/about', to: 'pages#about'
-  get '/contacts', to: 'pages#contacts'
+  get '/', to: 'pages#about'
 end

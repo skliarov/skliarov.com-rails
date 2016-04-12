@@ -11,6 +11,9 @@ Bundler.require(:default, Rails.env)
 module SkliarovCom
   class Application < Rails::Application
     
+    # Set available locales
+    config.i18n.available_locales = [:en, :uk]
+    
     # Disable automatic generation for TestUnit, JS, CSS files and helpers
     config.generators do |g|
       g.test_framework  nil, fixture: false

@@ -8,8 +8,9 @@
       h2.center
         = @article.title
     .publishing-information
-      p Posted by Maksym Skliarov on #{@article.created_at.strftime("%B %d, %Y")}
-      p last update #{@article.updated_at.strftime("%B %d, %Y")}
+      p Aвтор Максим Скляров
+      p опубліковано #{l(@article.created_at, format: "%d %B %Y", locale: :uk).mb_chars.downcase.to_s}
+      p останнє оновлення #{l(@article.updated_at, format: "%d %B %Y", locale: :uk).mb_chars.downcase.to_s}
     .content
       = @article.body.html_safe
     hr
