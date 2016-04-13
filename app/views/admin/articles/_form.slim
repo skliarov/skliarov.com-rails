@@ -16,6 +16,11 @@
     = f.text_field :title, autocomplete: :off, autofocus: :on, class: 'text-field'
   
   .form-group
+    label Slug
+    br
+    = f.text_field :slug, autocomplete: :off, class: 'text-field'
+  
+  .form-group
     label Preview
     br
     = f.text_area :preview, class: 'text-area'

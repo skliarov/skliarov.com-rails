@@ -7,7 +7,7 @@
       h1.center = @article.title
     .preview
       h3 Preview
-      = @article.preview.html_safe
+      p = @article.preview.html_safe
     .content
       h3 Article
       = @article.body.html_safe

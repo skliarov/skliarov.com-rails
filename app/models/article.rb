@@ -16,12 +16,8 @@ class Article < ActiveRecord::Base
   validates :description, presence: true
   validates :slug, presence: true, uniqueness: true
   
-  # Add user-friendly URL slug
-  extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
-  
-  def slug_candidates
-    [[:id, :title]]
+  def to_param
+    self.slug
   end
   
   # Set position to be the last in the list

@@ -25,10 +25,6 @@ class Admin::ArticlesController < Admin::AdminController
     @article.user = current_user
     
     if @article.save
-      # Force update slug
-      @article.slug = nil
-      @article.save
-      
       redirect_to admin_article_path(@article)
     else
       render action: 'new'
@@ -37,9 +33,6 @@ class Admin::ArticlesController < Admin::AdminController
   
   # PATCH/PUT /admin/articles/1
   def update
-    # Force update slug
-    @article.slug = nil
-    
     if @article.update(article_params)
       redirect_to admin_article_path(@article)
     else
@@ -77,10 +70,10 @@ class Admin::ArticlesController < Admin::AdminController
   
   private
     def set_article
-      @article = Article.friendly.find(params[:id])
+      @article = Article.find_by(slug: params[:slug])
     end
     
     def article_params
-      params.require(:article).permit(:title, :preview, :preview_image, :remove_preview_image, :body, :description, :keywords)
+      params.require(:article).permit(:title, :slug, :preview, :preview_image, :remove_preview_image, :body, :description, :keywords)
     end
 end

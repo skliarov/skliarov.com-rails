@@ -37,7 +37,6 @@ gem 'mini_magick'
 gem 'activesupport-json_encoder'
 
 # SEO Optimisation
-gem 'friendly_id'
 gem 'meta-tags'
 
 # Localization

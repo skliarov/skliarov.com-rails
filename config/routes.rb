@@ -13,14 +13,14 @@ SkliarovCom::Application.routes.draw do
   }, skip: :registrations
   
   # Articles
-  resources :articles, only: [:index, :show]
+  resources :articles, param: :slug, only: [:index, :show]
   
   # RSS feed
   get '/feed', to: 'articles#feed', defaults: { format: 'rss' }
   
   # Admin panel
   namespace :admin do
-    resources :articles do
+    resources :articles, param: :slug do
       post :publish, on: :member
       post :hide, on: :member
       post :sort, on: :collection
