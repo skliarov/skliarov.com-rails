@@ -22,7 +22,7 @@ RSpec.describe ArticlesController, type: :controller do
   
   describe 'GET #show' do
     before :each do
-      get :show, id: @article.slug
+      get :show, slug: @article.slug
     end
     it 'should have successful response status' do
       expect(response).to be_success

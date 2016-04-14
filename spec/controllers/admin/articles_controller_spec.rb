@@ -35,7 +35,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'GET #show' do
       before :each do
         article = @articles[0]
-        get :show, id: article.slug
+        get :show, slug: article.slug
       end
       it 'should have successful response status' do
         expect(response).to be_success
@@ -66,7 +66,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'GET #edit' do
       before :each do
         article = @articles[0]
-        get :edit, id: article.slug
+        get :edit, slug: article.slug
       end
       it 'should have successful response status' do
         expect(response).to be_success
@@ -91,10 +91,6 @@ RSpec.describe Admin::ArticlesController, type: :controller do
         end
         it 'should assign current user as author' do
           expect(@article.user).to eq(@user)
-        end
-        it 'should have id as prefix of slug' do
-          prefix = @article.slug.split('-').first
-          expect(prefix).to eq(@article.id.to_s)
         end
         it 'should redirect to #show article' do
           expect(response).to redirect_to(admin_article_path(@article))
@@ -121,17 +117,12 @@ RSpec.describe Admin::ArticlesController, type: :controller do
       context 'with valid article params' do
         before :each do
           @article = FactoryGirl.create(:article)
-          patch :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+          patch :update, slug: @article.slug, article: FactoryGirl.attributes_for(:article)
         end
         it 'should update fields of article' do
           expect(@article.title).not_to eq(Article.find(@article.id).title)
           expect(@article.body).not_to eq(Article.find(@article.id).body)
           expect(@article.preview).not_to eq(Article.find(@article.id).preview)
-        end
-        it 'should have id as prefix of slug' do
-          @article.reload
-          prefix = @article.slug.split('-').first
-          expect(prefix).to eq(@article.id.to_s)
         end
         it 'should redirect to #show article' do
           @article.reload
@@ -144,7 +135,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
           @article = FactoryGirl.create(:article)
           article_params = FactoryGirl.attributes_for(:article)
           article_params[:title] = nil
-          patch :update, id: @article.slug, article: article_params
+          patch :update, slug: @article.slug, article: article_params
         end
         it 'should not update article' do
           expect(@article.updated_at).to eq(Article.find(@article.id).updated_at)
@@ -159,17 +150,12 @@ RSpec.describe Admin::ArticlesController, type: :controller do
       context 'with valid article params' do
         before :each do
           @article = FactoryGirl.create(:article)
-          put :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+          put :update, slug: @article.slug, article: FactoryGirl.attributes_for(:article)
         end
         it 'should update fields of article' do
           expect(@article.title).not_to eq(Article.find(@article.id).title)
           expect(@article.body).not_to eq(Article.find(@article.id).body)
           expect(@article.preview).not_to eq(Article.find(@article.id).preview)
-        end
-        it 'should have id as prefix of slug' do
-          @article.reload
-          prefix = @article.slug.split('-').first
-          expect(prefix).to eq(@article.id.to_s)
         end
         it 'should redirect to #show article' do
           @article.reload
@@ -182,7 +168,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
           @article = FactoryGirl.create(:article)
           article_params = FactoryGirl.attributes_for(:article)
           article_params[:title] = nil
-          put :update, id: @article.slug, article: article_params
+          put :update, slug: @article.slug, article: article_params
         end
         it 'should not update article' do
           expect(@article.updated_at).to eq(Article.find(@article.id).updated_at)
@@ -196,7 +182,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'DELETE #destroy' do
       before :each do
         @article = FactoryGirl.create(:article)
-        delete :destroy, id: @article.slug
+        delete :destroy, slug: @article.slug
       end
       it 'should destroy the article' do
         articles_count = Article.where(id: @article.id).count
@@ -210,7 +196,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'POST #publish' do
       before :each do
         @article = FactoryGirl.create(:article, published: false)
-        post :publish, id: @article.slug
+        post :publish, slug: @article.slug
       end
       it 'should publish the article' do
         @article.reload
@@ -224,7 +210,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'POST #hide' do
       before :each do
         @article = FactoryGirl.create(:article, published: true)
-        post :hide, id: @article.slug
+        post :hide, slug: @article.slug
       end
       it 'should hide the article' do
         @article.reload
@@ -274,7 +260,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'GET #show' do
       it 'should redirect to new user session path' do
         article = @articles[0]
-        get :show, id: article.slug
+        get :show, slug: article.slug
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -289,7 +275,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'GET #edit' do
       before :each do
         article = @articles[0]
-        get :edit, id: article.slug
+        get :edit, slug: article.slug
       end
       it 'should redirect to new user session path' do
         expect(response).to redirect_to(new_user_session_path)
@@ -313,7 +299,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'PATCH #update' do
       before :each do
         @article = FactoryGirl.create(:article)
-        patch :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+        patch :update, slug: @article.slug, article: FactoryGirl.attributes_for(:article)
       end
       it 'should not update fields of article' do
         expect(@article.title).to eq(Article.find(@article.id).title)
@@ -328,7 +314,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'PUT #update' do
       before :each do
         @article = FactoryGirl.create(:article)
-        put :update, id: @article.slug, article: FactoryGirl.attributes_for(:article)
+        put :update, slug: @article.slug, article: FactoryGirl.attributes_for(:article)
       end
       it 'should not update fields of article' do
         expect(@article.title).to eq(Article.find(@article.id).title)
@@ -343,7 +329,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'DELETE #destroy' do
       before :each do
         @article = FactoryGirl.create(:article)
-        delete :destroy, id: @article.slug
+        delete :destroy, slug: @article.slug
       end
       it 'should not destroy the article' do
         articles_count = Article.where(id: @article.id).count
@@ -357,7 +343,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'POST #publish' do
       before :each do
         @article = FactoryGirl.create(:article, published: false)
-        post :publish, id: @article.slug
+        post :publish, slug: @article.slug
       end
       it 'should not publish the article' do
         @article.reload
@@ -371,7 +357,7 @@ RSpec.describe Admin::ArticlesController, type: :controller do
     describe 'POST #hide' do
       before :each do
         @article = FactoryGirl.create(:article, published: true)
-        post :hide, id: @article.slug
+        post :hide, slug: @article.slug
       end
       it 'should not hide the article' do
         @article.reload
