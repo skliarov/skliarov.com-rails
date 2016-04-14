@@ -37,7 +37,7 @@ RSpec.describe ArticlesController, type: :controller do
   
   describe 'GET #feed' do
     before :each do
-      get :feed, {format: 'rss'}
+      get :feed, { format: 'rss' }
     end
     it 'should have successful response status' do
       expect(response).to be_success
