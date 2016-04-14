@@ -1,4 +1,4 @@
-== Source code of my blog https://wwww.skliarov.com
+== Source code of my blog https://www.skliarov.com
 
 * Ruby version 2.2.1
 * Rails verion 4.2.0
