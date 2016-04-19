@@ -14,7 +14,7 @@
     .content
       = @article.body.html_safe
     hr
-    h3 Like it? Please share :)
+    h3 Подобається стаття? Поділись в соціальних мережах :)
     = render "articles/social", article: @article
   
   - if Rails.env.production?
