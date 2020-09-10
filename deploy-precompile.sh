@@ -24,7 +24,7 @@ ssh -p $SSH_PORT $USER@$HOST << TWO
   cd $APP_DIRECTORY
   
   # Update bundle
-  RAILS_ENV=production bundle install
+  RAILS_ENV=production bundle install --without development test
   
   # Install yarn packages
   RAILS_ENV=production yarn
