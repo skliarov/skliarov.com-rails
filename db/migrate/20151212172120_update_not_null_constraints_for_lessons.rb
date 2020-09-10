@@ -1,4 +1,4 @@
-class UpdateNotNullConstraintsForLessons < ActiveRecord::Migration
+class UpdateNotNullConstraintsForLessons < ActiveRecord::Migration[4.2]
   def self.up
     change_column :lessons, :title, :string, null: false
     change_column :lessons, :screencast_id, :integer, null: false

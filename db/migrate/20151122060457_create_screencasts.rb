@@ -1,4 +1,4 @@
-class CreateScreencasts < ActiveRecord::Migration
+class CreateScreencasts < ActiveRecord::Migration[4.2]
   def up
     create_table :screencasts do |t|
       t.string :title

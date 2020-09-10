@@ -1,4 +1,4 @@
-class AddFriendlyIdToChapters < ActiveRecord::Migration
+class AddFriendlyIdToChapters < ActiveRecord::Migration[4.2]
   def change
     # Make titles of Chapters unique and not nullable
     change_column :chapters, :title, :string, unique: true, null: false

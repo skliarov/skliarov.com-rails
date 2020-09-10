@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+ruby '2.7.1'
+
 # Rails and database
-gem 'rails', '4.2.0'
+gem 'rails', '~> 6'
 gem 'pg'
 
 # CSS
@@ -27,6 +29,8 @@ gem 'slim-rails'
 # Authentication and authorization
 gem 'devise'
 
+gem 'figaro'
+
 # Pagination
 gem 'kaminari'
 
@@ -34,16 +38,15 @@ gem 'kaminari'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'activesupport-json_encoder'
 
 # SEO Optimisation
 gem 'meta-tags'
 
 # Localization
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
+gem 'rails-i18n'
 
-group :production do
-	gem 'therubyracer'
+group :development do
+  gem 'listen'
 end
 
 group :development, :test do

@@ -1,4 +1,4 @@
-class RenameDescriptionColumns < ActiveRecord::Migration
+class RenameDescriptionColumns < ActiveRecord::Migration[4.2]
   def change
     rename_column :screencasts, :description, :body
     change_column :screencasts, :body, :text, null: false

@@ -1,4 +1,4 @@
-class DropLessons < ActiveRecord::Migration
+class DropLessons < ActiveRecord::Migration[4.2]
   def change
     drop_table :lessons
   end

@@ -1,4 +1,4 @@
-class ChangeArticlesPublishingAndSorting < ActiveRecord::Migration
+class ChangeArticlesPublishingAndSorting < ActiveRecord::Migration[4.2]
   def change
     # Add position column
     add_column :articles, :position, :integer

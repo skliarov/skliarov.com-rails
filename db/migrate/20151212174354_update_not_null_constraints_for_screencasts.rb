@@ -1,4 +1,4 @@
-class UpdateNotNullConstraintsForScreencasts < ActiveRecord::Migration
+class UpdateNotNullConstraintsForScreencasts < ActiveRecord::Migration[4.2]
   def self.up
     change_column :screencasts, :title, :string, null: false
     change_column :screencasts, :chapter_id, :integer, null: false

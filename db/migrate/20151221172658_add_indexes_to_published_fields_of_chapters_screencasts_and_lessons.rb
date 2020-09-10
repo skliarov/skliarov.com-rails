@@ -1,4 +1,4 @@
-class AddIndexesToPublishedFieldsOfChaptersScreencastsAndLessons < ActiveRecord::Migration
+class AddIndexesToPublishedFieldsOfChaptersScreencastsAndLessons < ActiveRecord::Migration[4.2]
   def up
     add_index :chapters, :published
     add_index :screencasts, :published

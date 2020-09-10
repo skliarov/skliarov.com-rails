@@ -1,4 +1,4 @@
-SkliarovCom::Application.routes.draw do
+Rails.application.routes.draw do
   # Root path
   root to: 'pages#about'
   
