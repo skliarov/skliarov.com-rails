@@ -13,7 +13,7 @@ html
   
   body
     /! Navigation bar
-    nav.desktop
+    /nav.desktop
       .column.top-menu
         ul.left
           li class=('active' if params[:controller] == 'pages' && params[:action] == 'about')
@@ -26,19 +26,19 @@ html
           - if user_signed_in?
             li
               = link_to 'Sign Out', destroy_user_session_path, method: :delete
-    
-    nav.mobile
+              
+    /nav.mobile
       .logo
         = link_to 'Максим Скляров', articles_path
       .breadcrumb
         = link_to '', '#', { class: 'fa fa-bars' }
-    
+        
     /! Notification on latest action
     - if notice
       .column.column-800
         p
           = notice
-    
+          
     /! Page content
     = yield
     

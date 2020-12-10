@@ -51,11 +51,15 @@ img.about-avatar {
   margin-bottom: 10px;
 }
 
+img.avatar {
+  width: 100%;
+}
+
 // Clearfix for floating elements
-.clearfix:after { 
-   content: "."; 
-   visibility: hidden; 
-   display: block; 
-   height: 0; 
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
    clear: both;
 }

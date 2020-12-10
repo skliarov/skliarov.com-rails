@@ -14,6 +14,8 @@ gem 'font-awesome-rails'
 # Auto prefixer for old browsers
 gem 'autoprefixer-rails'
 
+gem 'sprockets-rails'
+
 # JS
 # jQuery
 gem 'jquery-rails'
