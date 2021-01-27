@@ -1,5 +1,5 @@
 == Source code of my blog
 
 * Live version: https://www.skliarov.com
-* Ruby version 2.7.1
-* Rails verion 6.0.3.3
+* Ruby version 3.0.0
+* Rails verion 6.1.1
