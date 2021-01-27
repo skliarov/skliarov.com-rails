@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.7.1'
+ruby '3.0.0'
 
 # Rails and database
-gem 'rails', '~> 6'
+gem 'rails', '6.1.1'
 gem 'pg'
+gem 'puma'
 
 # CSS
 # Work with SASS and SCSS
